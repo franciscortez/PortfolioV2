@@ -1,0 +1,176 @@
+import type { SiteIconName } from "@/data/icons";
+
+export type NavigationItem = {
+  label: string;
+  href: string;
+};
+
+export type ProfileImage = {
+  src: string;
+  initials: string;
+  alt: string;
+};
+
+export type Profile = {
+  name: string;
+  role: string;
+  location: string;
+  email: string;
+  resumeHref: string;
+  image: ProfileImage;
+};
+
+export type ExternalLink = {
+  label: string;
+  href: string;
+  icon: Exclude<SiteIconName, "close">;
+};
+
+export type Project = {
+  title: string;
+  description: string;
+  tags: string[];
+  href: string;
+};
+
+export type Service = {
+  title: string;
+  description: string;
+  deliverables: string[];
+};
+
+export type Experience = {
+  role: string;
+  organization: string;
+  period: string;
+  description: string;
+};
+
+export type SkillGroup = {
+  title: string;
+  skills: string[];
+};
+
+export type PortfolioData = {
+  profile: Profile;
+  navigation: NavigationItem[];
+  externalLinks: ExternalLink[];
+  projects: Project[];
+  services: Service[];
+  experience: Experience[];
+  skillGroups: SkillGroup[];
+  buildNotes: string[];
+};
+
+export const portfolioData: PortfolioData = {
+  profile: {
+    name: "Francis Emil M. Cortez",
+    role: "Full Stack Developer",
+    location: "Pampanga, Philippines",
+    email: "francisemil.cortez@gmail.com",
+    resumeHref: "/documents/resume.pdf",
+    image: {
+      src: "/images/profile/profile-2x2.jpeg",
+      initials: "FC",
+      alt: "Portrait of Francis Emil M. Cortez",
+    },
+  },
+  navigation: [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Projects", href: "/projects" },
+    { label: "Services", href: "/services" },
+    { label: "Experience", href: "/experience" },
+    { label: "Skills", href: "/skills" },
+    { label: "Contact", href: "/contact" },
+  ],
+  externalLinks: [
+    {
+      label: "Email",
+      href: "mailto:francisemil.cortez@gmail.com",
+      icon: "email",
+    },
+    {
+      label: "GitHub",
+      href: "https://github.com/franciscortez",
+      icon: "github",
+    },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/francisemilcortez/",
+      icon: "linkedin",
+    },
+  ],
+  projects: [
+    {
+      title: "Portfolio Website",
+      description:
+        "A dark-first personal portfolio built with Next.js and a structured content model.",
+      tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+      href: "/projects",
+    },
+    {
+      title: "Web Application",
+      description:
+        "A placeholder project card for a production-ready full stack application.",
+      tags: ["React", "API", "Responsive UI"],
+      href: "/projects",
+    },
+    {
+      title: "Dashboard Interface",
+      description:
+        "A placeholder project card for a data-heavy interface with clean visual hierarchy.",
+      tags: ["UI", "Data", "Accessibility"],
+      href: "/projects",
+    },
+  ],
+  services: [
+    {
+      title: "Full Stack Web Development",
+      description:
+        "Build responsive web applications from interface to backend integration.",
+      deliverables: ["Frontend UI", "API integration", "Deployment-ready build"],
+    },
+    {
+      title: "Portfolio and Landing Pages",
+      description:
+        "Create focused pages for personal brands, products, services, and campaigns.",
+      deliverables: ["Responsive layout", "Content sections", "Contact flow"],
+    },
+    {
+      title: "UI Polish and Accessibility",
+      description:
+        "Improve existing interfaces with sharper spacing, stronger contrast, and better usability.",
+      deliverables: ["Visual refinement", "Responsive cleanup", "Accessibility pass"],
+    },
+  ],
+  experience: [
+    {
+      role: "Full Stack Developer",
+      organization: "Organization",
+      period: "Year - Present",
+      description:
+        "Placeholder experience entry. Replace with a real role, organization, dates, and impact.",
+    },
+  ],
+  skillGroups: [
+    {
+      title: "Frontend",
+      skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    },
+    {
+      title: "Backend",
+      skills: ["API Routes", "Node.js", "Database Integration"],
+    },
+    {
+      title: "Workflow",
+      skills: ["Git", "Responsive Design", "Accessibility", "Deployment"],
+    },
+  ],
+  buildNotes: [
+    "Dark-first black-and-white design",
+    "Static sidebar planned for desktop",
+    "Mobile hamburger sidebar planned",
+    "Web3Forms contact flow planned",
+  ],
+};
