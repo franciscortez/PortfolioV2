@@ -75,7 +75,6 @@ export const portfolioData: PortfolioData = {
   navigation: [
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
-    { label: "Services", href: "/services" },
     { label: "Experience", href: "/experience" },
     { label: "Skills", href: "/skills" },
     { label: "Contact", href: "/contact" },

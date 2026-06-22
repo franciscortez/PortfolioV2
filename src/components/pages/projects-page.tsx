@@ -13,10 +13,9 @@ export function ProjectsPage() {
     projects.find((project) => project.slug === activeSlug) ?? projects[0];
 
   return (
-    <div className="flex min-h-[calc(100vh-4rem)] flex-col gap-6 lg:min-h-[calc(100vh-5rem)]">
-
-      <section className="border border-border bg-black lg:min-h-0 lg:flex-1 lg:overflow-hidden">
-        <div className="flex h-full min-h-128 flex-col">
+    <div className="flex min-h-[calc(100vh-4rem)] flex-col lg:h-[calc(100vh-5rem)] lg:min-h-0">
+      <section className="min-h-0 flex-1 border border-border bg-black lg:overflow-hidden">
+        <div className="flex h-full min-h-144 flex-col lg:min-h-0">
           <ProjectHeader totalProjects={projects.length} />
           <ProjectList
             projects={projects}

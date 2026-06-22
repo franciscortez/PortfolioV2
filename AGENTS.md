@@ -23,7 +23,7 @@ The portfolio direction remains black-and-white, restrained, technical, and insp
 - The root layout in `src/app/layout.tsx` wraps all routes with `SiteShell`.
 - `src/app/page.tsx` is a thin route entry that renders `HomePage` from `@/components/pages`.
 - The only implemented real page route is `/`.
-- Navigation data already includes `/projects`, `/services`, `/experience`, `/skills`, and `/contact`, but those route files and page components do not exist yet. Those links currently resolve to the app 404 until implemented.
+- Navigation data includes `/projects`, `/experience`, `/skills`, and `/contact`, but those route files and page components do not exist yet (except `/projects` and `/skills` which are now implemented). Those links currently resolve to the app 404 until implemented.
 - `src/app/loading.tsx` renders the shared loading screen.
 - `src/app/not-found.tsx` renders a dark custom 404 page.
 - Portfolio data is centralized in `src/data/portfolio.ts`.
@@ -189,22 +189,15 @@ portfolio-v2/
 Future work should add these missing routes and components as the portfolio grows:
 
 ```text
-src/app/projects/page.tsx
-src/app/services/page.tsx
 src/app/experience/page.tsx
 src/app/skills/page.tsx
 src/app/contact/page.tsx
 
-src/components/pages/projects-page.tsx
-src/components/pages/services-page.tsx
 src/components/pages/experience-page.tsx
 src/components/pages/skills-page.tsx
 src/components/pages/contact-page.tsx
 
-src/components/sections/project-card.tsx
-src/components/sections/service-card.tsx
 src/components/sections/experience-timeline.tsx
-src/components/sections/skills-grid.tsx
 src/components/sections/contact-form.tsx
 ```
 
@@ -263,7 +256,6 @@ Use this checklist as the implementation tracker. Mark completed work with `[x]`
 - [x] Create the initial `AGENTS.md` project context.
 - [x] Define the portfolio direction as dark-first, black-and-white, Next.js-inspired, and multi-page.
 - [x] Decide to use editable placeholder content where real content is unavailable.
-- [x] Decide to include Services as a core page for offers provided by the portfolio owner.
 - [x] Decide to use Web3Forms for the working contact form.
 - [x] Validation: `AGENTS.md` contains the project context, design direction, implementation rules, and this phase-based progress plan.
 
@@ -283,7 +275,7 @@ Use this checklist as the implementation tracker. Mark completed work with `[x]`
 
 - [x] Add a typed portfolio data module for editable content.
 - [x] Include editable profile fields: name, role, location, email, resume link, and profile image metadata.
-- [x] Include navigation items for Home, Projects, Services, Experience, Skills, and Contact.
+- [x] Include navigation items for Home, Projects, Experience, Skills, and Contact.
 - [x] Include social/contact links for email, GitHub, and LinkedIn.
 - [x] Social/contact links include icon metadata and render through `react-icons`.
 - [x] Include placeholder projects, services, experience entries, and skills grouped by category.
@@ -309,9 +301,8 @@ Use this checklist as the implementation tracker. Mark completed work with `[x]`
 - [x] Create `src/components/pages` and keep the home App Router page file as a thin wrapper.
 - [x] Implement `/` as the homepage with identity, short intro, animated role label, and links to work/contact.
 - [x] Implement `/projects` as a projects split-panel layout, separating list and detail views, and supporting click-to-zoom screenshot lightbox.
-- [ ] Implement `/services` with service offerings, deliverables, and contact call-to-action.
-- [ ] Implement `/experience` with timeline or role entries.
-- [ ] Implement `/skills` with grouped technical skills and tools.
+- [x] Implement `/skills` with grouped technical skills and tools.
+- [x] Implement `/experience` with timeline or role entries.
 - [ ] Implement `/contact` with contact copy, static contact links, and the working Web3Forms contact form.
 - [ ] Validation: each route loads independently, navigation links route correctly, and headings follow a logical hierarchy.
 

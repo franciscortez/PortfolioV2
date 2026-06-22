@@ -19,7 +19,7 @@ export function MobileSidebar() {
             className="absolute inset-0 bg-black/70"
             onClick={() => setIsOpen(false)}
           />
-          <div className="scrollbar-hidden relative h-full w-[min(22rem,86vw)] overflow-y-auto">
+          <div className="scrollbar-hidden relative h-full w-[min(24rem,92vw)] overflow-y-auto border-r border-border bg-black">
             <Sidebar
               className="grid min-h-full"
               onNavigate={() => setIsOpen(false)}
@@ -46,7 +46,8 @@ function MobileHeader({ onOpen }: { onOpen: () => void }) {
       <button
         type="button"
         aria-label="Open navigation menu"
-        className="grid size-11 place-items-center border border-border text-white transition-colors hover:border-accent hover:text-accent"
+        aria-expanded="false"
+        className="grid size-11 place-items-center border border-border bg-panel text-white transition-colors hover:border-accent hover:bg-accent-dark hover:text-accent"
         onClick={onOpen}
       >
         <span className="flex w-5 flex-col gap-1.5" aria-hidden="true">

@@ -26,17 +26,10 @@ const services = [
 export function WhatIDoSection() {
   return (
     <section className="border border-border bg-black">
-      <div className="flex items-center justify-between border-b border-border p-6 sm:p-8">
+      <div className="border-b border-border p-6 sm:p-8">
         <p className="font-mono text-xs uppercase tracking-[0.24em] text-accent">
           What I do
         </p>
-        <a
-          href="/services"
-          className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-zinc-400 transition-colors hover:text-accent"
-        >
-          View more
-          <span aria-hidden="true">→</span>
-        </a>
       </div>
 
       <div className="grid lg:grid-cols-2">

@@ -1,14 +1,17 @@
 import Link from "next/link";
-import { skillIcons } from "@/data/icons";
+import { siteIcons, skillIcons } from "@/data/icons";
 import { featuredSkills, homeSkills } from "@/data/skills";
 
 const remainingSkillsCount = featuredSkills.length - homeSkills.length;
 
 export function SkillsSection() {
+  const CodeIcon = siteIcons.code;
+
   return (
     <section className="border border-border bg-black">
       <div className="flex items-center justify-between gap-5 border-b border-border p-6 sm:p-8">
-        <p className="font-mono text-xs uppercase tracking-[0.24em] text-accent">
+        <p className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-accent">
+          <CodeIcon aria-hidden="true" className="size-3.5" />
           skills
         </p>
 

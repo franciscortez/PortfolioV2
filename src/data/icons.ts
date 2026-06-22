@@ -1,8 +1,15 @@
 import {
+  FaBriefcase,
+  FaBullseye,
+  FaCalendarAlt,
+  FaCode,
   FaEnvelope,
   FaGithub,
+  FaGraduationCap,
+  FaLayerGroup,
   FaLinkedinIn,
   FaMapMarkerAlt,
+  FaUniversity,
 } from "react-icons/fa";
 import type { IconType } from "react-icons";
 import { IoClose } from "react-icons/io5";
@@ -84,10 +91,17 @@ export type SkillIconName = keyof typeof skillIcons;
 
 export const siteIcons = {
   close: IoClose,
+  briefcase: FaBriefcase,
+  calendar: FaCalendarAlt,
+  code: FaCode,
   email: FaEnvelope,
+  education: FaGraduationCap,
+  focus: FaBullseye,
   github: FaGithub,
+  layers: FaLayerGroup,
   linkedin: FaLinkedinIn,
   location: FaMapMarkerAlt,
+  school: FaUniversity,
 } satisfies Record<string, IconType>;
 
 export type SiteIconName = keyof typeof siteIcons;
