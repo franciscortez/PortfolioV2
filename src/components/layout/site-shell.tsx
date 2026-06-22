@@ -10,10 +10,10 @@ type SiteShellProps = {
 
 export function SiteShell({ children }: SiteShellProps) {
   return (
-    <div className="min-h-screen bg-background text-foreground lg:grid lg:grid-cols-[20%_80%]">
+    <div className="min-h-screen bg-background text-foreground lg:grid lg:grid-cols-[minmax(15rem,20%)_minmax(0,1fr)]">
       <BootLoader />
       <MobileSidebar />
-      <Sidebar className="hidden lg:flex" />
+      <Sidebar className="hidden lg:grid" />
       <MainShell>{children}</MainShell>
     </div>
   );

@@ -1,4 +1,6 @@
 import type { SiteIconName } from "@/data/icons";
+import { type Project, projects } from "@/data/project";
+
 
 export type NavigationItem = {
   label: string;
@@ -26,12 +28,7 @@ export type ExternalLink = {
   icon: Exclude<SiteIconName, "close">;
 };
 
-export type Project = {
-  title: string;
-  description: string;
-  tags: string[];
-  href: string;
-};
+
 
 export type Service = {
   title: string;
@@ -100,29 +97,7 @@ export const portfolioData: PortfolioData = {
       icon: "linkedin",
     },
   ],
-  projects: [
-    {
-      title: "Portfolio Website",
-      description:
-        "A dark-first personal portfolio built with Next.js and a structured content model.",
-      tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-      href: "/projects",
-    },
-    {
-      title: "Web Application",
-      description:
-        "A placeholder project card for a production-ready full stack application.",
-      tags: ["React", "API", "Responsive UI"],
-      href: "/projects",
-    },
-    {
-      title: "Dashboard Interface",
-      description:
-        "A placeholder project card for a data-heavy interface with clean visual hierarchy.",
-      tags: ["UI", "Data", "Accessibility"],
-      href: "/projects",
-    },
-  ],
+  projects,
   services: [
     {
       title: "Full Stack Web Development",

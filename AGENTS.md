@@ -308,7 +308,7 @@ Use this checklist as the implementation tracker. Mark completed work with `[x]`
 
 - [x] Create `src/components/pages` and keep the home App Router page file as a thin wrapper.
 - [x] Implement `/` as the homepage with identity, short intro, animated role label, and links to work/contact.
-- [ ] Implement `/projects` as a projects index with placeholder project cards only; do not add dynamic detail routes yet.
+- [x] Implement `/projects` as a projects split-panel layout, separating list and detail views, and supporting click-to-zoom screenshot lightbox.
 - [ ] Implement `/services` with service offerings, deliverables, and contact call-to-action.
 - [ ] Implement `/experience` with timeline or role entries.
 - [ ] Implement `/skills` with grouped technical skills and tools.
@@ -340,7 +340,7 @@ Use this checklist as the implementation tracker. Mark completed work with `[x]`
 ### Phase 7: Final Verification
 
 - [x] Run `npm.cmd run lint` successfully after the current foundation/sidebar/home implementation.
-- [ ] Run `npm run build` or `npm.cmd run build`.
+- [x] Run `npm run build` or `npm.cmd run build`.
 - [ ] Manually verify desktop sidebar behavior.
 - [ ] Manually verify mobile hamburger sidebar behavior.
 - [ ] Manually verify there is no horizontal scrolling.

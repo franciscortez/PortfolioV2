@@ -20,7 +20,7 @@ export function Sidebar({
   return (
     <aside
       aria-label="Portfolio sidebar"
-      className={`${className} flex-col gap-4 bg-black p-3 sm:p-4 lg:sticky lg:top-0 lg:h-screen lg:min-h-screen`}
+      className={`${className} grid-rows-[auto_auto] content-start gap-4 bg-black p-3 sm:p-4 lg:sticky lg:top-0 lg:h-dvh lg:min-h-dvh lg:grid-rows-[auto_minmax(0,1fr)] lg:content-normal lg:overflow-hidden`}
     >
       <SidebarProfile onNavigate={onNavigate} showClose={showClose} />
       <SidebarRoutes onNavigate={onNavigate} />
@@ -40,7 +40,7 @@ function SidebarProfile({
   const LocationIcon = siteIcons.location;
 
   return (
-    <div className="relative border border-border bg-panel px-5 py-6 sm:px-4 sm:py-4 lg:flex lg:h-[45%] massive:h-[50%] lg:flex-col lg:justify-center lg:px-4 lg:py-3 xl:px-6 xl:py-6 massive:px-8 massive:py-8">
+    <div className="relative min-w-0 border border-border bg-panel px-5 py-6 sm:px-4 sm:py-4 lg:px-3 lg:py-3 xl:px-4 xl:py-4 massive:px-8 massive:py-8">
       {showClose ? (
         <button
           type="button"
@@ -53,44 +53,44 @@ function SidebarProfile({
       ) : null}
 
       <div className="mt-3 flex flex-col items-center sm:mt-0">
-        <div className="relative size-28 overflow-hidden border border-zinc-700 bg-black sm:size-20 lg:size-24 xl:size-32 massive:size-40">
+        <div className="relative size-28 overflow-hidden border border-zinc-700 bg-black sm:size-20 lg:size-20 xl:size-24 massive:size-40">
           <Image
             src={profile.image.src}
             alt={profile.image.alt}
             fill
             priority
             quality={100}
-            sizes="112px"
+            sizes="(min-width: 1536px) 160px, (min-width: 1280px) 96px, (min-width: 1024px) 80px, 112px"
             className="scale-125 object-cover object-[center_32%]"
           />
         </div>
       </div>
 
-      <div className="mt-5 text-center sm:mt-3 lg:mt-3 xl:mt-5 massive:mt-8">
-        <h1 className="text-2xl font-semibold leading-tight tracking-tight text-white sm:text-xl lg:text-lg lg:leading-tight xl:text-xl massive:text-3xl">
+      <div className="mt-5 min-w-0 text-center sm:mt-3 lg:mt-3 massive:mt-8">
+        <h1 className="wrap-break-word text-2xl font-semibold leading-tight tracking-tight text-white sm:text-xl lg:text-lg lg:leading-tight massive:text-3xl">
           {profile.name}
         </h1>
-        <p className="mt-2 text-sm leading-6 text-zinc-400 sm:mt-1.5 sm:text-xs sm:leading-tight lg:mt-1 lg:text-xs lg:leading-tight xl:text-sm xl:mt-2 massive:mt-4 massive:text-lg">
+        <p className="mt-2 text-sm leading-6 text-zinc-400 sm:mt-1.5 sm:text-xs sm:leading-tight lg:mt-1 lg:text-xs lg:leading-tight massive:mt-4 massive:text-lg">
           {profile.role}
         </p>
-        <p className="mt-3 flex items-center justify-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-zinc-500 sm:mt-2 sm:text-[0.62rem] lg:mt-1.5 lg:text-[0.6rem] xl:text-xs xl:mt-3 massive:mt-5 massive:text-sm">
-          <LocationIcon className="size-3 sm:size-2.5 lg:size-2 xl:size-3 massive:size-4" />
-          {profile.location}
+        <p className="mt-3 flex min-w-0 flex-wrap items-center justify-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-zinc-500 sm:mt-2 sm:text-[0.62rem] lg:mt-1.5 lg:text-[0.58rem] lg:tracking-[0.12em] massive:mt-5 massive:text-sm massive:tracking-[0.18em]">
+          <LocationIcon className="size-3 shrink-0 sm:size-2.5 lg:size-2 massive:size-4" />
+          <span className="min-w-0 wrap-break-word">{profile.location}</span>
         </p>
       </div>
 
-      <div className="mt-5 sm:mt-3 lg:mt-3 xl:mt-5 massive:mt-8">
+      <div className="mt-5 sm:mt-3 lg:mt-3 massive:mt-8">
         <Link
           href={profile.resumeHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="button-accent inline-flex w-full items-center justify-center border px-4 py-3 text-sm font-medium sm:py-2 sm:text-xs lg:py-1.5 lg:text-xs xl:py-2 xl:text-sm massive:py-4 massive:text-base"
+          className="button-accent inline-flex w-full items-center justify-center border px-4 py-3 text-sm font-medium sm:py-2 sm:text-xs lg:py-1.5 lg:text-xs massive:py-4 massive:text-base"
         >
           View resume
         </Link>
       </div>
 
-      <div className="mt-7 flex flex-wrap justify-center gap-2 sm:mt-4 sm:gap-1.5 lg:mt-3 lg:gap-1.5 xl:mt-5 xl:gap-2 massive:mt-8 massive:gap-4">
+      <div className="mt-7 flex flex-wrap justify-center gap-2 sm:mt-4 sm:gap-1.5 lg:mt-3 lg:gap-1.5 massive:mt-8 massive:gap-4">
         {externalLinks.map((link) => (
           <Link
             key={link.label}
@@ -99,9 +99,9 @@ function SidebarProfile({
             rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
             aria-label={link.label}
             title={link.label}
-            className="grid size-10 place-items-center border border-border text-zinc-400 transition-colors hover:border-accent hover:text-accent sm:size-9 lg:size-8 xl:size-10 massive:size-12"
+            className="grid size-10 place-items-center border border-border text-zinc-400 transition-colors hover:border-accent hover:text-accent sm:size-9 lg:size-8 massive:size-12"
           >
-            <SocialIcon link={link} className="sm:text-sm lg:text-xs xl:text-sm massive:text-lg" />
+            <SocialIcon link={link} className="sm:text-sm lg:text-xs massive:text-lg" />
           </Link>
         ))}
       </div>
@@ -116,12 +116,12 @@ function SidebarRoutes({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <nav
       aria-label="Primary navigation"
-      className="border border-border bg-panel px-5 py-6 lg:flex lg:h-[55%] massive:h-[50%] lg:flex-col xl:px-6 xl:py-8 massive:px-8 massive:py-10"
+      className="min-h-0 border border-border bg-panel px-5 py-6 lg:flex lg:flex-col lg:px-3 lg:py-4 xl:px-4 xl:py-5 massive:px-8 massive:py-10"
     >
-      <h2 className="font-mono text-xs uppercase tracking-[0.22em] text-muted xl:text-sm massive:text-base">
+      <h2 className="font-mono text-xs uppercase tracking-[0.22em] text-muted massive:text-base">
         Routes
       </h2>
-      <div className="scrollbar-hidden mt-4 grid gap-2 overflow-y-auto pr-1 lg:max-h-none lg:flex-1 massive:mt-6 massive:gap-3">
+      <div className="scrollbar-hidden mt-4 grid gap-2 overflow-y-auto pr-1 lg:min-h-0 lg:flex-1 massive:mt-6 massive:gap-3">
         {navigation.map((item) => {
           const isActive = pathname === item.href;
 
@@ -131,7 +131,7 @@ function SidebarRoutes({ onNavigate }: { onNavigate?: () => void }) {
               href={item.href}
               aria-current={isActive ? "page" : undefined}
               onClick={onNavigate}
-              className={`group relative overflow-hidden py-3 pl-5 pr-4 text-sm xl:py-4 xl:text-base massive:py-5 massive:text-lg transition-colors duration-200 ${
+              className={`group relative overflow-hidden py-3 pl-5 pr-4 text-sm transition-colors duration-200 massive:py-5 massive:text-lg ${
                 isActive
                   ? "bg-black font-medium text-accent"
                   : "text-zinc-500 hover:bg-black hover:text-accent"

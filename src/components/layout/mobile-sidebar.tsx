@@ -21,7 +21,7 @@ export function MobileSidebar() {
           />
           <div className="scrollbar-hidden relative h-full w-[min(22rem,86vw)] overflow-y-auto">
             <Sidebar
-              className="flex min-h-full"
+              className="grid min-h-full"
               onNavigate={() => setIsOpen(false)}
               showClose
             />
@@ -37,9 +37,9 @@ function MobileHeader({ onOpen }: { onOpen: () => void }) {
 
   return (
     <header className="sticky top-0 z-40 flex items-center justify-between border-b border-border bg-background/95 px-5 py-4 backdrop-blur lg:hidden">
-      <div>
-        <p className="text-sm font-medium text-white">{profile.name}</p>
-        <p className="mt-1 font-mono text-xs uppercase tracking-[0.18em] text-muted">
+      <div className="min-w-0 pr-4">
+        <p className="truncate text-sm font-medium text-white">{profile.name}</p>
+        <p className="mt-1 truncate font-mono text-xs uppercase tracking-[0.18em] text-muted">
           {profile.role}
         </p>
       </div>
