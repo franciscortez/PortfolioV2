@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: `${portfolioData.profile.name} | Portfolio`,
   description:
     "A dark-first black-and-white portfolio for a full-stack developer.",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
