@@ -1,0 +1,104 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { siteIcons } from "@/data/icons";
+
+type ToastType = "success" | "error" | "info";
+
+type ToastMessage = {
+  id: number;
+  message: string;
+  type: ToastType;
+};
+
+let toastCounter = 0;
+const listeners = new Set<(toasts: ToastMessage[]) => void>();
+let toasts: ToastMessage[] = [];
+
+function notifyListeners() {
+  listeners.forEach((listener) => listener([...toasts]));
+}
+
+export function showToast(message: string, type: ToastType = "info") {
+  const id = toastCounter++;
+  toasts.push({ id, message, type });
+  notifyListeners();
+
+  setTimeout(() => {
+    toasts = toasts.filter((t) => t.id !== id);
+    notifyListeners();
+  }, 4200);
+}
+
+export function ToastContainer() {
+  const [toastList, setToastList] = useState<ToastMessage[]>([]);
+
+  useEffect(() => {
+    listeners.add(setToastList);
+    return () => {
+      listeners.delete(setToastList);
+    };
+  }, []);
+
+  if (toastList.length === 0) {
+    return null;
+  }
+
+  return (
+    <div
+      className="fixed right-4 top-4 z-50 flex flex-col gap-2 sm:right-6 sm:top-6"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      {toastList.map((toast) => (
+        <Toast key={toast.id} {...toast} />
+      ))}
+    </div>
+  );
+}
+
+function Toast({ id, message, type }: ToastMessage) {
+  const CloseIcon = siteIcons.close;
+  const [isExiting, setIsExiting] = useState(false);
+
+  function handleDismiss() {
+    setIsExiting(true);
+    setTimeout(() => {
+      toasts = toasts.filter((t) => t.id !== id);
+      notifyListeners();
+    }, 200);
+  }
+
+  const bgColor =
+    type === "success"
+      ? "bg-accent-dark border-accent"
+      : type === "error"
+        ? "bg-zinc-950 border-zinc-700"
+        : "bg-panel border-border";
+
+  const textColor =
+    type === "success"
+      ? "text-accent"
+      : type === "error"
+        ? "text-zinc-400"
+        : "text-white";
+
+  return (
+    <div
+      role="alert"
+      className={`flex min-w-80 max-w-md items-start gap-3 border p-4 shadow-lg transition-all duration-200 ${bgColor} ${textColor} ${
+        isExiting ? "translate-x-[120%] opacity-0" : "translate-x-0 opacity-100"
+      }`}
+    >
+      <p className="flex-1 text-sm leading-6">{message}</p>
+      <button
+        type="button"
+        onClick={handleDismiss}
+        aria-label="Dismiss notification"
+        className="shrink-0 text-zinc-500 transition-colors hover:text-white"
+      >
+        <CloseIcon className="size-4" />
+      </button>
+    </div>
+  );
+}

@@ -73,7 +73,7 @@ function SidebarProfile({
         <p className="mt-2 text-sm leading-6 text-zinc-400 sm:mt-2 sm:text-sm sm:leading-6 lg:mt-1 lg:text-xs lg:leading-5 xl:text-xs 2xl:text-sm massive:mt-2 massive:text-base">
           {profile.role}
         </p>
-        <p className="mt-3 flex min-w-0 flex-wrap items-center justify-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-zinc-500 sm:mt-2 sm:text-[0.68rem] lg:mt-1.5 lg:text-[0.56rem] lg:tracking-[0.1em] xl:text-[0.62rem] 2xl:text-[0.68rem] massive:mt-3 massive:text-xs massive:tracking-[0.16em]">
+        <p className="mt-3 flex min-w-0 flex-wrap items-center justify-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-zinc-500 sm:mt-2 sm:text-[0.68rem] lg:mt-1.5 lg:text-[0.56rem] lg:tracking-widest xl:text-[0.62rem] 2xl:text-[0.68rem] massive:mt-3 massive:text-xs massive:tracking-[0.16em]">
           <LocationIcon className="size-3 shrink-0 sm:size-3 lg:size-2 xl:size-2.5 2xl:size-3 massive:size-3.5" />
           <span className="min-w-0 wrap-break-word">{profile.location}</span>
         </p>
