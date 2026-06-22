@@ -303,19 +303,19 @@ Use this checklist as the implementation tracker. Mark completed work with `[x]`
 - [x] Implement `/projects` as a projects split-panel layout, separating list and detail views, and supporting click-to-zoom screenshot lightbox.
 - [x] Implement `/skills` with grouped technical skills and tools.
 - [x] Implement `/experience` with timeline or role entries.
-- [ ] Implement `/contact` with contact copy, static contact links, and the working Web3Forms contact form.
-- [ ] Validation: each route loads independently, navigation links route correctly, and headings follow a logical hierarchy.
+- [x] Implement `/contact` with contact copy, static contact links, and the working Web3Forms contact form.
+- [x] Validation: each route loads independently, navigation links route correctly, and headings follow a logical hierarchy.
 
 ### Phase 5: Web3Forms Contact Form
 
 - [x] Add `.env.example` documenting `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`.
-- [ ] Build the form with fields for name, email, subject, and message.
-- [ ] Submit via standard HTML `method="POST"` to `https://api.web3forms.com/submit`.
-- [ ] Include the hidden `access_key` input using `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`.
-- [ ] Include Web3Forms honeypot spam protection with a hidden `botcheck` field.
-- [ ] If the access key is missing, render a clear disabled or configuration-needed state.
-- [ ] Keep the contact form dependency-free.
-- [ ] Validation: with an access key set, the form posts to Web3Forms; without an access key, the UI does not silently fail.
+- [x] Build the form with fields for name, email, subject, and message.
+- [x] Submit to `https://api.web3forms.com/submit` with client-side `fetch` so the user stays on the contact page.
+- [x] Include the `access_key` from `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in the Web3Forms request payload.
+- [x] Include Web3Forms honeypot spam protection with a hidden `botcheck` field.
+- [x] If the access key is missing, render a clear disabled or configuration-needed state.
+- [x] Keep the contact form dependency-free.
+- [x] Validation: with an access key set, the form posts to Web3Forms; without an access key, the UI does not silently fail.
 
 ### Phase 6: Visual Polish and Accessibility
 
@@ -325,6 +325,7 @@ Use this checklist as the implementation tracker. Mark completed work with `[x]`
 - [x] Avoid colorful gradients, decorative blobs, loud accents, and heavy visual effects.
 - [x] Ensure the current profile image has useful `alt` text.
 - [x] Ensure current links and buttons inherit visible global focus states.
+- [x] Optimize initial load times by removing artificial boot loading delay.
 - [ ] Manually verify common desktop and mobile viewport sizes.
 - [ ] Validation: pages meet the black-and-white direction, remain readable at common viewport sizes, and preserve strong contrast.
 

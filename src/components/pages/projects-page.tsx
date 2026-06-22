@@ -7,10 +7,27 @@ import { ProjectList } from "@/components/sections/projects/project-list";
 import { ProjectDetail } from "@/components/sections/projects/project-detail";
 
 export function ProjectsPage() {
-  const [activeSlug, setActiveSlug] = useState(projects[0].slug);
+  const [activeSlug, setActiveSlug] = useState(projects[0]?.slug ?? "");
 
   const activeProject =
     projects.find((project) => project.slug === activeSlug) ?? projects[0];
+
+  if (!activeProject) {
+    return (
+      <section className="border border-border bg-black p-6 sm:p-8">
+        <p className="font-mono text-xs uppercase tracking-[0.24em] text-accent">
+          Projects
+        </p>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight text-white">
+          No projects available yet.
+        </h1>
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-zinc-400">
+          Add projects to the centralized project data file to populate this
+          page.
+        </p>
+      </section>
+    );
+  }
 
   return (
     <div className="flex min-h-[calc(100vh-4rem)] flex-col lg:h-[calc(100vh-5rem)] lg:min-h-0">

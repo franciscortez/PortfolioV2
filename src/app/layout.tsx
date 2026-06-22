@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: `${portfolioData.profile.name} | Portfolio`,
   description:
-    "A dark-first black-and-white portfolio for a frontend developer.",
+    "A dark-first black-and-white portfolio for a full-stack developer.",
 };
 
 export default function RootLayout({

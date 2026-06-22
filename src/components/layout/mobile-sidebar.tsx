@@ -9,10 +9,10 @@ export function MobileSidebar() {
 
   return (
     <>
-      <MobileHeader onOpen={() => setIsOpen(true)} />
+      <MobileHeader isOpen={isOpen} onOpen={() => setIsOpen(true)} />
 
       {isOpen ? (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div id="mobile-navigation" className="fixed inset-0 z-50 lg:hidden">
           <button
             type="button"
             aria-label="Close navigation menu"
@@ -32,7 +32,13 @@ export function MobileSidebar() {
   );
 }
 
-function MobileHeader({ onOpen }: { onOpen: () => void }) {
+function MobileHeader({
+  isOpen,
+  onOpen,
+}: {
+  isOpen: boolean;
+  onOpen: () => void;
+}) {
   const { profile } = portfolioData;
 
   return (
@@ -46,7 +52,7 @@ function MobileHeader({ onOpen }: { onOpen: () => void }) {
       <button
         type="button"
         aria-label="Open navigation menu"
-        aria-expanded="false"
+        aria-expanded={isOpen}
         className="grid size-11 place-items-center border border-border bg-panel text-white transition-colors hover:border-accent hover:bg-accent-dark hover:text-accent"
         onClick={onOpen}
       >

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { LoadingScreen } from "@/components/ui/loading-screen";
 
-const MINIMUM_VISIBLE_MS = 900;
+const MINIMUM_VISIBLE_MS = 0;
 
 export function BootLoader() {
   const [isLoading, setIsLoading] = useState(true);

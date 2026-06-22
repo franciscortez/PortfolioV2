@@ -46,7 +46,7 @@ export function ToastContainer() {
 
   return (
     <div
-      className="fixed right-4 top-4 z-50 flex flex-col gap-2 sm:right-6 sm:top-6"
+      className="fixed right-4 top-4 z-50 flex w-[calc(100vw-2rem)] max-w-md flex-col gap-2 sm:right-6 sm:top-6 sm:w-auto"
       aria-live="polite"
       aria-atomic="true"
     >
@@ -86,7 +86,7 @@ function Toast({ id, message, type }: ToastMessage) {
   return (
     <div
       role="alert"
-      className={`flex min-w-80 max-w-md items-start gap-3 border p-4 shadow-lg transition-all duration-200 ${bgColor} ${textColor} ${
+      className={`flex w-full items-start gap-3 border p-4 shadow-lg transition-all duration-200 sm:min-w-80 ${bgColor} ${textColor} ${
         isExiting ? "translate-x-[120%] opacity-0" : "translate-x-0 opacity-100"
       }`}
     >

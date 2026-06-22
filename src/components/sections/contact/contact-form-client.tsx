@@ -95,6 +95,7 @@ export function ContactFormClient({
           name="botcheck"
           className="hidden"
           tabIndex={-1}
+          autoComplete="off"
         />
         <div className="grid gap-5 lg:grid-cols-2">
           <FormField label="Name" htmlFor="name">

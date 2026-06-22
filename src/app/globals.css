@@ -106,6 +106,12 @@ body {
     animation: loading-letter 1.25s ease-in-out infinite;
     display: inline-block;
   }
+
+  .route-transition {
+    animation: route-enter 220ms ease-out both;
+    transform-origin: top center;
+    will-change: opacity, transform;
+  }
 }
 
 ::selection {
@@ -150,9 +156,22 @@ body {
   }
 }
 
+@keyframes route-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(0.65rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .loading-line,
-  .loading-letter {
+  .loading-letter,
+  .route-transition {
     animation: none;
   }
 }

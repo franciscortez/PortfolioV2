@@ -142,8 +142,8 @@ export const portfolioData: PortfolioData = {
   ],
   buildNotes: [
     "Dark-first black-and-white design",
-    "Static sidebar planned for desktop",
-    "Mobile hamburger sidebar planned",
-    "Web3Forms contact flow planned",
+    "Static sidebar for desktop",
+    "Mobile hamburger sidebar",
+    "Web3Forms contact flow",
   ],
 };
