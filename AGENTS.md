@@ -2,9 +2,9 @@
 
 ## Project Context
 
-This is a personal portfolio website built with Next.js App Router.
+This is a personal portfolio website built with the Next.js App Router. The project has moved past the default `create-next-app` starter: the current app has a dark-first portfolio shell, a persistent desktop sidebar, a mobile drawer sidebar, centralized portfolio data, a homepage hero, route loading UI, and a custom 404 page.
 
-The project is currently close to a fresh `create-next-app` baseline. The visible app lives in `src/app`, uses Tailwind CSS v4 through `globals.css`, and has the standard starter homepage in `src/app/page.tsx`. Future work should replace the starter content with a polished black-and-white portfolio experience.
+The portfolio direction remains black-and-white, restrained, technical, and inspired by the visual discipline of the Next.js website.
 
 ## Current Stack
 
@@ -14,15 +14,45 @@ The project is currently close to a fresh `create-next-app` baseline. The visibl
 - Styling: Tailwind CSS v4 via `@import "tailwindcss"`
 - Fonts: Geist and Geist Mono from `next/font/google`
 - Linting: ESLint 9 with `eslint-config-next`
+- Icons: `react-icons`
 - Path alias: `@/*` maps to `./src/*`
 - React Compiler: enabled in `next.config.ts`
 
+## Current Implementation Snapshot
+
+- The root layout in `src/app/layout.tsx` wraps all routes with `SiteShell`.
+- `src/app/page.tsx` is a thin route entry that renders `HomePage` from `@/components/pages`.
+- The only implemented real page route is `/`.
+- Navigation data already includes `/projects`, `/services`, `/experience`, `/skills`, and `/contact`, but those route files and page components do not exist yet. Those links currently resolve to the app 404 until implemented.
+- `src/app/loading.tsx` renders the shared loading screen.
+- `src/app/not-found.tsx` renders a dark custom 404 page.
+- Portfolio data is centralized in `src/data/portfolio.ts`.
+- Icon mappings are centralized in `src/data/icons.ts`.
+- Public assets currently include:
+  - `public/images/profile/profile-2x2.jpeg`
+  - `public/documents/resume.pdf`
+  - empty `public/images/projects/` directory
+- `.env.example` already contains `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=`, but the contact form has not been implemented.
+
 ## Important Files
 
-- `src/app/layout.tsx`: Root HTML, Geist font setup, metadata, and body shell.
-- `src/app/page.tsx`: Current starter homepage. Replace this with the portfolio layout.
-- `src/app/globals.css`: Tailwind import, theme tokens, global background and foreground colors.
-- `public/`: Currently contains default Next/Vercel SVG assets. Add portfolio images here only when they are static public assets.
+- `src/app/layout.tsx`: Root HTML, Geist font setup, metadata, and global `SiteShell` wrapper.
+- `src/app/page.tsx`: Thin home route entry.
+- `src/app/loading.tsx`: Route loading UI using `LoadingScreen`.
+- `src/app/not-found.tsx`: Custom 404 page.
+- `src/app/globals.css`: Tailwind import, dark theme tokens, global focus/selection styles, loading animations, and `scrollbar-hidden`.
+- `src/components/layout/site-shell.tsx`: Root shell combining the boot loader, mobile sidebar, desktop sidebar, and main content.
+- `src/components/layout/sidebar.tsx`: Desktop/sidebar drawer content, profile block, external icon links, resume button, and active navigation.
+- `src/components/layout/mobile-sidebar.tsx`: Client-side hamburger and drawer state.
+- `src/components/layout/main-shell.tsx`: Main content wrapper.
+- `src/components/pages/home-page.tsx`: Home page component.
+- `src/components/pages/index.ts`: Central page exports.
+- `src/components/sections/hero-section.tsx`: Current homepage hero.
+- `src/components/ui/animated-role.tsx`: Client-side animated role label.
+- `src/components/ui/boot-loader.tsx`: Client-side initial load overlay.
+- `src/components/ui/loading-screen.tsx`: Shared loading screen component.
+- `src/data/portfolio.ts`: Editable profile, navigation, external links, projects, services, experience, skills, and build notes.
+- `src/data/icons.ts`: Shared icon import and mapping.
 - `package.json`: Project scripts are `npm run dev`, `npm run build`, `npm run start`, and `npm run lint`.
 
 ## Product Direction
@@ -38,125 +68,158 @@ The site should feel:
 - Spacious, but not empty
 - Professional rather than decorative
 
-Use black, white, and neutral zinc/stone grays as the main palette. Avoid colorful gradients, decorative blobs, loud accent colors, and heavy visual effects unless the user explicitly asks for them.
+Use black, white, and neutral zinc/stone grays as the main palette, with a restrained blue accent for hover, active, and interactive states. Avoid colorful gradients, decorative blobs, loud accent colors, and heavy visual effects unless the user explicitly asks for them.
+
+## Personal Content Status
+
+Some real personal details are now present in `src/data/portfolio.ts`:
+
+- Name: `Francis Emil M. Cortez`
+- Role: `Full Stack Developer`
+- Location: `Pampanga, Philippines`
+- Email: `francisemil.cortez@gmail.com`
+- GitHub: `https://github.com/franciscortez`
+- LinkedIn: `https://www.linkedin.com/in/francisemilcortez/`
+- Resume: `/documents/resume.pdf`
+- Profile image: `/images/profile/profile-2x2.jpeg`
+
+Do not invent additional real credentials, employers, schools, awards, or metrics. Placeholder project/service/experience/skill content may be used until the user provides exact details.
 
 ## Layout Direction
 
-The primary layout should include a persistent sidebar for identity and navigation.
-
-Expected sidebar content:
-
-- Top information div:
-  - Profile picture or avatar area
-  - Name
-  - Role/title
-  - Location
-  - Resume link or resume button
-  - Optional external links such as GitHub, LinkedIn, email, or resume when the user provides them
-  - External links should render as icon buttons instead of text labels
-- Bottom routes div:
-  - Navigation links for the portfolio sections
-  - Current route or active link styling where practical
-
-The user will provide exact personal details later. Until then, use clear placeholders that are easy to replace.
-
-Recommended navigation sections:
-
-- Home
-- About
-- Projects
-- Services
-- Experience
-- Skills
-- Contact
+The primary layout uses a persistent sidebar for identity and navigation.
 
 Desktop behavior:
 
-- Sidebar should sit on the left and remain visible as the static details/navigation column.
-- Sidebar should use 20% of the desktop viewport width.
-- Main content should use the remaining 80% of the desktop viewport width.
-- Sidebar should be `height: 100%` or viewport-height/full-height equivalent.
-- Sidebar content should be split into two main divs: top information and bottom routes.
-- The sidebar itself must not have independent scroll behavior such as `overflow-y-auto`.
-- The top information div and bottom routes div should each have their own border.
-- Do not put the border on the parent wrapper of the two sidebar containers.
-- Sidebar may be sticky only if it preserves the 20% / 80% layout, does not overlap content, and scrolls with the page once the main content reaches the bottom.
+- Sidebar sits on the left and remains visible as the static details/navigation column.
+- `SiteShell` uses `lg:grid-cols-[20%_80%]`.
+- Main content uses the remaining 80% of the desktop viewport width.
+- Sidebar is split into two bordered divs: profile information and routes.
+- The sidebar parent should not receive the border; the profile and route containers each own their own border.
+- The sidebar itself should not have independent scroll behavior.
 - Keep spacing tight and structured, similar to modern documentation/product sites.
 
 Mobile behavior:
 
 - Do not force the full sidebar to stay visible on small screens.
-- Use a hamburger button to open and close the sidebar on mobile.
-- The mobile sidebar should behave like an overlay or drawer and must include the same profile details, resume link, icon links, and navigation.
+- Use the existing hamburger button in `MobileSidebar` to open and close the drawer.
+- The mobile drawer should include the same profile details, resume link, icon links, and navigation.
 - Content must remain readable without horizontal scrolling while the sidebar is closed.
 
 ## Visual Guidelines
 
-- Prefer a black background with white text by default, with white or zinc panels used intentionally.
-- Keep the site strictly black, white, and neutral gray.
-- Use thin borders such as `border-zinc-200` or `border-zinc-800`.
+- Prefer a black background with white text by default, with zinc panels used intentionally.
+- Keep the site primarily black, white, and neutral gray, with blue reserved for deliberate hover and active states.
+- Use thin borders such as `border-border`, `border-zinc-800`, or equivalent.
 - Prefer square or small-radius corners. Use `rounded-md` or lower unless there is a strong reason.
 - Use typography hierarchy instead of decoration.
 - Use `font-sans` for most text and `font-mono` for small metadata, labels, dates, and technical tags.
 - Avoid oversized hero marketing copy. This is a portfolio, so the first screen should quickly show identity and work context.
-- Keep animations subtle: opacity, transform, or border/background transitions are enough.
+- Keep animations subtle: opacity, transform, border/background transitions, and restrained loading/role animation are acceptable.
 
 ## Implementation Guidelines
 
 - Keep components small and portfolio-specific.
 - Prefer server components by default. Add `"use client"` only for interactivity that needs client state or browser APIs.
-- The mobile hamburger sidebar toggle is an acceptable reason to use a small client component.
-- Use `next/image` for profile photos and project images.
+- Existing client components are justified for mobile drawer state, active route detection, animated role text, and boot loading behavior.
+- Use `next/image` for profile photos and future project images.
 - Use `react-icons` for sidebar/social icons instead of hand-written SVG.
 - Keep shared icon imports and icon-name mappings in `src/data/icons.ts`.
 - Use semantic HTML: `aside`, `nav`, `main`, `section`, `header`, `article`, and proper headings.
-- Keep portfolio data easy to edit. If content grows, move repeated data into typed arrays or objects under `src/lib`, `src/data`, or a local module near the page.
+- Keep portfolio data easy to edit in `src/data/portfolio.ts` unless content grows enough to justify splitting it.
+- Keep `src/app/**/page.tsx` files thin. Route files should import page components from `@/components/pages`.
+- Centralize page exports in `src/components/pages/index.ts`.
 - Maintain accessibility:
-  - All images need meaningful `alt` text unless decorative.
+  - All meaningful images need useful `alt` text.
   - Navigation links should have clear labels.
   - Text contrast must remain strong.
   - Interactive elements need visible focus states.
 - Do not introduce a component library unless the project clearly needs it.
 
-## Suggested Future Structure
+## Current Folder Structure
 
-The project is small, so avoid over-structuring early. A reasonable next structure is:
+This is the currently implemented production structure:
 
 ```text
-src/
-  app/
-    globals.css
-    layout.tsx
-    page.tsx
-  components/
-    layout/
-      sidebar.tsx
-    sections/
-      hero-section.tsx
-      about-section.tsx
-      projects-section.tsx
-      services-section.tsx
-      experience-section.tsx
-      contact-section.tsx
-  data/
-    portfolio.ts
+portfolio-v2/
+|-- public/
+|   |-- documents/
+|   |   `-- resume.pdf
+|   `-- images/
+|       |-- profile/
+|       |   `-- profile-2x2.jpeg
+|       `-- projects/
+|-- src/
+|   |-- app/
+|   |   |-- globals.css
+|   |   |-- layout.tsx
+|   |   |-- loading.tsx
+|   |   |-- not-found.tsx
+|   |   `-- page.tsx
+|   |-- components/
+|   |   |-- layout/
+|   |   |   |-- main-shell.tsx
+|   |   |   |-- mobile-sidebar.tsx
+|   |   |   |-- sidebar.tsx
+|   |   |   `-- site-shell.tsx
+|   |   |-- pages/
+|   |   |   |-- home-page.tsx
+|   |   |   `-- index.ts
+|   |   |-- sections/
+|   |   |   `-- hero-section.tsx
+|   |   `-- ui/
+|   |       |-- animated-role.tsx
+|   |       |-- boot-loader.tsx
+|   |       `-- loading-screen.tsx
+|   `-- data/
+|       |-- icons.ts
+|       `-- portfolio.ts
+|-- .env.example
+|-- .gitignore
+|-- AGENTS.md
+|-- next.config.ts
+|-- package.json
+|-- postcss.config.mjs
+|-- tsconfig.json
+`-- README.md
 ```
 
-Only create these files when they are useful. For the first implementation pass, it is acceptable to keep the layout in `page.tsx` if the code remains readable.
+## Target Folder Additions
 
-## Content Placeholders
+Future work should add these missing routes and components as the portfolio grows:
 
-Until real user content is available, use placeholders like:
+```text
+src/app/projects/page.tsx
+src/app/services/page.tsx
+src/app/experience/page.tsx
+src/app/skills/page.tsx
+src/app/contact/page.tsx
 
-- Name: `Your Name`
-- Role: `Frontend Developer`
-- Location: `Location`
-- Email: `your.email@example.com`
-- Bio: short, direct copy that is easy to replace
-- Projects: 2-4 sample project cards with neutral descriptions
-- Services: 3-4 placeholder services with clear offer-focused descriptions
+src/components/pages/projects-page.tsx
+src/components/pages/services-page.tsx
+src/components/pages/experience-page.tsx
+src/components/pages/skills-page.tsx
+src/components/pages/contact-page.tsx
 
-Do not invent specific real credentials, employers, schools, awards, or metrics for the user.
+src/components/sections/project-card.tsx
+src/components/sections/service-card.tsx
+src/components/sections/experience-timeline.tsx
+src/components/sections/skills-grid.tsx
+src/components/sections/contact-form.tsx
+```
+
+Routing rule:
+
+- Keep `src/app/**/page.tsx` as route entry files only.
+- Put real page UI in `src/components/pages/*-page.tsx`.
+- Route files should import page components from `@/components/pages`, not directly from individual page files.
+- The central export file does not replace App Router route files.
+- Each real URL still needs its own thin `src/app/**/page.tsx` file.
+- Shared repeated page blocks may move into `src/components/sections`.
+- Shared layout stays in `src/components/layout`.
+- Shared editable content stays in `src/data`.
+- Public assets stay organized under `public/images`, `public/documents`, and similar folders.
+- Use the `scrollbar-hidden` utility when an area should remain scrollable but the scrollbar should not be visible.
 
 ## Development Commands
 
@@ -168,14 +231,15 @@ npm run build
 npm run lint
 ```
 
+On Windows PowerShell, `npm` may be blocked by script execution policy because it resolves to `npm.ps1`. If that happens, use:
+
+```bash
+npm.cmd run lint
+npm.cmd run build
+npm.cmd run dev
+```
+
 Run `npm run lint` after code changes when practical. Run `npm run build` for larger structural changes or before considering the implementation complete.
-
-## Current Codebase Notes
-
-- The current homepage is still the default Next.js starter and should be replaced.
-- The current metadata in `layout.tsx` is still `Create Next App`; update it when building the real portfolio.
-- Global CSS currently defines `--background` and `--foreground`, with a dark-mode media query. Keep or revise these tokens to support the black-and-white direction.
-- Default public SVGs are unused portfolio assets and can be removed later if they are no longer referenced.
 
 ## Agent Working Rules
 
@@ -187,72 +251,73 @@ Run `npm run lint` after code changes when practical. Run `npm run build` for la
 - Prefer Tailwind utility classes consistent with the existing setup.
 - Keep the UI responsive from the first implementation pass.
 - Avoid unrelated cleanup or refactors unless required for the requested change.
+- Be careful with the current dirty worktree; do not revert user changes.
 
 ## Project Progress Plan
 
-Use this checklist as the implementation tracker. Finish and validate each phase before moving to the next phase. Mark completed work with `[x]` only after the validation item for that phase passes.
+Use this checklist as the implementation tracker. Mark completed work with `[x]` only after the validation item for that phase passes.
 
 ### Phase 0: Planning and Context
 
-- [x] Analyze the current Next.js codebase.
+- [x] Analyze the initial Next.js codebase.
 - [x] Create the initial `AGENTS.md` project context.
 - [x] Define the portfolio direction as dark-first, black-and-white, Next.js-inspired, and multi-page.
-- [x] Decide to use placeholder content until real identity, project, and contact details are provided.
+- [x] Decide to use editable placeholder content where real content is unavailable.
 - [x] Decide to include Services as a core page for offers provided by the portfolio owner.
 - [x] Decide to use Web3Forms for the working contact form.
 - [x] Validation: `AGENTS.md` contains the project context, design direction, implementation rules, and this phase-based progress plan.
 
 ### Phase 1: Foundation and Global Shell
 
-- [x] Replace the current empty homepage shell with a real portfolio entry point.
-- [x] Update `src/app/layout.tsx` metadata from `Create Next App` to portfolio placeholder metadata.
-- [x] Update `src/app/globals.css` for the dark-first black, white, and zinc palette.
+- [x] Replace the default starter homepage entry with a real portfolio entry point.
+- [x] Update `src/app/layout.tsx` metadata from `Create Next App` to portfolio metadata.
+- [x] Update `src/app/globals.css` for the dark-first black, white, zinc, and restrained blue palette.
 - [x] Keep Geist and Geist Mono as the site fonts.
-- [x] Add accessible global focus, selection, background, and foreground styling.
+- [x] Add accessible global focus, selection, background, foreground, and reduced-motion styling.
 - [x] Ensure the body and root layout support full-height pages.
-- [x] Validation: `npm run lint` passes and the app renders a dark-first base layout without horizontal overflow.
+- [x] Add shared loading UI through `src/app/loading.tsx`, `LoadingScreen`, and `BootLoader`.
+- [x] Add a custom `src/app/not-found.tsx`.
+- [x] Validation: `npm.cmd run lint` passes as of 2026-06-22.
 
 ### Phase 2: Portfolio Data Model
 
-- [x] Add a typed portfolio data module for placeholder content.
-- [x] Include editable profile fields: name, role, location, email, resume link, and profile image placeholder metadata.
-- [x] Include navigation items for Home, About, Projects, Services, Experience, Skills, and Contact.
-- [x] Include placeholder social/contact links such as email, GitHub, LinkedIn, and a resume link.
+- [x] Add a typed portfolio data module for editable content.
+- [x] Include editable profile fields: name, role, location, email, resume link, and profile image metadata.
+- [x] Include navigation items for Home, Projects, Services, Experience, Skills, and Contact.
+- [x] Include social/contact links for email, GitHub, and LinkedIn.
 - [x] Social/contact links include icon metadata and render through `react-icons`.
 - [x] Include placeholder projects, services, experience entries, and skills grouped by category.
-- [x] Do not invent real employers, schools, awards, metrics, or credentials.
-- [x] Validation: page components can import the data without TypeScript errors or duplicated hardcoded content.
+- [x] Avoid invented real employers, schools, awards, metrics, or credentials.
+- [x] Validation: implemented components import centralized data without TypeScript or lint errors.
 
 ### Phase 3: Shared Sidebar Navigation Layout
 
-- [x] Build a shared site layout with a static desktop left sidebar and mobile hamburger-triggered sidebar.
-- [x] Desktop layout must allocate 20% width to the sidebar and 80% width to the main content.
-- [x] Sidebar must be full-height and split into two main divs: a top information div and a bottom routes div.
-- [x] Top information div must include profile image placeholder, name, role, location, resume link/button, and optional icon external links.
-- [x] Bottom routes div must include the navigation links and current route or active link styling where practical.
-- [x] The two sidebar divs should each have a thin zinc border, with no border on their parent wrapper.
-- [x] Sidebar should not use independent scroll behavior.
-- [x] Mobile navigation must use a hamburger button to open and close the sidebar drawer or overlay.
-- [x] Mobile sidebar must include the same details and navigation as desktop.
-- [x] Use semantic elements such as `aside`, `nav`, and `main`.
-- [x] Add visible active or current-page treatment for navigation links where practical.
-- [x] Validation: desktop and mobile layouts are readable, navigable, and do not overlap or clip content.
+- [x] Build a shared site shell with a desktop left sidebar and mobile hamburger-triggered sidebar.
+- [x] Desktop layout allocates 20% width to the sidebar and 80% width to the main content.
+- [x] Sidebar is full-height on desktop and split into two main bordered divs: profile information and routes.
+- [x] Top information div includes profile image, name, role, location, resume link, and icon external links.
+- [x] Bottom routes div includes navigation links and current route styling.
+- [x] The two sidebar divs each have a thin zinc-style border, with no border on their parent wrapper.
+- [x] Sidebar parent does not use independent scroll behavior.
+- [x] Mobile navigation uses a hamburger button to open and close the sidebar drawer.
+- [x] Mobile sidebar includes the same profile details and navigation as desktop.
+- [x] Use semantic elements such as `aside`, `nav`, `header`, and `main`.
+- [x] Validation: `npm.cmd run lint` passes.
 
 ### Phase 4: Core Pages
 
-- [ ] Implement `/` as the homepage with identity, short intro, and previews linking to major pages.
-- [ ] Implement `/about` with placeholder biography, working style, and personal context sections.
+- [x] Create `src/components/pages` and keep the home App Router page file as a thin wrapper.
+- [x] Implement `/` as the homepage with identity, short intro, animated role label, and links to work/contact.
 - [ ] Implement `/projects` as a projects index with placeholder project cards only; do not add dynamic detail routes yet.
-- [ ] Implement `/services` with placeholder service offerings, deliverables, and contact call-to-action.
-- [ ] Implement `/experience` with placeholder timeline or role entries.
+- [ ] Implement `/services` with service offerings, deliverables, and contact call-to-action.
+- [ ] Implement `/experience` with timeline or role entries.
 - [ ] Implement `/skills` with grouped technical skills and tools.
 - [ ] Implement `/contact` with contact copy, static contact links, and the working Web3Forms contact form.
 - [ ] Validation: each route loads independently, navigation links route correctly, and headings follow a logical hierarchy.
 
 ### Phase 5: Web3Forms Contact Form
 
-- [ ] Add `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` as the contact form access key variable.
-- [ ] Add `.env.example` documenting the Web3Forms access key.
+- [x] Add `.env.example` documenting `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`.
 - [ ] Build the form with fields for name, email, subject, and message.
 - [ ] Submit via standard HTML `method="POST"` to `https://api.web3forms.com/submit`.
 - [ ] Include the hidden `access_key` input using `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`.
@@ -263,21 +328,32 @@ Use this checklist as the implementation tracker. Finish and validate each phase
 
 ### Phase 6: Visual Polish and Accessibility
 
-- [ ] Apply a consistent dark-first visual system using black backgrounds, white text, zinc gray borders, and restrained spacing.
-- [ ] Use `font-mono` for metadata, small labels, dates, and technical tags.
-- [ ] Keep corners square or small-radius, using `rounded-md` or lower.
-- [ ] Avoid colorful gradients, decorative blobs, loud accents, and unnecessary animation.
-- [ ] Ensure all meaningful images have useful `alt` text.
-- [ ] Ensure links and form controls have visible focus states.
+- [x] Apply a dark-first visual system using black backgrounds, white text, zinc gray borders, and restrained blue accent states.
+- [x] Use `font-mono` for metadata, small labels, animated role text, and route labels.
+- [x] Keep corners square or absent in the current shell.
+- [x] Avoid colorful gradients, decorative blobs, loud accents, and heavy visual effects.
+- [x] Ensure the current profile image has useful `alt` text.
+- [x] Ensure current links and buttons inherit visible global focus states.
+- [ ] Manually verify common desktop and mobile viewport sizes.
 - [ ] Validation: pages meet the black-and-white direction, remain readable at common viewport sizes, and preserve strong contrast.
 
 ### Phase 7: Final Verification
 
-- [ ] Run `npm run lint`.
-- [ ] Run `npm run build`.
+- [x] Run `npm.cmd run lint` successfully after the current foundation/sidebar/home implementation.
+- [ ] Run `npm run build` or `npm.cmd run build`.
 - [ ] Manually verify desktop sidebar behavior.
 - [ ] Manually verify mobile hamburger sidebar behavior.
 - [ ] Manually verify there is no horizontal scrolling.
-- [ ] Manually verify the contact form configured and unconfigured states.
+- [ ] Manually verify all implemented routes render.
+- [ ] Manually verify contact form configured and unconfigured states after the contact form is implemented.
 - [ ] Remove or stop referencing unused starter assets if they are no longer needed.
 - [ ] Validation: lint and build pass, all routes render, and the implementation matches this plan.
+
+### Phase 8: Deployment
+
+- [ ] Connect the GitHub repository to Vercel.
+- [ ] Configure environment variables in Vercel dashboard, including `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`.
+- [ ] Deploy the portfolio to Vercel via GitHub integration.
+- [ ] Verify the production build renders correctly on the Vercel domain.
+- [ ] Test contact form submission on the live site.
+- [ ] Validation: the portfolio is live, accessible, and fully functional on Vercel.
