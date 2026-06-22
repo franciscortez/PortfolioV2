@@ -24,6 +24,8 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@custom-variant massive (@media (min-width: 1536px) and (min-height: 1000px));
+
 * {
   box-sizing: border-box;
 }
