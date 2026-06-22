@@ -121,7 +121,7 @@ function SidebarRoutes({ onNavigate }: { onNavigate?: () => void }) {
       <h2 className="font-mono text-xs uppercase tracking-[0.22em] text-muted massive:text-base">
         Routes
       </h2>
-      <div className="scrollbar-hidden mt-4 grid gap-2 overflow-y-auto pr-1 lg:min-h-0 lg:flex-1 massive:mt-6 massive:gap-3">
+      <div className="scrollbar-hidden mt-4 grid gap-2 overflow-y-auto pr-1 lg:min-h-0 lg:flex-1 massive:mt-6 massive:gap-2">
         {navigation.map((item) => {
           const isActive = pathname === item.href;
 
@@ -131,19 +131,13 @@ function SidebarRoutes({ onNavigate }: { onNavigate?: () => void }) {
               href={item.href}
               aria-current={isActive ? "page" : undefined}
               onClick={onNavigate}
-              className={`group relative overflow-hidden py-3 pl-5 pr-4 text-sm transition-colors duration-200 massive:py-5 massive:text-lg ${
+              className={`py-2 text-sm transition-colors duration-200 massive:py-2.5 massive:text-lg ${
                 isActive
-                  ? "bg-black font-medium text-accent"
-                  : "text-zinc-500 hover:bg-black hover:text-accent"
+                  ? "font-medium text-accent"
+                  : "text-zinc-500 hover:text-accent"
               }`}
             >
-              <span
-                aria-hidden="true"
-                className={`absolute left-0 top-0 h-full w-1 origin-top bg-accent transition-transform duration-300 ease-out ${
-                  isActive ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"
-                }`}
-              />
-              <span className="relative">{item.label}</span>
+              {item.label}
             </Link>
           );
         })}

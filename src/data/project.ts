@@ -73,7 +73,7 @@ export const projects: Project[] = [
   {
     slug: "nola-paymongo",
     title: "NOLA PayMongo",
-    subtitle: "Client Project",
+    subtitle: "Intern Project",
     summary:
       "A Laravel-based custom payment provider integrating GoHighLevel with PayMongo for checkout sessions, payment verification, refunds, webhooks, OAuth integration, and transaction tracking.",
     explanation:
