@@ -1,5 +1,4 @@
 import {
-  FaBolt,
   FaEnvelope,
   FaGithub,
   FaLinkedinIn,
@@ -7,6 +6,11 @@ import {
 } from "react-icons/fa";
 import type { IconType } from "react-icons";
 import { IoClose } from "react-icons/io5";
+import {
+  GeminiIcon,
+  GoHighLevelIcon,
+  NeonIcon,
+} from "@/components/ui/icon";
 import {
   SiCss,
   SiDocker,
@@ -16,7 +20,6 @@ import {
   SiGit,
   SiGithub,
   SiGooglecloud,
-  SiGooglegemini,
   SiHostinger,
   SiHtml5,
   SiJavascript,
@@ -26,7 +29,6 @@ import {
   SiN8N,
   SiNextdotjs,
   SiNodedotjs,
-  SiOpenapiinitiative,
   SiPhp,
   SiPostgresql,
   SiPython,
@@ -35,13 +37,15 @@ import {
   SiTailwindcss,
   SiTrello,
   SiTypescript,
+  SiOpenai,
 } from "react-icons/si";
-import { TbWebhook } from "react-icons/tb";
+import { TbApi, TbDatabase } from "react-icons/tb";
 
 export const skillIcons = {
   typescript: SiTypescript,
   javascript: SiJavascript,
   php: SiPhp,
+  database: TbDatabase,
   mysql: SiMysql,
   python: SiPython,
 
@@ -60,12 +64,13 @@ export const skillIcons = {
   postgresql: SiPostgresql,
   firebase: SiFirebase,
   supabase: SiSupabase,
+  neon: NeonIcon,
 
-  goHighLevel: FaBolt,
+  goHighLevel: GoHighLevelIcon,
   n8n: SiN8N,
-  openApi: SiOpenapiinitiative,
-  webhook: TbWebhook,
-  googleGemini: SiGooglegemini,
+  openApi: TbApi,
+  googleGemini: GeminiIcon,
+  codex: SiOpenai,
 
   git: SiGit,
   github: SiGithub,

@@ -15,14 +15,6 @@ export function ProjectList({
 }: ProjectListProps) {
   return (
     <nav aria-label="Project list" className="flex flex-col">
-      <div className="flex items-center justify-between border-b border-border px-5 py-3 lg:px-4 lg:py-3.5 xl:px-5 xl:py-4 massive:px-8 massive:py-6">
-        <h2 className="font-mono text-xs uppercase tracking-[0.22em] text-accent xl:text-sm massive:text-lg">
-          Projects
-        </h2>
-        <span className="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-zinc-600 lg:text-xs massive:text-sm">
-          {projects.length} total
-        </span>
-      </div>
       <div className="scrollbar-hidden max-h-72 overflow-y-auto lg:grid lg:grid-flow-col lg:auto-cols-fr lg:max-h-none lg:overflow-x-hidden lg:overflow-y-hidden">
         {projects.map((project, index) => {
           const isActive = project.slug === activeSlug;
@@ -42,7 +34,7 @@ export function ProjectList({
             >
               <span
                 aria-hidden="true"
-                className={`absolute bottom-0 left-0 h-[2px] w-full origin-left bg-accent transition-transform duration-200 ease-out ${
+                className={`absolute bottom-0 left-0 h-0.5 w-full origin-left bg-accent transition-transform duration-200 ease-out ${
                   isActive
                     ? "scale-x-100"
                     : "scale-x-0 group-hover:scale-x-100"
@@ -62,15 +54,15 @@ export function ProjectList({
                 </span>
               </div>
 
-              <p className="line-clamp-2 pl-[1.6rem] text-xs leading-relaxed text-zinc-500 lg:pl-[1.75rem] lg:text-xs xl:pl-[1.9rem] xl:text-sm massive:pl-[2.25rem] massive:text-base">
+              <p className="line-clamp-2 pl-[1.6rem] text-xs leading-relaxed text-zinc-500 lg:pl-7 lg:text-xs xl:pl-[1.9rem] xl:text-sm massive:pl-9 massive:text-base">
                 {project.summary}
               </p>
 
-              <div className="mt-0 flex flex-wrap gap-1.5 pl-[1.6rem] lg:pl-[1.75rem] xl:pl-[1.9rem] massive:pl-[2.25rem]">
+              <div className="mt-0 flex flex-wrap gap-1.5 pl-[1.6rem] lg:pl-7 xl:pl-[1.9rem] massive:pl-9">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-[0.58rem] uppercase tracking-[0.1em] text-zinc-600 lg:text-[0.62rem] xl:text-xs massive:text-sm"
+                    className="font-mono text-[0.58rem] uppercase tracking-widest text-zinc-600 lg:text-[0.62rem] xl:text-xs massive:text-sm"
                   >
                     {tag}
                   </span>

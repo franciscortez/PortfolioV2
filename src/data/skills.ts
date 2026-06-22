@@ -20,7 +20,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "TypeScript", icon: "typescript", color: "#3178C6" },
       { name: "JavaScript", icon: "javascript", color: "#F7DF1E" },
       { name: "PHP", icon: "php", color: "#777BB4" },
-      { name: "SQL", icon: "mysql", color: "#4479A1" },
+      { name: "SQL", icon: "database", color: "#38BDF8" },
       { name: "Python", icon: "python", color: "#3776AB" },
     ],
   },
@@ -28,11 +28,9 @@ export const skillCategories: SkillCategory[] = [
     title: "Frontend",
     summary: "Interfaces, responsive layouts, and component-based UI work.",
     skills: [
-      { name: "HTML", icon: "html", color: "#E34F26" },
-      { name: "CSS", icon: "css", color: "#663399" },
-      { name: "Tailwind CSS", icon: "tailwind", color: "#06B6D4" },
-      { name: "React", icon: "react", color: "#61DAFB" },
       { name: "Next.js", icon: "nextjs", color: "#000000" },
+      { name: "React", icon: "react", color: "#61DAFB" },
+      { name: "Tailwind CSS", icon: "tailwind", color: "#06B6D4" },
     ],
   },
   {
@@ -54,17 +52,18 @@ export const skillCategories: SkillCategory[] = [
       { name: "PostgreSQL", icon: "postgresql", color: "#4169E1" },
       { name: "Firebase", icon: "firebase", color: "#DD2C00" },
       { name: "Supabase", icon: "supabase", color: "#3FCF8E" },
+      { name: "Neon Database", icon: "neon", color: "#34D59A" },
     ],
   },
   {
     title: "Automation & Integrations",
-    summary: "Tool connections, webhooks, AI APIs, and workflow automation.",
+    summary: "Tool connections, AI APIs, coding agents, and workflow automation.",
     skills: [
       { name: "GoHighLevel", icon: "goHighLevel", color: "#0EA5E9" },
       { name: "n8n", icon: "n8n", color: "#EA4B71" },
       { name: "REST APIs", icon: "openApi", color: "#6BA539" },
-      { name: "Webhooks", icon: "webhook", color: "#38BDF8" },
       { name: "Gemini API", icon: "googleGemini", color: "#8E75B2" },
+      { name: "Codex", icon: "codex", color: "#ffffff" },
     ],
   },
   {
