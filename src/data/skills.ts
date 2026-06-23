@@ -52,7 +52,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "PostgreSQL", icon: "postgresql", color: "#4169E1" },
       { name: "Firebase", icon: "firebase", color: "#DD2C00" },
       { name: "Supabase", icon: "supabase", color: "#3FCF8E" },
-      { name: "Neon Database", icon: "neon", color: "#34D59A" },
+      { name: "Neon", icon: "neon", color: "#34D59A" },
     ],
   },
   {
