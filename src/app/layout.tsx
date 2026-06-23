@@ -24,28 +24,6 @@ export const metadata: Metadata = {
   },
 };
 
-const themeInitScript = `
-(() => {
-  try {
-    const storageKey = "portfolio-theme";
-    const storedTheme = window.localStorage.getItem(storageKey);
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const theme = storedTheme === "light" || storedTheme === "dark"
-      ? storedTheme
-      : prefersDark
-        ? "dark"
-        : "light";
-    const root = document.documentElement;
-    root.classList.toggle("dark", theme === "dark");
-    root.dataset.theme = theme;
-    root.style.colorScheme = theme;
-  } catch {
-    document.documentElement.classList.add("dark");
-    document.documentElement.dataset.theme = "dark";
-    document.documentElement.style.colorScheme = "dark";
-  }
-})();
-`;
 
 export default function RootLayout({
   children,
@@ -58,11 +36,8 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-      </head>
       <body className="flex min-h-full flex-col bg-background text-foreground">
-        <ThemeProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SiteShell>{children}</SiteShell>
         </ThemeProvider>
       </body>

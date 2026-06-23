@@ -1,16 +1,41 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { siteIcons } from "@/data/icons";
-import { useTheme } from "@/components/ui/theme-provider";
+import { useTheme } from "next-themes";
 
 type ThemeToggleProps = {
   className?: string;
 };
 
 export function ThemeToggle({ className = "" }: ThemeToggleProps) {
-  const { theme, toggleTheme } = useTheme();
-  const isDark = theme === "dark";
+  const [mounted, setMounted] = useState(false);
+  const { theme, resolvedTheme, setTheme } = useTheme();
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
+
+  const currentTheme = theme === "system" ? resolvedTheme : theme;
+  const isDark = currentTheme === "dark";
   const Icon = isDark ? siteIcons.sun : siteIcons.moon;
+
+  // Avoid hydration mismatch by rendering an empty placeholder or just the button without the icon briefly
+  if (!mounted) {
+    return (
+      <button
+        type="button"
+        className={`grid size-10 place-items-center border border-border bg-panel text-muted transition-colors hover:border-accent hover:bg-accent-dark hover:text-accent ${className}`}
+      >
+        <span className="size-4" />
+      </button>
+    );
+  }
+
+  const toggleTheme = () => {
+    setTheme(isDark ? "light" : "dark");
+  };
 
   return (
     <button
