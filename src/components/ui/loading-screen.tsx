@@ -13,14 +13,14 @@ export function LoadingScreen({ variant = "inline" }: LoadingScreenProps) {
       aria-live="polite"
       className={
         isOverlay
-          ? "fixed inset-0 z-100 grid place-items-center bg-black px-6 text-white"
-          : "grid min-h-screen place-items-center bg-black px-6 text-white"
+          ? "fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black px-6 text-white"
+          : "flex flex-col items-center justify-center min-h-[70vh] w-full bg-black px-6 text-white"
       }
     >
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md flex flex-col items-center">
         <p
           aria-label="Loading"
-          className="font-mono text-xs uppercase tracking-[0.34em] text-zinc-500"
+          className="text-center font-mono text-xs uppercase tracking-[0.34em] text-zinc-500"
         >
           <span aria-hidden="true" className="inline-flex">
             {loadingText.split("").map((letter, index) => (
