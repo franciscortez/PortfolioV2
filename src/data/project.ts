@@ -152,11 +152,11 @@ export const projects: Project[] = [
     title: "Personal Portfolio",
     subtitle: "Personal Project",
     summary:
-      "A dark-first portfolio website with responsive sidebar navigation.",
+      "A black-and-white portfolio website with responsive sidebar navigation and persisted light/dark themes.",
     explanation:
-      "This portfolio website is built with Next.js 16 and the App Router, using React 19 server and client components. The design follows a dark-first, black-and-white aesthetic inspired by the visual restraint of the Next.js website. It features a persistent desktop sidebar with profile information and route navigation, a mobile hamburger drawer, animated role text with a typewriter effect, a boot loading screen, and modular page components. Styling is handled through Tailwind CSS v4 with custom CSS variables for the color system. The site is fully responsive and statically generated for optimal performance.",
+      "This portfolio website is built with Next.js 16 and the App Router, using React 19 server and client components. The design follows a black-and-white aesthetic inspired by the visual restraint of the Next.js website. It features a persistent desktop sidebar with profile information and route navigation, a mobile hamburger drawer, light and dark theme support, animated role text with a typewriter effect, a boot loading screen, and modular page components. Styling is handled through Tailwind CSS v4 with custom CSS variables for the color system. The site is fully responsive and statically generated for optimal performance.",
     features: [
-      "Dark-first Black & White Design System",
+      "Black & White Theme System",
       "Persistent Desktop Sidebar Navigation",
       "Mobile Hamburger Drawer",
       "Animated Typewriter Role Text",
@@ -184,7 +184,7 @@ export const projects: Project[] = [
     images: [
       {
         src: "/images/projects/portfolio.png",
-        alt: "Portfolio website homepage featuring dark theme with animated role text and sidebar navigation",
+        alt: "Portfolio website homepage featuring animated role text and sidebar navigation",
         description:
           "Homepage view showing the hero section with animated typing role component, call-to-action buttons, and the persistent left sidebar with profile information and route navigation.",
       },

@@ -16,10 +16,10 @@ export function MobileSidebar() {
           <button
             type="button"
             aria-label="Close navigation menu"
-            className="absolute inset-0 bg-black/70"
+            className="absolute inset-0 bg-zinc-950/70"
             onClick={() => setIsOpen(false)}
           />
-          <div className="scrollbar-hidden relative h-full w-[min(24rem,92vw)] overflow-y-auto border-r border-border bg-black">
+          <div className="scrollbar-hidden relative h-full w-[min(24rem,92vw)] overflow-y-auto border-r border-border bg-background">
             <Sidebar
               className="grid min-h-full"
               onNavigate={() => setIsOpen(false)}
@@ -44,7 +44,9 @@ function MobileHeader({
   return (
     <header className="sticky top-0 z-40 flex items-center justify-between border-b border-border bg-background/95 px-5 py-4 backdrop-blur lg:hidden">
       <div className="min-w-0 pr-4">
-        <p className="truncate text-sm font-medium text-white">{profile.name}</p>
+        <p className="truncate text-sm font-medium text-foreground">
+          {profile.name}
+        </p>
         <p className="mt-1 truncate font-mono text-xs uppercase tracking-[0.18em] text-muted">
           {profile.role}
         </p>
@@ -53,7 +55,7 @@ function MobileHeader({
         type="button"
         aria-label="Open navigation menu"
         aria-expanded={isOpen}
-        className="grid size-11 place-items-center border border-border bg-panel text-white transition-colors hover:border-accent hover:bg-accent-dark hover:text-accent"
+        className="grid size-11 shrink-0 place-items-center border border-border bg-panel text-foreground transition-colors hover:border-accent hover:bg-accent-dark hover:text-accent"
         onClick={onOpen}
       >
         <span className="flex w-5 flex-col gap-1.5" aria-hidden="true">

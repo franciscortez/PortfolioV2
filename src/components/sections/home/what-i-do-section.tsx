@@ -25,7 +25,7 @@ const services = [
 
 export function WhatIDoSection() {
   return (
-    <section className="border border-border bg-black">
+    <section className="border border-border bg-background">
       <div className="border-b border-border p-6 sm:p-8">
         <p className="font-mono text-xs uppercase tracking-[0.24em] text-accent">
           What I do
@@ -42,20 +42,20 @@ export function WhatIDoSection() {
           >
             <div className="flex items-start justify-between gap-6">
               <div>
-                <p className="font-mono text-xs uppercase tracking-[0.24em] text-zinc-500 transition-colors group-hover:text-accent">
+                <p className="font-mono text-xs uppercase tracking-[0.24em] text-muted transition-colors group-hover:text-accent">
                   {service.label}
                 </p>
-                <h3 className="mt-5 text-2xl font-semibold tracking-tight text-white">
+                <h3 className="mt-5 text-2xl font-semibold tracking-tight text-foreground">
                   {service.title}
                 </h3>
               </div>
               <span
                 aria-hidden="true"
-                className="mt-1 h-px w-14 bg-zinc-700 transition-colors group-hover:bg-accent"
+                className="mt-1 h-px w-14 bg-border transition-colors group-hover:bg-accent"
               />
             </div>
 
-            <p className="mt-5 max-w-xl text-sm leading-7 text-zinc-400">
+            <p className="mt-5 max-w-xl text-sm leading-7 text-muted">
               {service.description}
             </p>
 
@@ -63,7 +63,7 @@ export function WhatIDoSection() {
               {service.details.map((detail) => (
                 <li
                   key={detail}
-                  className="flex items-center gap-3 border-t border-border pt-3 font-mono text-xs uppercase tracking-[0.16em] text-zinc-500"
+                  className="flex items-center gap-3 border-t border-border pt-3 font-mono text-xs uppercase tracking-[0.16em] text-muted"
                 >
                   <span className="size-1.5 bg-accent" aria-hidden="true" />
                   {detail}

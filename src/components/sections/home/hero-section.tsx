@@ -10,12 +10,12 @@ export function HeroSection() {
             <AnimatedRole />
           </p>
 
-          <h1 className="mt-5 text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="mt-5 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             I build websites that do more than look good - they work, automate,
             and help businesses grow.
           </h1>
 
-          <p className="mt-8 max-w-3xl text-lg leading-9 text-zinc-300">
+          <p className="mt-8 max-w-3xl text-lg leading-9 text-muted">
             I&apos;m a Full Stack Developer who builds websites, web apps, and
             automation systems that help businesses save time, manage work
             better, and grow online.
@@ -32,7 +32,7 @@ export function HeroSection() {
 
           <Link
             href="/contact"
-            className="border border-border px-4 py-3 text-sm font-medium text-zinc-300 transition-colors hover:border-accent hover:text-accent"
+            className="border border-border px-4 py-3 text-sm font-medium text-muted transition-colors hover:border-accent hover:text-accent"
           >
             Contact me
           </Link>

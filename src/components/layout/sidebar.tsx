@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { siteIcons } from "@/data/icons";
 import { portfolioData, type ExternalLink } from "@/data/portfolio";
 
@@ -20,7 +21,7 @@ export function Sidebar({
   return (
     <aside
       aria-label="Portfolio sidebar"
-      className={`${className} grid-rows-[auto_auto] content-start gap-3 bg-black p-3 sm:p-4 lg:sticky lg:top-0 lg:h-dvh lg:min-h-dvh lg:grid-rows-[minmax(0,1fr)_minmax(0,1fr)] lg:content-normal lg:gap-4 lg:overflow-hidden`}
+      className={`${className} grid-rows-[auto_auto] content-start gap-3 bg-background p-3 transition-colors sm:p-4 lg:sticky lg:top-0 lg:h-dvh lg:min-h-dvh lg:grid-rows-[minmax(0,1fr)_minmax(0,1fr)] lg:content-normal lg:gap-4 lg:overflow-hidden`}
     >
       <SidebarProfile onNavigate={onNavigate} showClose={showClose} />
       <SidebarRoutes onNavigate={onNavigate} />
@@ -41,11 +42,15 @@ function SidebarProfile({
 
   return (
     <div className="relative flex min-w-0 flex-col justify-center border border-border bg-panel px-5 py-6 sm:px-5 sm:py-5 lg:min-h-0 lg:overflow-hidden lg:px-3 lg:py-3 xl:px-4 xl:py-4 2xl:px-5 2xl:py-5 massive:px-6 massive:py-6">
+      <ThemeToggle
+        className={`absolute top-4 ${showClose ? "left-4" : "right-4"}`}
+      />
+
       {showClose ? (
         <button
           type="button"
           aria-label="Close navigation menu"
-          className="absolute right-4 top-4 grid size-10 place-items-center border border-border text-zinc-300 transition-colors hover:border-accent hover:bg-accent-dark hover:text-accent"
+          className="absolute right-4 top-4 grid size-10 place-items-center border border-border bg-panel text-muted transition-colors hover:border-accent hover:bg-accent-dark hover:text-accent"
           onClick={onNavigate}
         >
           <CloseIcon aria-hidden="true" className="size-5" />
@@ -53,7 +58,7 @@ function SidebarProfile({
       ) : null}
 
       <div className="mt-3 flex flex-col items-center sm:mt-0">
-        <div className="relative size-28 overflow-hidden border border-zinc-700 bg-black sm:size-24 lg:size-20 xl:size-24 2xl:size-28 massive:size-32">
+        <div className="relative size-28 overflow-hidden border border-border bg-background sm:size-24 lg:size-20 xl:size-24 2xl:size-28 massive:size-32">
           <Image
             src={profile.image.src}
             alt={profile.image.alt}
@@ -67,13 +72,13 @@ function SidebarProfile({
       </div>
 
       <div className="mt-5 min-w-0 text-center sm:mt-4 lg:mt-3 xl:mt-4 massive:mt-5">
-        <h1 className="wrap-break-word text-2xl font-semibold leading-tight tracking-tight text-white sm:text-xl lg:text-base lg:leading-tight xl:text-lg 2xl:text-xl massive:text-2xl">
+        <h1 className="wrap-break-word text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-xl lg:text-base lg:leading-tight xl:text-lg 2xl:text-xl massive:text-2xl">
           {profile.name}
         </h1>
-        <p className="mt-2 text-sm leading-6 text-zinc-400 sm:mt-2 sm:text-sm sm:leading-6 lg:mt-1 lg:text-xs lg:leading-5 xl:text-xs 2xl:text-sm massive:mt-2 massive:text-base">
+        <p className="mt-2 text-sm leading-6 text-muted sm:mt-2 sm:text-sm sm:leading-6 lg:mt-1 lg:text-xs lg:leading-5 xl:text-xs 2xl:text-sm massive:mt-2 massive:text-base">
           {profile.role}
         </p>
-        <p className="mt-3 flex min-w-0 flex-wrap items-center justify-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-zinc-500 sm:mt-2 sm:text-[0.68rem] lg:mt-1.5 lg:text-[0.56rem] lg:tracking-widest xl:text-[0.62rem] 2xl:text-[0.68rem] massive:mt-3 massive:text-xs massive:tracking-[0.16em]">
+        <p className="mt-3 flex min-w-0 flex-wrap items-center justify-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-muted sm:mt-2 sm:text-[0.68rem] lg:mt-1.5 lg:text-[0.56rem] lg:tracking-widest xl:text-[0.62rem] 2xl:text-[0.68rem] massive:mt-3 massive:text-xs massive:tracking-[0.16em]">
           <LocationIcon className="size-3 shrink-0 sm:size-3 lg:size-2 xl:size-2.5 2xl:size-3 massive:size-3.5" />
           <span className="min-w-0 wrap-break-word">{profile.location}</span>
         </p>
@@ -99,7 +104,7 @@ function SidebarProfile({
             rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
             aria-label={link.label}
             title={link.label}
-            className="grid size-10 place-items-center border border-border bg-black text-zinc-400 transition-colors hover:border-accent hover:bg-accent-dark hover:text-accent sm:size-10 lg:size-8 xl:size-9 2xl:size-10 massive:size-11"
+            className="grid size-10 place-items-center border border-border bg-background text-muted transition-colors hover:border-accent hover:bg-accent-dark hover:text-accent sm:size-10 lg:size-8 xl:size-9 2xl:size-10 massive:size-11"
           >
             <SocialIcon link={link} className="size-4 lg:size-3.5 xl:size-4 2xl:size-4 massive:size-5" />
           </Link>
@@ -136,7 +141,7 @@ function SidebarRoutes({ onNavigate }: { onNavigate?: () => void }) {
               className={`group relative flex min-h-12 items-center border px-3 py-2.5 font-mono text-[0.68rem] uppercase tracking-[0.14em] transition-colors duration-200 sm:text-xs lg:min-h-11 lg:px-3 lg:py-2 lg:text-[0.68rem] lg:tracking-[0.14em] xl:px-4 xl:text-xs massive:min-h-16 massive:px-5 massive:py-3 massive:text-sm ${
                 isActive
                   ? "border-accent bg-accent-dark text-accent"
-                  : "border-border bg-black text-zinc-500 hover:border-accent hover:bg-zinc-950 hover:text-accent"
+                  : "border-border bg-background text-muted hover:border-accent hover:bg-panel hover:text-accent"
               }`}
             >
               <span

@@ -25,7 +25,7 @@ export type Profile = {
 export type ExternalLink = {
   label: string;
   href: string;
-  icon: Exclude<SiteIconName, "close">;
+  icon: Exclude<SiteIconName, "close" | "moon" | "sun">;
 };
 
 

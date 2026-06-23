@@ -13,7 +13,7 @@ export function ProjectHeader({ totalProjects }: ProjectHeaderProps) {
         <ProjectsIcon aria-hidden="true" className="size-3.5" />
         Projects
       </h2>
-      <span className="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-zinc-600 lg:text-xs massive:text-sm">
+      <span className="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-muted lg:text-xs massive:text-sm">
         {totalProjects} total
       </span>
     </header>

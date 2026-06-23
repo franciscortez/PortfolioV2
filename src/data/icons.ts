@@ -9,6 +9,8 @@ import {
   FaLayerGroup,
   FaLinkedinIn,
   FaMapMarkerAlt,
+  FaMoon,
+  FaSun,
   FaUniversity,
 } from "react-icons/fa";
 import type { IconType } from "react-icons";
@@ -101,7 +103,9 @@ export const siteIcons = {
   layers: FaLayerGroup,
   linkedin: FaLinkedinIn,
   location: FaMapMarkerAlt,
+  moon: FaMoon,
   school: FaUniversity,
+  sun: FaSun,
 } satisfies Record<string, IconType>;
 
 export type SiteIconName = keyof typeof siteIcons;

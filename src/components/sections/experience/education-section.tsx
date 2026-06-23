@@ -5,7 +5,7 @@ export function EducationSection() {
   const EducationIcon = siteIcons.education;
 
   return (
-    <section className="border border-border bg-black">
+    <section className="border border-border bg-background">
       <div className="border-b border-border p-6 sm:p-8">
         <h2 className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-accent">
           <EducationIcon aria-hidden="true" className="size-4" />
@@ -21,7 +21,7 @@ export function EducationSection() {
           >
             <div className="grid gap-3 border-b border-border pb-5">
               <div className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start">
-                <h3 className="text-2xl font-semibold tracking-tight text-white">
+                <h3 className="text-2xl font-semibold tracking-tight text-foreground">
                   {item.degree}
                 </h3>
                 <p className="font-mono text-xs uppercase tracking-[0.16em] text-accent sm:text-right">
@@ -30,11 +30,11 @@ export function EducationSection() {
               </div>
 
               <div className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start">
-                <p className="text-sm font-medium text-zinc-300">
+                <p className="text-sm font-medium text-foreground">
                   {item.institution}
                 </p>
                 {item.note ? (
-                  <p className="text-sm leading-6 text-zinc-500 sm:text-right">
+                  <p className="text-sm leading-6 text-muted sm:text-right">
                     {item.note}
                   </p>
                 ) : null}

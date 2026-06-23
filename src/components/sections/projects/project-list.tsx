@@ -28,8 +28,8 @@ export function ProjectList({
               aria-current={isActive ? "true" : undefined}
               className={`group relative flex w-full flex-col gap-1 border-b border-border px-5 py-3 text-left transition-colors duration-150 lg:w-full lg:border-b-0 lg:border-r lg:last:border-r-0 lg:px-4 lg:py-4 xl:px-5 xl:py-5 massive:px-8 massive:py-8 ${
                 isActive
-                  ? "bg-panel text-white"
-                  : "text-zinc-400 hover:bg-zinc-950 hover:text-zinc-200"
+                  ? "bg-panel text-foreground"
+                  : "text-muted hover:bg-panel hover:text-foreground"
               }`}
             >
               <span
@@ -42,19 +42,19 @@ export function ProjectList({
               />
 
               <div className="flex items-center gap-2.5">
-                <span className="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-zinc-600 lg:text-[0.68rem] xl:text-xs massive:text-sm">
+                <span className="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-muted lg:text-[0.68rem] xl:text-xs massive:text-sm">
                   {formattedIndex}
                 </span>
                 <span
                   className={`text-sm font-medium transition-colors lg:text-sm xl:text-base massive:text-xl ${
-                    isActive ? "text-white" : ""
+                    isActive ? "text-foreground" : ""
                   }`}
                 >
                   {project.title}
                 </span>
               </div>
 
-              <p className="line-clamp-2 pl-[1.6rem] text-xs leading-relaxed text-zinc-500 lg:pl-7 lg:text-xs xl:pl-[1.9rem] xl:text-sm massive:pl-9 massive:text-base">
+              <p className="line-clamp-2 pl-[1.6rem] text-xs leading-relaxed text-muted lg:pl-7 lg:text-xs xl:pl-[1.9rem] xl:text-sm massive:pl-9 massive:text-base">
                 {project.summary}
               </p>
 
@@ -62,7 +62,7 @@ export function ProjectList({
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-[0.58rem] uppercase tracking-widest text-zinc-600 lg:text-[0.62rem] xl:text-xs massive:text-sm"
+                    className="font-mono text-[0.58rem] uppercase tracking-widest text-muted lg:text-[0.62rem] xl:text-xs massive:text-sm"
                   >
                     {tag}
                   </span>

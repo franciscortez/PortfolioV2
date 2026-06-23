@@ -5,7 +5,7 @@ export function ExperienceTimeline() {
   const BriefcaseIcon = siteIcons.briefcase;
 
   return (
-    <section className="border border-border bg-black">
+    <section className="border border-border bg-background">
       <div className="border-b border-border p-6 sm:p-8">
         <h1 className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-accent">
           <BriefcaseIcon aria-hidden="true" className="size-3.5" />
@@ -19,7 +19,7 @@ export function ExperienceTimeline() {
             <article className="border border-border bg-panel p-6 sm:p-8">
               <div className="grid gap-3 border-b border-border pb-5">
                 <div className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start">
-                  <h2 className="text-2xl font-semibold tracking-tight text-white">
+                  <h2 className="text-2xl font-semibold tracking-tight text-foreground">
                     {item.role}
                   </h2>
                   <p className="font-mono text-xs uppercase tracking-[0.16em] text-accent sm:text-right">
@@ -28,10 +28,10 @@ export function ExperienceTimeline() {
                 </div>
 
                 <div className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start">
-                  <p className="text-sm font-medium text-zinc-300">
+                  <p className="text-sm font-medium text-foreground">
                     {item.organization}
                   </p>
-                  <p className="text-sm leading-6 text-zinc-500 sm:text-right">
+                  <p className="text-sm leading-6 text-muted sm:text-right">
                     {item.location}
                   </p>
                 </div>
@@ -42,7 +42,7 @@ export function ExperienceTimeline() {
                 {item.responsibilities.map((responsibility) => (
                   <li
                     key={responsibility}
-                    className="grid grid-cols-[auto_minmax(0,1fr)] gap-3 text-sm leading-7 text-zinc-300"
+                    className="grid grid-cols-[auto_minmax(0,1fr)] gap-3 text-sm leading-7 text-muted"
                   >
                     <span
                       className="mt-3 size-1.5 bg-accent"

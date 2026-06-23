@@ -49,10 +49,10 @@ export function ContactOverview() {
         </p>
 
         <div className="mt-3 max-w-4xl">
-          <h1 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Let&apos;s talk about the next build.
           </h1>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-zinc-400">
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
             Send a message about a website, web app, integration, or automation
             workflow. I&apos;ll review the context and reply through email.
           </p>
@@ -80,24 +80,24 @@ function ContactCard({ href, icon: Icon, label, value }: ContactCardProps) {
     <>
       <div className="flex items-start justify-between gap-6">
         <div>
-          <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-zinc-500 transition-colors group-hover:text-accent">
+          <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted transition-colors group-hover:text-accent">
             {label}
           </p>
-          <p className="mt-2 wrap-break-word text-sm leading-6 text-zinc-300 transition-colors group-hover:text-white">
+          <p className="mt-2 wrap-break-word text-sm leading-6 text-muted transition-colors group-hover:text-foreground">
             {value}
           </p>
         </div>
 
         <Icon
           aria-hidden="true"
-          className="mt-1 size-4 shrink-0 text-zinc-600 transition-colors group-hover:text-accent"
+          className="mt-1 size-4 shrink-0 text-muted transition-colors group-hover:text-accent"
         />
       </div>
     </>
   );
 
   const className =
-    "group block min-h-24 border-b border-border p-3 transition-colors hover:bg-black sm:border-r sm:p-4";
+    "group block min-h-24 border-b border-border p-3 transition-colors hover:bg-background sm:border-r sm:p-4";
 
   if (!href) {
     return <article className={className}>{content}</article>;

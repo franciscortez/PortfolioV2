@@ -12,7 +12,7 @@ type SkillsFilterProps = {
 
 function getReadableIconColor(color: string) {
   return ["#000000", "#181717"].includes(color.toLowerCase())
-    ? "#ffffff"
+    ? "var(--foreground)"
     : color;
 }
 
@@ -37,7 +37,7 @@ export function SkillsFilter({ categories }: SkillsFilterProps) {
     );
 
   return (
-    <section className="border border-border bg-black">
+    <section className="border border-border bg-background">
       <div className="border-b border-border p-6 sm:p-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
@@ -62,8 +62,8 @@ export function SkillsFilter({ categories }: SkillsFilterProps) {
                 aria-pressed={isActive}
                 className={`border px-3 py-2 font-mono text-xs uppercase tracking-[0.16em] transition-colors ${
                   isActive
-                    ? "border-accent bg-accent text-black"
-                    : "border-border text-zinc-400 hover:border-accent hover:text-accent"
+                    ? "border-accent bg-accent text-accent-contrast"
+                    : "border-border text-muted hover:border-accent hover:text-accent"
                 }`}
               >
                 {filter}
@@ -88,7 +88,7 @@ export function SkillsFilter({ categories }: SkillsFilterProps) {
                 style={{ color: getReadableIconColor(skill.color) }}
               />
 
-              <h3 className="mt-5 text-sm font-medium text-white">
+              <h3 className="mt-5 text-sm font-medium text-foreground">
                 {skill.name}
               </h3>
             </article>

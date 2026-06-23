@@ -73,15 +73,15 @@ function Toast({ id, message, type }: ToastMessage) {
     type === "success"
       ? "bg-accent-dark border-accent"
       : type === "error"
-        ? "bg-zinc-950 border-zinc-700"
+        ? "bg-background border-border"
         : "bg-panel border-border";
 
   const textColor =
     type === "success"
       ? "text-accent"
       : type === "error"
-        ? "text-zinc-400"
-        : "text-white";
+        ? "text-muted"
+        : "text-foreground";
 
   return (
     <div
@@ -95,7 +95,7 @@ function Toast({ id, message, type }: ToastMessage) {
         type="button"
         onClick={handleDismiss}
         aria-label="Dismiss notification"
-        className="shrink-0 text-zinc-500 transition-colors hover:text-white"
+        className="shrink-0 text-muted transition-colors hover:text-foreground"
       >
         <CloseIcon className="size-4" />
       </button>

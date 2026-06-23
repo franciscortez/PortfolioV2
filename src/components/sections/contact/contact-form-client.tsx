@@ -12,10 +12,10 @@ type ContactFormClientProps = {
 type FormStatus = "idle" | "submitting";
 
 const inputClassName =
-  "w-full border border-border bg-black px-4 py-3 text-sm text-white transition-colors placeholder:text-zinc-600 hover:border-zinc-700 focus:border-accent focus:outline-none disabled:cursor-not-allowed disabled:opacity-50";
+  "w-full border border-border bg-background px-4 py-3 text-sm text-foreground transition-colors placeholder:text-muted/70 hover:border-muted focus:border-accent focus:outline-none disabled:cursor-not-allowed disabled:opacity-50";
 
 const labelClassName =
-  "font-mono text-[0.65rem] uppercase tracking-[0.18em] text-zinc-500";
+  "font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted";
 
 export function ContactFormClient({
   isConfigured,
@@ -69,7 +69,7 @@ export function ContactFormClient({
   }
 
   return (
-    <section className="border border-border bg-black">
+    <section className="border border-border bg-background">
       <div className="border-b border-border p-6 sm:p-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-accent">
@@ -79,7 +79,7 @@ export function ContactFormClient({
         </div>
 
         {!isConfigured ? (
-          <p className="mt-5 border border-border bg-panel p-4 text-sm leading-7 text-zinc-400">
+          <p className="mt-5 border border-border bg-panel p-4 text-sm leading-7 text-muted">
             Contact form is waiting for
             <code className="mx-1 font-mono text-xs text-accent">
               NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
@@ -153,7 +153,7 @@ export function ContactFormClient({
           <button
             type="submit"
             disabled={!isConfigured || status === "submitting"}
-            className="button-accent inline-flex items-center justify-center border px-5 py-3 text-sm font-medium disabled:cursor-not-allowed disabled:border-border disabled:bg-panel disabled:text-zinc-600"
+            className="button-accent inline-flex items-center justify-center border px-5 py-3 text-sm font-medium disabled:cursor-not-allowed disabled:border-border disabled:bg-panel disabled:text-muted"
           >
             {status === "submitting" ? "Sending..." : "Send message"}
           </button>

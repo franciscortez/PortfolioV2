@@ -1,6 +1,18 @@
 @import "tailwindcss";
 
 :root {
+  --background: #f4f4f5;
+  --foreground: #09090b;
+  --panel: #ffffff;
+  --muted: #52525b;
+  --border: #d4d4d8;
+  --accent: #0369a1;
+  --accent-soft: #0284c7;
+  --accent-dark: #e0f2fe;
+  --accent-contrast: #ffffff;
+}
+
+:root.dark {
   --background: #050505;
   --foreground: #fafafa;
   --panel: #18181b;
@@ -9,6 +21,7 @@
   --accent: #38bdf8;
   --accent-soft: #7dd3fc;
   --accent-dark: #082f49;
+  --accent-contrast: #000000;
 }
 
 @theme inline {
@@ -20,10 +33,12 @@
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-accent-dark: var(--accent-dark);
+  --color-accent-contrast: var(--accent-contrast);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
 @custom-variant massive (@media (min-width: 1536px) and (min-height: 1000px));
 
 * {
@@ -33,6 +48,11 @@
 html {
   min-height: 100%;
   background: var(--background);
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
@@ -53,7 +73,7 @@ body {
   .button-accent {
     border-color: var(--accent);
     background-color: var(--accent);
-    color: #000000;
+    color: var(--accent-contrast);
     transition-property: color, background-color, border-color;
     transition-duration: 150ms;
   }
@@ -144,13 +164,13 @@ body {
 @keyframes loading-letter {
   0%,
   100% {
-    color: #71717a;
+    color: var(--muted);
     opacity: 0.45;
     transform: translateY(0);
   }
 
   50% {
-    color: #ffffff;
+    color: var(--foreground);
     opacity: 1;
     transform: translateY(-0.18rem);
   }

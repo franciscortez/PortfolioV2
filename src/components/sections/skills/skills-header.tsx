@@ -17,29 +17,29 @@ export function SkillsHeader() {
 
       <dl className="flex flex-col sm:flex-row">
         <div className="border-b border-border p-6 sm:flex-1 sm:border-b-0 sm:border-r sm:p-8">
-          <dt className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+          <dt className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-muted">
             <LayersIcon aria-hidden="true" className="size-3.5" />
             Categories
           </dt>
-          <dd className="mt-2 text-3xl font-semibold text-white">
+          <dd className="mt-2 text-3xl font-semibold text-foreground">
             {skillCategories.length}
           </dd>
         </div>
         <div className="border-b border-border p-6 sm:flex-1 sm:border-b-0 sm:border-r sm:p-8">
-          <dt className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+          <dt className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-muted">
             <CodeIcon aria-hidden="true" className="size-3.5" />
             Skills
           </dt>
-          <dd className="mt-2 text-3xl font-semibold text-white">
+          <dd className="mt-2 text-3xl font-semibold text-foreground">
             {featuredSkills.length}
           </dd>
         </div>
         <div className="p-6 sm:flex-1 sm:p-8">
-          <dt className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+          <dt className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-muted">
             <FocusIcon aria-hidden="true" className="size-3.5" />
             Focus
           </dt>
-          <dd className="mt-2 text-sm leading-7 text-zinc-300">
+          <dd className="mt-2 text-sm leading-7 text-muted">
             Full-stack development, integrations, and automation workflows.
           </dd>
         </div>

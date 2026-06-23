@@ -38,7 +38,7 @@ export const skillCategories: SkillCategory[] = [
     summary: "API, server-side, and backend application foundations.",
     skills: [
       { name: "Laravel", icon: "laravel", color: "#FF2D20" },
-      { name: "Express", icon: "express", color: "#ffffff" },
+      { name: "Express", icon: "express", color: "var(--foreground)" },
       { name: "Node.js", icon: "nodejs", color: "#5FA04E" },
       { name: "Flask", icon: "flask", color: "#000000" },
     ],
@@ -63,7 +63,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "n8n", icon: "n8n", color: "#EA4B71" },
       { name: "REST APIs", icon: "openApi", color: "#6BA539" },
       { name: "Gemini API", icon: "googleGemini", color: "#8E75B2" },
-      { name: "Codex", icon: "codex", color: "#ffffff" },
+      { name: "Codex", icon: "codex", color: "var(--foreground)" },
     ],
   },
   {

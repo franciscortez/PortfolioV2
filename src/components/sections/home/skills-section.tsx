@@ -8,7 +8,7 @@ export function SkillsSection() {
   const CodeIcon = siteIcons.code;
 
   return (
-    <section className="border border-border bg-black">
+    <section className="border border-border bg-background">
       <div className="flex items-center justify-between gap-5 border-b border-border p-6 sm:p-8">
         <p className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-accent">
           <CodeIcon aria-hidden="true" className="size-3.5" />
@@ -17,7 +17,7 @@ export function SkillsSection() {
 
         <Link
           href="/skills"
-          className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-zinc-400 transition-colors hover:text-accent"
+          className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-muted transition-colors hover:text-accent"
         >
           +{remainingSkillsCount} more skills
           <span aria-hidden="true">-&gt;</span>
@@ -39,10 +39,10 @@ export function SkillsSection() {
                 style={{ color: skill.color }}
               />
 
-              <h3 className="mt-5 text-sm font-medium text-white">
+              <h3 className="mt-5 text-sm font-medium text-foreground">
                 {skill.name}
               </h3>
-              <p className="mt-1 font-mono text-[0.64rem] uppercase tracking-[0.14em] text-zinc-500">
+              <p className="mt-1 font-mono text-[0.64rem] uppercase tracking-[0.14em] text-muted">
                 {skill.category}
               </p>
             </article>
