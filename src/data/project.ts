@@ -133,7 +133,7 @@ export const projects: Project[] = [
         type: "github",
       },
       {
-        label: "Live Demo",
+        label: "Live Site",
         href: "https://penny-wings.netlify.app/",
         type: "live",
       },
