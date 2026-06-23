@@ -149,7 +149,7 @@ export function ContactFormClient({
           />
         </FormField>
 
-        <div className="flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-end">
           <button
             type="submit"
             disabled={!isConfigured || status === "submitting"}
