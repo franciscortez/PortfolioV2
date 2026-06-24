@@ -65,8 +65,8 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex items-center gap-2 border px-4 py-2.5 text-xs font-medium transition-colors ${isGithub
-                      ? "border-border text-muted hover:border-accent hover:text-accent"
-                      : "button-accent"
+                    ? "border-border text-muted hover:border-accent hover:text-accent"
+                    : "button-accent"
                     }`}
                 >
                   {isGithub ? (
@@ -190,7 +190,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
       {/* Lightbox / Zoom Overlay */}
       {zoomedImage && (
         <div
-          className="fixed inset-0 z-100 flex cursor-zoom-out flex-col items-center justify-center bg-black/95 p-4 backdrop-blur-sm md:p-8"
+          className="fixed inset-0 z-100 flex cursor-zoom-out items-center justify-center bg-background p-4 md:p-8"
           onClick={() => setZoomedImage(null)}
           role="dialog"
           aria-modal="true"
@@ -199,7 +199,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
           {/* Close button */}
           <button
             type="button"
-            className="absolute top-4 right-4 z-110 flex items-center justify-center border border-zinc-700 bg-black/50 p-2 text-zinc-300 transition-colors hover:border-accent hover:text-white"
+            className="absolute right-4 top-4 z-110 flex items-center justify-center border border-border bg-panel p-2 text-muted transition-colors hover:border-accent hover:text-accent"
             onClick={() => setZoomedImage(null)}
             aria-label="Close zoom overlay"
           >
@@ -207,7 +207,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
           </button>
 
           {/* Zoomed Image container */}
-          <div className="relative max-h-[80vh] max-w-[90vw] aspect-video w-full">
+          <div className="relative aspect-video max-h-[80vh] w-full max-w-[90vw] bg-background">
             <Image
               src={zoomedImage.src}
               alt={zoomedImage.alt}
@@ -219,14 +219,6 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
               unoptimized
             />
           </div>
-
-          {/* Caption */}
-          {zoomedImage.description && (
-            <p className="mt-4 max-w-2xl px-4 text-center font-mono text-[0.68rem] tracking-wide text-zinc-400">
-              <span className="mr-1.5 font-semibold text-zinc-300">{"//"}</span>
-              {zoomedImage.description}
-            </p>
-          )}
         </div>
       )}
     </div>
