@@ -100,7 +100,14 @@ export const projects: Project[] = [
         type: "github",
       },
     ],
-    images: [],
+    images: [
+      {
+        src: "/images/projects/nola-paymongo.png",
+        alt: "NOLA PayMongo payment integration interface shown on laptop and mobile device mockups",
+        description:
+          "Payment integration interface for GoHighLevel and PayMongo checkout, transaction tracking, and payment status workflows.",
+      },
+    ],
   },
   {
     slug: "pennywings-budget-tracker",
