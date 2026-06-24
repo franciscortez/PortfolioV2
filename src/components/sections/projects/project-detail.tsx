@@ -85,7 +85,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
       {/* Image */}
       {project.images.length > 0 && (
         <div className="border-b border-border">
-          {project.images.map((img) => (
+          {project.images.map((img, index) => (
             <figure key={img.src} className="flex flex-col">
               <button
                 type="button"
@@ -98,7 +98,11 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                   alt={img.alt}
                   fill
                   className="object-contain transition-opacity hover:opacity-90"
-                  sizes="(max-width: 1024px) 100vw, 55vw"
+                  sizes="(min-width: 1024px) 80vw, 100vw"
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fetchPriority={index === 0 ? "high" : "auto"}
+                  quality={100}
+                  unoptimized
                 />
               </button>
             </figure>
@@ -211,6 +215,8 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
               className="object-contain"
               sizes="90vw"
               priority
+              quality={100}
+              unoptimized
             />
           </div>
 
