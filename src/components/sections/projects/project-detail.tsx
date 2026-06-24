@@ -39,7 +39,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 
   const CloseIcon = siteIcons.close;
   return (
-    <div className="custom-scrollbar h-full overflow-y-auto">
+    <div>
       {/* Title + Links */}
       <div className="border-b border-border px-6 py-6 sm:px-8">
         <p className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted">

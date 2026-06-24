@@ -30,16 +30,16 @@ export function ProjectsPage() {
   }
 
   return (
-    <div className="flex min-h-[calc(100vh-4rem)] flex-col lg:h-[calc(100vh-5rem)] lg:min-h-0">
-      <section className="min-h-0 flex-1 border border-border bg-background lg:overflow-hidden">
-        <div className="flex h-full min-h-144 flex-col lg:min-h-0">
+    <div className="flex min-h-[calc(100vh-4rem)] flex-col">
+      <section className="flex-1 border border-border bg-background">
+        <div className="flex min-h-144 flex-col">
           <ProjectHeader totalProjects={projects.length} />
           <ProjectList
             projects={projects}
             activeSlug={activeSlug}
             onSelect={setActiveSlug}
           />
-          <div className="min-h-0 flex-1 overflow-hidden border-t border-border">
+          <div className="flex-1 border-t border-border">
             <ProjectDetail project={activeProject} />
           </div>
         </div>
