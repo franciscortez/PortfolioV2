@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SiteShell } from "@/components/layout/site-shell";
 import { ThemeProvider } from "@/components/ui/theme-provider";
-import { portfolioData } from "@/data/portfolio";
+import { rootMetadata } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,14 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: `${portfolioData.profile.name} | Portfolio`,
-  description:
-    "A black-and-white portfolio for a full-stack developer.",
-  icons: {
-    icon: "/icon.png",
-  },
-};
+export const metadata: Metadata = rootMetadata;
 
 
 export default function RootLayout({

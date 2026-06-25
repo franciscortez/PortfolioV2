@@ -1,43 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
-import { skillIcons, siteIcons } from "@/data/icons";
-import type { Project, ProjectImage } from "@/data/project";
+import { skillIcons } from "@/data/icons";
+import type { Project } from "@/data/project";
 
 type ProjectDetailProps = {
   project: Project;
 };
 
 export function ProjectDetail({ project }: ProjectDetailProps) {
-  const [zoomedImage, setZoomedImage] = useState<ProjectImage | null>(null);
-
-  // Close zoomed image on Escape keypress
-  useEffect(() => {
-    if (!zoomedImage) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setZoomedImage(null);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [zoomedImage]);
-
-  // Prevent scroll when zoom modal is open
-  useEffect(() => {
-    if (zoomedImage) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [zoomedImage]);
-
-  const CloseIcon = siteIcons.close;
   return (
     <div>
       {/* Title + Links */}
@@ -87,12 +59,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
         <div className="border-b border-border">
           {project.images.map((img, index) => (
             <figure key={img.src} className="flex flex-col">
-              <button
-                type="button"
-                className="relative aspect-video w-full cursor-zoom-in overflow-hidden bg-background text-left outline-none focus-visible:ring-1 focus-visible:ring-accent"
-                onClick={() => setZoomedImage(img)}
-                aria-label={`Zoom screenshot: ${img.alt}`}
-              >
+              <div className="relative aspect-video w-full overflow-hidden bg-background">
                 <Image
                   src={img.src}
                   alt={img.alt}
@@ -102,9 +69,8 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                   loading={index === 0 ? "eager" : "lazy"}
                   fetchPriority={index === 0 ? "high" : "auto"}
                   quality={100}
-                  unoptimized
                 />
-              </button>
+              </div>
             </figure>
           ))}
         </div>
@@ -186,41 +152,6 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
           )}
         </div>
       </div>
-
-      {/* Lightbox / Zoom Overlay */}
-      {zoomedImage && (
-        <div
-          className="fixed inset-0 z-100 flex cursor-zoom-out items-center justify-center bg-background p-4 md:p-8"
-          onClick={() => setZoomedImage(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Zoomed screenshot"
-        >
-          {/* Close button */}
-          <button
-            type="button"
-            className="absolute right-4 top-4 z-110 flex items-center justify-center border border-border bg-panel p-2 text-muted transition-colors hover:border-accent hover:text-accent"
-            onClick={() => setZoomedImage(null)}
-            aria-label="Close zoom overlay"
-          >
-            <CloseIcon className="size-5" />
-          </button>
-
-          {/* Zoomed Image container */}
-          <div className="relative aspect-video max-h-[80vh] w-full max-w-[90vw] bg-background">
-            <Image
-              src={zoomedImage.src}
-              alt={zoomedImage.alt}
-              fill
-              className="object-contain"
-              sizes="90vw"
-              priority
-              quality={100}
-              unoptimized
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 }

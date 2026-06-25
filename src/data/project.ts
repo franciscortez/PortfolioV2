@@ -93,13 +93,7 @@ export const projects: Project[] = [
       { name: "PHP", icon: "php" },
       { name: "MySQL", icon: "mysql" },
     ],
-    links: [
-      {
-        label: "View Code",
-        href: "https://github.com/franciscortez",
-        type: "github",
-      },
-    ],
+    links: [],
     images: [
       {
         src: "/images/projects/nola-paymongo.png",
@@ -181,11 +175,6 @@ export const projects: Project[] = [
         label: "View Code",
         href: "https://github.com/franciscortez/PortfolioV2",
         type: "github",
-      },
-      {
-        label: "Live Site",
-        href: "https://github.com/franciscortez",
-        type: "live",
       },
     ],
     images: [

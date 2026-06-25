@@ -9,10 +9,10 @@ export function SkillsHeader() {
   return (
     <header className="border border-border bg-panel">
       <div className="border-b border-border px-5 py-3 lg:px-4 lg:py-3.5 xl:px-5 xl:py-4 massive:px-8 massive:py-6">
-        <h2 className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-accent xl:text-sm massive:text-lg">
+        <h1 className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-accent xl:text-sm massive:text-lg">
           <CodeIcon aria-hidden="true" className="size-3.5" />
           Skills
-        </h2>
+        </h1>
       </div>
 
       <dl className="flex flex-col sm:flex-row">
