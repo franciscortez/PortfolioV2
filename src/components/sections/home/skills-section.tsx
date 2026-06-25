@@ -10,10 +10,10 @@ export function SkillsSection() {
   return (
     <section className="border border-border bg-background">
       <div className="flex items-center justify-between gap-5 border-b border-border p-6 sm:p-8">
-        <p className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-accent">
+        <h2 className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-accent">
           <CodeIcon aria-hidden="true" className="size-3.5" />
           skills
-        </p>
+        </h2>
 
         <Link
           href="/skills"

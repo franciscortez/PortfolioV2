@@ -72,9 +72,9 @@ function SidebarProfile({
       </div>
 
       <div className="mt-5 min-w-0 text-center sm:mt-4 lg:mt-3 xl:mt-4 massive:mt-5">
-        <h1 className="wrap-break-word text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-xl lg:text-base lg:leading-tight xl:text-lg 2xl:text-xl massive:text-2xl">
+        <p className="wrap-break-word text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-xl lg:text-base lg:leading-tight xl:text-lg 2xl:text-xl massive:text-2xl">
           {profile.name}
-        </h1>
+        </p>
         <p className="mt-2 text-sm leading-6 text-muted sm:mt-2 sm:text-sm sm:leading-6 lg:mt-1 lg:text-xs lg:leading-5 xl:text-xs 2xl:text-sm massive:mt-2 massive:text-base">
           {profile.role}
         </p>

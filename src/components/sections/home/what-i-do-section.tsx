@@ -27,9 +27,9 @@ export function WhatIDoSection() {
   return (
     <section className="border border-border bg-background">
       <div className="border-b border-border p-6 sm:p-8">
-        <p className="font-mono text-xs uppercase tracking-[0.24em] text-accent">
+        <h2 className="font-mono text-xs uppercase tracking-[0.24em] text-accent">
           What I do
-        </p>
+        </h2>
       </div>
 
       <div className="grid lg:grid-cols-2">
