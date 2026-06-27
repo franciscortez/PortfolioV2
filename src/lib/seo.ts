@@ -55,7 +55,7 @@ export const rootMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: `${profile.name} | ${profile.role}`,
-    template: `%s | ${profile.name}`,
+    template: `${profile.name} | %s`,
   },
   description: defaultDescription,
   applicationName: siteName,

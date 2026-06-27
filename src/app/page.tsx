@@ -2,7 +2,7 @@ import { HomePage } from "@/components/pages";
 import { createPageMetadata, defaultDescription } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
-  title: "Full Stack Developer Portfolio",
+  title: "Francis Emil M. Cortez | Full Stack Developer",
   description: defaultDescription,
   path: "/",
 });
