@@ -122,6 +122,7 @@ export const projects: Project[] = [
     tags: ["Full Stack", "AI", "Finance"],
     tech: [
       { name: "React", icon: "react" },
+      { name: "TypeScript", icon: "typescript" },
       { name: "Tailwind CSS", icon: "tailwind" },
       { name: "Supabase", icon: "supabase" },
       { name: "PostgreSQL", icon: "postgresql" },
@@ -130,12 +131,12 @@ export const projects: Project[] = [
     links: [
       {
         label: "View Code",
-        href: "https://github.com/franciscortez/PennyWings",
+        href: "https://github.com/franciscortez/PennyWingsV2",
         type: "github",
       },
       {
         label: "Live Site",
-        href: "https://penny-wings.netlify.app/",
+        href: "https://pennywings.vercel.app",
         type: "live",
       },
     ],
