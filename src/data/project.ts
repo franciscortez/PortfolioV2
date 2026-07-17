@@ -69,7 +69,53 @@ export const projects: Project[] = [
       },
     ],
   },
-
+  {
+    slug: "gentlemens-quarters",
+    title: "Gentlemen's Quarters",
+    subtitle: "Personal Project",
+    summary:
+      "A premium barbershop booking and catalog system integrated with PayMongo for secure online downpayments.",
+    explanation:
+      "Gentlemen's Quarters is a full-stack booking and catalog platform designed for modern barbershops. Built using React and Express (both written in TypeScript), the application allows clients to explore grooming services, view the team, and book appointments seamlessly. It integrates PayMongo to handle secure downpayments, ensuring booking commitments. The backend is powered by a PostgreSQL database hosted on Neon, managed with Drizzle ORM for schema definition and queries. It also features flexible scheduling, giving users a secure link in their confirmation emails to reschedule bookings without needing a full customer account.",
+    features: [
+      "Secure Online Downpayments (PayMongo Integration)",
+      "Interactive Barbershop Service & Styling Catalog",
+      "Streamlined Appointment Booking Workflow (No Account Required)",
+      "Flexible Self-Service Rescheduling via Secure Email Links",
+      "Robust Database Schema & Queries using Drizzle ORM and PostgreSQL (Neon)",
+    ],
+    tags: ["Full Stack", "Payments", "Booking System"],
+    tech: [
+      { name: "React", icon: "react" },
+      { name: "Express", icon: "express" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "Neon", icon: "neon" },
+      { name: "Drizzle ORM", icon: "drizzle" },
+      { name: "PayMongo", icon: "paymongo" },
+      { name: "Vercel", icon: "vercel" },
+    ],
+    links: [
+      {
+        label: "View Code",
+        href: "https://github.com/franciscortez/BarberBookingSystem",
+        type: "github",
+      },
+      {
+        label: "Live Site",
+        href: "https://gentlemensquarter.vercel.app/",
+        type: "live",
+      },
+    ],
+    images: [
+      {
+        src: "/images/projects/gentlemens-quarter.png",
+        alt: "Gentlemen's Quarters booking platform dashboard mockup displaying desktop and mobile views",
+        description:
+          "The homepage of Gentlemen's Quarters, featuring a clean dark-themed landing page, catalog view, and responsive appointment scheduling layout.",
+      },
+    ],
+  },
   {
     slug: "nola-paymongo",
     title: "NOLA PayMongo",

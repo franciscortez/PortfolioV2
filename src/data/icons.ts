@@ -12,6 +12,7 @@ import {
   FaMoon,
   FaSun,
   FaUniversity,
+  FaCreditCard,
 } from "react-icons/fa";
 import type { IconType } from "react-icons";
 import { IoClose } from "react-icons/io5";
@@ -47,6 +48,8 @@ import {
   SiTrello,
   SiTypescript,
   SiOpenai,
+  SiDrizzle,
+  SiVercel,
 } from "react-icons/si";
 import { TbApi, TbDatabase } from "react-icons/tb";
 
@@ -74,12 +77,15 @@ export const skillIcons = {
   firebase: SiFirebase,
   supabase: SiSupabase,
   neon: NeonIcon,
+  drizzle: SiDrizzle,
 
   goHighLevel: GoHighLevelIcon,
   n8n: SiN8N,
   openApi: TbApi,
   googleGemini: GeminiIcon,
   codex: SiOpenai,
+  paymongo: FaCreditCard,
+  vercel: SiVercel,
 
   git: SiGit,
   github: SiGithub,

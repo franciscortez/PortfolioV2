@@ -76,6 +76,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Docker", icon: "docker", color: "#2496ED" },
       { name: "Hostinger", icon: "hostinger", color: "#673DE6" },
       { name: "GCP", icon: "googleCloud", color: "#4285F4" },
+      { name: "Vercel", icon: "vercel", color: "var(--foreground)" },
     ],
   },
 ];
