@@ -53,21 +53,6 @@ export function ProjectList({
                   {project.title}
                 </span>
               </div>
-
-              <p className="line-clamp-2 pl-[1.6rem] text-xs leading-relaxed text-muted lg:pl-7 lg:text-xs xl:pl-[1.9rem] xl:text-sm massive:pl-9 massive:text-base">
-                {project.summary}
-              </p>
-
-              <div className="mt-0 flex flex-wrap gap-1.5 pl-[1.6rem] lg:pl-7 xl:pl-[1.9rem] massive:pl-9">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="font-mono text-[0.58rem] uppercase tracking-widest text-muted lg:text-[0.62rem] xl:text-xs massive:text-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </button>
           );
         })}
