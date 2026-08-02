@@ -28,8 +28,8 @@ export const skillCategories: SkillCategory[] = [
     title: "Frontend",
     summary: "Interfaces, responsive layouts, and component-based UI work.",
     skills: [
-      { name: "Next.js", icon: "nextjs", color: "#000000" },
       { name: "React", icon: "react", color: "#61DAFB" },
+      { name: "Next.js", icon: "nextjs", color: "#000000" },
       { name: "Tailwind CSS", icon: "tailwind", color: "#06B6D4" },
     ],
   },
@@ -38,13 +38,13 @@ export const skillCategories: SkillCategory[] = [
     summary: "API, server-side, and backend application foundations.",
     skills: [
       { name: "Laravel", icon: "laravel", color: "#FF2D20" },
-      { name: "Express", icon: "express", color: "var(--foreground)" },
+      { name: "Express.js", icon: "express", color: "var(--foreground)" },
       { name: "Node.js", icon: "nodejs", color: "#5FA04E" },
       { name: "Flask", icon: "flask", color: "#000000" },
     ],
   },
   {
-    title: "Database",
+    title: "Databases",
     summary: "Data storage used across full-stack projects and integrations.",
     skills: [
       { name: "MySQL", icon: "mysql", color: "#4479A1" },
@@ -56,13 +56,12 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: "Automation & Integrations",
-    summary: "Tool connections, AI APIs, coding agents, and workflow automation.",
+    title: "AI & Automation",
+    summary: "AI coding agents, workflow automation, and integration protocols.",
     skills: [
-      { name: "GoHighLevel", icon: "goHighLevel", color: "#0EA5E9" },
       { name: "n8n", icon: "n8n", color: "#EA4B71" },
-      { name: "REST APIs", icon: "openApi", color: "#6BA539" },
-      { name: "Gemini API", icon: "googleGemini", color: "#8E75B2" },
+      { name: "GoHighLevel", icon: "goHighLevel", color: "#0EA5E9" },
+      { name: "Claude Code", icon: "claudeCode", color: "#D97757" },
       { name: "Codex", icon: "codex", color: "var(--foreground)" },
     ],
   },
@@ -72,11 +71,10 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Git", icon: "git", color: "#F05032" },
       { name: "GitHub", icon: "github", color: "#181717" },
-      { name: "Trello", icon: "trello", color: "#0052CC" },
-      { name: "Docker", icon: "docker", color: "#2496ED" },
       { name: "Hostinger", icon: "hostinger", color: "#673DE6" },
-      { name: "GCP", icon: "googleCloud", color: "#4285F4" },
-      { name: "Vercel", icon: "vercel", color: "var(--foreground)" },
+      { name: "Google Cloud Platform (GCP)", icon: "googleCloud", color: "#4285F4" },
+      { name: "Linear", icon: "linear", color: "#5E6AD2" },
+      { name: "Slack", icon: "slack", color: "#4A154B" },
     ],
   },
 ];

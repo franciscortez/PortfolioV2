@@ -18,27 +18,35 @@ export const experienceSummary =
 
 export const workExperience: ResumeExperience[] = [
   {
-    role: "Full Stack Developer",
-    organization: "SATEZO",
+    role: "Software Developer - Full Time",
+    organization: "Leveric Pty Ltd",
     location: "Pampanga, Philippines",
-    period: "May 2026 - Present",
+    period: "July 2026 - Present",
     responsibilities: [
-      "Develop and maintain full-stack web applications using React.js and Express for production features and user-facing functionality.",
-      "Build RESTful APIs, backend configurations, data handling workflows, and reusable components to improve application stability, performance, and scalability.",
-      "Work across frontend and backend tasks, connecting interface behavior with server-side logic and application data flows.",
-      "Support maintainable feature development through reusable code structure, clear API contracts, and production-focused implementation.",
+      "Develop production-ready application features using Next.js, TypeScript, and Supabase, enabling reliable user workflows and consistent access to real-time application data.",
+      "Architect database schemas, authentication flows, backend functions, and API integrations in Supabase, improving data organization, application security, and frontend-to-backend communication.",
+      "Collaborate with developers and stakeholders through Linear while using Codex to support implementation, debugging, and code refinement, accelerating task completion and improving overall code quality.",
     ],
   },
   {
-    role: "Backend Developer - Intern",
+    role: "Full Stack Developer - Part Time",
+    organization: "SATEZO OPC",
+    location: "Pampanga, Philippines",
+    period: "May 2026 - Present",
+    responsibilities: [
+      "Build responsive full-stack application features using Next.js, React, Node.js, and REST APIs, delivering functional user experiences aligned with business requirements.",
+      "Implement backend services, API endpoints, and data-handling workflows, enabling efficient communication between application interfaces, databases, and third-party services.",
+      "Diagnose and resolve frontend and backend issues while enhancing existing code, improving application stability, maintainability, and feature reliability.",
+    ],
+  },
+  {
+    role: "Backend Developer Intern",
     organization: "Nola Web Solutions",
     location: "Pampanga, Philippines",
-    period: "February 2026 - March 2026",
+    period: "February 2026 - April 2026",
     responsibilities: [
-      "Developed backend features, RESTful APIs, and database-driven workflows for internal and client web applications.",
-      "Built a custom GoHighLevel-PayMongo payment integration supporting checkout creation, payment verification, webhooks, refunds, and transaction synchronization.",
-      "Configured backend logic for payment status updates, transaction handling, and third-party service communication.",
-      "Collaborated on integration requirements and implementation details for secure, reliable payment workflows.",
+      "Engineered RESTful APIs and Laravel–MySQL backend workflows for internal operations and client-facing applications, streamlining data processing and supporting reliable system functionality.",
+      "Integrated GoHighLevel with PayMongo for checkout creation, payment verification, webhook processing, and transaction synchronization, enabling automated and accurate payment workflows.",
     ],
   },
 ];
