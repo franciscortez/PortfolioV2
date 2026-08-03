@@ -42,17 +42,17 @@ export function ContactOverview() {
 
   return (
     <section className="border border-border bg-panel">
-      <div className="border-b border-border p-3 sm:p-4">
-        <p className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-accent">
-          <EmailIcon aria-hidden="true" className="size-3.5" />
+      <div className="border-b border-border p-3 sm:p-4 xl:p-6 massive:p-8">
+        <p className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-accent massive:text-sm">
+          <EmailIcon aria-hidden="true" className="size-3.5 massive:size-4" />
           Contact
         </p>
 
         <div className="mt-3 max-w-4xl">
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+          <h1 className="font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl xl:text-4xl massive:text-5xl">
             Let&apos;s talk about the next build.
           </h1>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-muted massive:text-base">
             Send a message about a website, web app, integration, or automation
             workflow. I&apos;ll review the context and reply through email.
           </p>
@@ -80,24 +80,24 @@ function ContactCard({ href, icon: Icon, label, value }: ContactCardProps) {
     <>
       <div className="flex items-start justify-between gap-6">
         <div>
-          <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted transition-colors group-hover:text-accent">
+          <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted transition-colors group-hover:text-accent massive:text-xs">
             {label}
           </p>
-          <p className="mt-2 wrap-break-word text-sm leading-6 text-muted transition-colors group-hover:text-foreground">
+          <p className="mt-2 wrap-break-word text-sm leading-6 text-muted transition-colors group-hover:text-foreground massive:text-base">
             {value}
           </p>
         </div>
 
         <Icon
           aria-hidden="true"
-          className="mt-1 size-4 shrink-0 text-muted transition-colors group-hover:text-accent"
+          className="mt-1 size-4 shrink-0 text-muted transition-colors group-hover:text-accent massive:size-5"
         />
       </div>
     </>
   );
 
   const className =
-    "group block min-h-24 border-b border-border p-3 transition-colors hover:bg-background sm:border-r sm:p-4";
+    "group block min-h-24 border-b border-border p-3 transition-colors hover:bg-background sm:border-r sm:p-4 xl:p-6 massive:min-h-32 massive:p-8";
 
   if (!href) {
     return <article className={className}>{content}</article>;

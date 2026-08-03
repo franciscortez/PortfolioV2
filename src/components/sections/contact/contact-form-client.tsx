@@ -12,10 +12,10 @@ type ContactFormClientProps = {
 type FormStatus = "idle" | "submitting";
 
 const inputClassName =
-  "w-full border border-border bg-background px-4 py-3 text-sm text-foreground transition-colors placeholder:text-muted/70 hover:border-muted focus:border-accent focus:outline-none disabled:cursor-not-allowed disabled:opacity-50";
+  "w-full border border-border bg-background px-4 py-3 text-sm text-foreground transition-colors placeholder:text-muted/70 hover:border-muted focus:border-accent focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 massive:px-5 massive:py-3.5 massive:text-base";
 
 const labelClassName =
-  "font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted";
+  "font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted massive:text-xs";
 
 export function ContactFormClient({
   isConfigured,
@@ -70,16 +70,16 @@ export function ContactFormClient({
 
   return (
     <section className="border border-border bg-background">
-      <div className="border-b border-border p-6 sm:p-8">
+      <div className="border-b border-border p-6 sm:p-8 xl:p-10 massive:p-14">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-accent">
-            <EmailIcon aria-hidden="true" className="size-3.5" />
+          <h2 className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-accent massive:text-sm">
+            <EmailIcon aria-hidden="true" className="size-3.5 massive:size-4" />
             Message form
           </h2>
         </div>
 
         {!isConfigured ? (
-          <p className="mt-5 border border-border bg-panel p-4 text-sm leading-7 text-muted">
+          <p className="mt-5 border border-border bg-panel p-4 text-sm leading-7 text-muted massive:text-base">
             Contact form is waiting for
             <code className="mx-1 font-mono text-xs text-accent">
               NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
@@ -89,7 +89,7 @@ export function ContactFormClient({
         ) : null}
       </div>
 
-      <form ref={formRef} onSubmit={handleSubmit} className="grid gap-5 p-6 sm:p-8">
+      <form ref={formRef} onSubmit={handleSubmit} className="grid gap-5 p-6 sm:p-8 xl:gap-6 xl:p-10 massive:gap-8 massive:p-14">
         <input
           type="checkbox"
           name="botcheck"
@@ -153,7 +153,7 @@ export function ContactFormClient({
           <button
             type="submit"
             disabled={!isConfigured || status === "submitting"}
-            className="button-accent inline-flex items-center justify-center border px-5 py-3 text-sm font-medium disabled:cursor-not-allowed disabled:border-border disabled:bg-panel disabled:text-muted"
+            className="button-accent inline-flex items-center justify-center border px-5 py-3 text-sm font-medium disabled:cursor-not-allowed disabled:border-border disabled:bg-panel disabled:text-muted massive:px-6 massive:py-3.5 massive:text-base"
           >
             {status === "submitting" ? "Sending..." : "Send message"}
           </button>

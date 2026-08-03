@@ -26,8 +26,8 @@ const services = [
 export function WhatIDoSection() {
   return (
     <section className="border border-border bg-background">
-      <div className="border-b border-border p-6 sm:p-8">
-        <h2 className="font-mono text-xs uppercase tracking-[0.24em] text-accent">
+      <div className="border-b border-border p-6 sm:p-8 xl:p-10 massive:p-14">
+        <h2 className="font-mono text-xs uppercase tracking-[0.24em] text-accent massive:text-sm">
           What I do
         </h2>
       </div>
@@ -36,16 +36,16 @@ export function WhatIDoSection() {
         {services.map((service, index) => (
           <article
             key={service.title}
-            className={`group p-6 transition-colors hover:bg-panel sm:p-8 ${
+            className={`group p-6 transition-colors hover:bg-panel sm:p-8 xl:p-10 massive:p-14 ${
               index === 0 ? "border-b border-border lg:border-b-0 lg:border-r" : ""
             }`}
           >
             <div className="flex items-start justify-between gap-6">
               <div>
-                <p className="font-mono text-xs uppercase tracking-[0.24em] text-muted transition-colors group-hover:text-accent">
+                <p className="font-mono text-xs uppercase tracking-[0.24em] text-muted transition-colors group-hover:text-accent massive:text-sm">
                   {service.label}
                 </p>
-                <h3 className="mt-5 text-2xl font-semibold tracking-tight text-foreground">
+                <h3 className="mt-5 font-heading text-2xl font-semibold tracking-tight text-foreground xl:text-3xl massive:text-4xl">
                   {service.title}
                 </h3>
               </div>
@@ -55,7 +55,7 @@ export function WhatIDoSection() {
               />
             </div>
 
-            <p className="mt-5 max-w-xl text-sm leading-7 text-muted">
+            <p className="mt-5 max-w-xl text-sm leading-7 text-muted massive:text-base">
               {service.description}
             </p>
 
@@ -63,7 +63,7 @@ export function WhatIDoSection() {
               {service.details.map((detail) => (
                 <li
                   key={detail}
-                  className="flex items-center gap-3 border-t border-border pt-3 font-mono text-xs uppercase tracking-[0.16em] text-muted"
+                  className="flex items-center gap-3 border-t border-border pt-3 font-mono text-xs uppercase tracking-[0.16em] text-muted massive:text-sm"
                 >
                   <span className="size-1.5 bg-accent" aria-hidden="true" />
                   {detail}
