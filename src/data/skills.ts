@@ -29,7 +29,7 @@ export const skillCategories: SkillCategory[] = [
     summary: "Interfaces, responsive layouts, and component-based UI work.",
     skills: [
       { name: "React", icon: "react", color: "#61DAFB" },
-      { name: "Next.js", icon: "nextjs", color: "#000000" },
+      { name: "Next.js", icon: "nextjs", color: "var(--foreground)" },
       { name: "Tailwind CSS", icon: "tailwind", color: "#06B6D4" },
     ],
   },
@@ -40,7 +40,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Laravel", icon: "laravel", color: "#FF2D20" },
       { name: "Express.js", icon: "express", color: "var(--foreground)" },
       { name: "Node.js", icon: "nodejs", color: "#5FA04E" },
-      { name: "Flask", icon: "flask", color: "#000000" },
+      { name: "Flask", icon: "flask", color: "var(--foreground)" },
     ],
   },
   {
@@ -70,7 +70,7 @@ export const skillCategories: SkillCategory[] = [
     summary: "Development, deployment, project tracking, and cloud tooling.",
     skills: [
       { name: "Git", icon: "git", color: "#F05032" },
-      { name: "GitHub", icon: "github", color: "#181717" },
+      { name: "GitHub", icon: "github", color: "var(--foreground)" },
       { name: "Hostinger", icon: "hostinger", color: "#673DE6" },
       { name: "Google Cloud Platform (GCP)", icon: "googleCloud", color: "#4285F4" },
       { name: "Linear", icon: "linear", color: "#5E6AD2" },
@@ -88,11 +88,12 @@ export const featuredSkills = skillCategories.flatMap((category) =>
 
 const featuredSkillNames = [
   "TypeScript",
-  "Python",
+  "Next.js",
   "React",
   "Express",
-  "Laravel",
   "Node.js",
+  "Express.js",
+  "Supabase"
 ];
 
 export const homeSkills = featuredSkillNames

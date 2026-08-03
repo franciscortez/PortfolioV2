@@ -10,12 +10,6 @@ type SkillsFilterProps = {
   categories: SkillCategory[];
 };
 
-function getReadableIconColor(color: string) {
-  return ["#000000", "#181717"].includes(color.toLowerCase())
-    ? "var(--foreground)"
-    : color;
-}
-
 export function SkillsFilter({ categories }: SkillsFilterProps) {
   const [activeFilter, setActiveFilter] = useState<SkillFilterValue>("All");
 
@@ -85,7 +79,7 @@ export function SkillsFilter({ categories }: SkillsFilterProps) {
               <Icon
                 aria-hidden="true"
                 className="size-11 shrink-0 transition-transform duration-200 group-hover:-translate-y-0.5 sm:size-12"
-                style={{ color: getReadableIconColor(skill.color) }}
+                style={{ color: skill.color }}
               />
 
               <h3 className="mt-5 text-sm font-medium text-foreground">
