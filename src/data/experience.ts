@@ -19,7 +19,7 @@ export const experienceSummary =
 export const workExperience: ResumeExperience[] = [
   {
     role: "Software Developer - Full Time",
-    organization: "Leveric Pty Ltd",
+    organization: "Leveric",
     location: "Pampanga, Philippines",
     period: "July 2026 - Present",
     responsibilities: [
