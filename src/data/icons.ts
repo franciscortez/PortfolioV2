@@ -17,6 +17,8 @@ import {
 import type { IconType } from "react-icons";
 import { IoClose } from "react-icons/io5";
 import {
+  FirebaseIcon,
+  FlaskIcon,
   GeminiIcon,
   GoHighLevelIcon,
   GoogleCloudIcon,
@@ -29,8 +31,6 @@ import {
   SiCss,
   SiDocker,
   SiExpress,
-  SiFirebase,
-  SiFlask,
   SiGit,
   SiGithub,
   SiHostinger,
@@ -73,11 +73,11 @@ export const skillIcons = {
   laravel: SiLaravel,
   express: SiExpress,
   nodejs: SiNodedotjs,
-  flask: SiFlask,
+  flask: FlaskIcon,
 
   mongodb: SiMongodb,
   postgresql: SiPostgresql,
-  firebase: SiFirebase,
+  firebase: FirebaseIcon,
   supabase: SiSupabase,
   neon: NeonIcon,
   drizzle: SiDrizzle,

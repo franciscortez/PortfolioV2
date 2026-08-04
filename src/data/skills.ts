@@ -40,7 +40,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Laravel", icon: "laravel", color: "#FF2D20" },
       { name: "Express.js", icon: "express", color: "var(--foreground)" },
       { name: "Node.js", icon: "nodejs", color: "#5FA04E" },
-      { name: "Flask", icon: "flask", color: "var(--foreground)" },
+      { name: "Flask", icon: "flask", color: "#3BABC3" },
     ],
   },
   {
