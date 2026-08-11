@@ -17,6 +17,7 @@ import {
 import type { IconType } from "react-icons";
 import { IoClose } from "react-icons/io5";
 import {
+  DockerIcon,
   FirebaseIcon,
   FlaskIcon,
   GeminiIcon,
@@ -29,7 +30,6 @@ import {
 import {
   SiClaude,
   SiCss,
-  SiDocker,
   SiExpress,
   SiGit,
   SiGithub,
@@ -94,7 +94,7 @@ export const skillIcons = {
   git: SiGit,
   github: SiGithub,
   trello: SiTrello,
-  docker: SiDocker,
+  docker: DockerIcon,
   hostinger: SiHostinger,
   googleCloud: GoogleCloudIcon,
   linear: LinearIcon,

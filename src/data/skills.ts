@@ -71,9 +71,10 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Git", icon: "git", color: "#F05032" },
       { name: "GitHub", icon: "github", color: "var(--foreground)" },
+      { name: "Docker", icon: "docker", color: "#2496ED" },
       { name: "Hostinger", icon: "hostinger", color: "#673DE6" },
       { name: "Google Cloud Platform (GCP)", icon: "googleCloud", color: "#4285F4" },
-      { name: "Linear", icon: "linear", color: "#5E6AD2" },
+      { name: "Linear", icon: "linear", color: "var(--foreground)" },
       { name: "Slack", icon: "slack", color: "#4A154B" },
     ],
   },
