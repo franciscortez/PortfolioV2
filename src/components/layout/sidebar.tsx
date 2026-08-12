@@ -21,7 +21,7 @@ export function Sidebar({
   return (
     <aside
       aria-label="Portfolio sidebar"
-      className={`${className} grid-rows-[auto_auto] content-start gap-3 bg-background p-3 transition-colors sm:p-4 lg:sticky lg:top-0 lg:h-dvh lg:min-h-dvh lg:grid-rows-[minmax(0,1fr)_minmax(0,1fr)] lg:content-normal lg:gap-4 lg:overflow-hidden`}
+      className={`${className} grid-rows-[auto_auto] content-start gap-3 bg-background p-3 transition-colors sm:p-4 lg:sticky lg:top-0 lg:h-dvh lg:min-h-dvh lg:grid-rows-[auto_minmax(0,1fr)] lg:content-normal lg:gap-4 lg:overflow-hidden`}
     >
       <SidebarProfile onNavigate={onNavigate} showClose={showClose} />
       <SidebarRoutes onNavigate={onNavigate} />
@@ -41,7 +41,7 @@ function SidebarProfile({
   const LocationIcon = siteIcons.location;
 
   return (
-    <div className="relative flex min-w-0 flex-col justify-center border border-border bg-panel px-5 py-6 sm:px-5 sm:py-5 lg:min-h-0 lg:overflow-hidden lg:px-3 lg:py-3 xl:px-4 xl:py-4 2xl:px-5 2xl:py-5 massive:px-6 massive:py-6">
+    <div className="relative flex min-w-0 flex-col justify-center border border-border bg-panel px-5 py-6 sm:px-5 sm:py-5 lg:px-3 lg:py-3 xl:px-4 xl:py-4 2xl:px-5 2xl:py-5 massive:px-6 massive:py-6">
       <ThemeToggle
         className={`absolute top-4 ${showClose ? "left-4" : "right-4"}`}
       />
