@@ -17,19 +17,22 @@ import {
 import type { IconType } from "react-icons";
 import { IoClose } from "react-icons/io5";
 import {
+  DockerIcon,
+  FirebaseIcon,
+  FlaskIcon,
   GeminiIcon,
   GoHighLevelIcon,
+  GoogleCloudIcon,
+  LinearIcon,
   NeonIcon,
+  SlackIcon,
 } from "@/components/ui/icon";
 import {
+  SiClaude,
   SiCss,
-  SiDocker,
   SiExpress,
-  SiFirebase,
-  SiFlask,
   SiGit,
   SiGithub,
-  SiGooglecloud,
   SiHostinger,
   SiHtml5,
   SiJavascript,
@@ -70,11 +73,11 @@ export const skillIcons = {
   laravel: SiLaravel,
   express: SiExpress,
   nodejs: SiNodedotjs,
-  flask: SiFlask,
+  flask: FlaskIcon,
 
   mongodb: SiMongodb,
   postgresql: SiPostgresql,
-  firebase: SiFirebase,
+  firebase: FirebaseIcon,
   supabase: SiSupabase,
   neon: NeonIcon,
   drizzle: SiDrizzle,
@@ -86,13 +89,16 @@ export const skillIcons = {
   codex: SiOpenai,
   paymongo: FaCreditCard,
   vercel: SiVercel,
+  claudeCode: SiClaude,
 
   git: SiGit,
   github: SiGithub,
   trello: SiTrello,
-  docker: SiDocker,
+  docker: DockerIcon,
   hostinger: SiHostinger,
-  googleCloud: SiGooglecloud,
+  googleCloud: GoogleCloudIcon,
+  linear: LinearIcon,
+  slack: SlackIcon,
 } satisfies Record<string, IconType>;
 
 export type SkillIconName = keyof typeof skillIcons;

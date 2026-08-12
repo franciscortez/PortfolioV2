@@ -4,18 +4,18 @@ import { AnimatedRole } from "@/components/ui/animated-role";
 export function HeroSection() {
   return (
     <section className="border border-border bg-panel">
-      <div className="border-b border-border p-6 sm:p-8">
+      <div className="border-b border-border p-6 sm:p-8 xl:p-10 massive:p-14">
         <div className="max-w-5xl">
           <p className="font-mono text-sm uppercase tracking-[0.22em] text-accent">
             <AnimatedRole />
           </p>
 
-          <h1 className="mt-5 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+          <h1 className="mt-5 font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-6xl massive:text-7xl">
             I build websites that do more than look good - they work, automate,
             and help businesses grow.
           </h1>
 
-          <p className="mt-8 max-w-3xl text-lg leading-9 text-muted">
+          <p className="mt-8 max-w-3xl text-lg leading-9 text-muted massive:text-xl">
             I&apos;m a Full Stack Developer who builds websites, web apps, and
             automation systems that help businesses save time, manage work
             better, and grow online.
@@ -25,14 +25,14 @@ export function HeroSection() {
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
             href="/projects"
-            className="button-accent border px-4 py-3 text-sm font-medium"
+            className="button-accent border px-4 py-3 text-sm font-medium massive:px-5 massive:py-3.5 massive:text-base"
           >
             View my work
           </Link>
 
           <Link
             href="/contact"
-            className="border border-border px-4 py-3 text-sm font-medium text-muted transition-colors hover:border-accent hover:text-accent"
+            className="border border-border px-4 py-3 text-sm font-medium text-muted transition-colors hover:border-accent hover:text-accent massive:px-5 massive:py-3.5 massive:text-base"
           >
             Contact me
           </Link>

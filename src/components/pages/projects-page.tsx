@@ -18,7 +18,7 @@ export function ProjectsPage() {
         <p className="font-mono text-xs uppercase tracking-[0.24em] text-accent">
           Projects
         </p>
-        <h1 className="mt-4 text-3xl font-semibold tracking-tight text-foreground">
+        <h1 className="mt-4 font-heading text-3xl font-semibold tracking-tight text-foreground">
           No projects available yet.
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
