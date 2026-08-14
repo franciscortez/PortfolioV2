@@ -36,6 +36,19 @@ export type Service = {
   deliverables: string[];
 };
 
+export type StatItem = {
+  value: number;
+  suffix: string;
+  label: string;
+};
+
+export type WorkflowStep = {
+  number: string;
+  title: string;
+  summary: string;
+  deliverables: string[];
+};
+
 export type Experience = {
   role: string;
   organization: string;
@@ -54,6 +67,8 @@ export type PortfolioData = {
   externalLinks: ExternalLink[];
   projects: Project[];
   services: Service[];
+  stats: StatItem[];
+  workflowSteps: WorkflowStep[];
   experience: Experience[];
   skillGroups: SkillGroup[];
   buildNotes: string[];
@@ -67,7 +82,7 @@ export const portfolioData: PortfolioData = {
     email: "francisemil.cortez@gmail.com",
     resumeHref: "/documents/resume.pdf",
     image: {
-      src: "/images/profile/profile-2x2.jpeg",
+      src: "/images/profile/profile-2x2.JPG",
       initials: "FC",
       alt: "Portrait of Francis Emil M. Cortez",
     },
@@ -117,6 +132,69 @@ export const portfolioData: PortfolioData = {
       deliverables: ["Visual refinement", "Responsive cleanup", "Accessibility pass"],
     },
   ],
+  stats: [
+    {
+      value: 1,
+      suffix: "+",
+      label: "Years of Experience",
+    },
+    {
+      value: 10,
+      suffix: "+",
+      label: "Projects Built",
+    },
+    {
+      value: 25,
+      suffix: "+",
+      label: "Technologies Utilized",
+    },
+  ],
+  workflowSteps: [
+    {
+      number: "01",
+      title: "Discovery Call",
+      summary:
+        "Understand your product goals, target audience, core requirements, and technical constraints.",
+      deliverables: [
+        "Requirements gathering",
+        "Scope alignment",
+        "Goal definition",
+      ],
+    },
+    {
+      number: "02",
+      title: "Planning & Architecture",
+      summary:
+        "Design database models, select optimal tech stack, structure REST APIs, and outline milestone deliverables.",
+      deliverables: [
+        "System architecture",
+        "Database schema",
+        "Milestone roadmap",
+      ],
+    },
+    {
+      number: "03",
+      title: "Development & Integration",
+      summary:
+        "Build clean UI components, implement backend services, integrate third-party APIs, and perform iterative tests.",
+      deliverables: [
+        "Clean TypeScript code",
+        "API & webhook integration",
+        "Automated testing",
+      ],
+    },
+    {
+      number: "04",
+      title: "Delivery & Support",
+      summary:
+        "Deploy to production, perform final performance & SEO checks, deliver documentation, and ensure smooth handoff.",
+      deliverables: [
+        "Production deployment",
+        "Performance optimization",
+        "Handoff & documentation",
+      ],
+    },
+  ],
   experience: [
     {
       role: "Full Stack Developer",
@@ -147,3 +225,6 @@ export const portfolioData: PortfolioData = {
     "Web3Forms contact flow",
   ],
 };
+
+export const stats = portfolioData.stats;
+export const workflowSteps = portfolioData.workflowSteps;
