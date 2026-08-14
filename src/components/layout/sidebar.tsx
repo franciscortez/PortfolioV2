@@ -59,15 +59,15 @@ function SidebarProfile({
 
       <div>
         <div className="mt-3 flex flex-col items-center sm:mt-0">
-          <div className="relative size-28 overflow-hidden border border-border bg-background sm:size-24 lg:size-20 xl:size-24 massive:size-28">
+          <div className="relative size-32 overflow-hidden border border-border bg-background sm:size-28 lg:size-24 xl:size-28 massive:size-32">
             <Image
               src={profile.image.src}
               alt={profile.image.alt}
               fill
               priority
               quality={100}
-              sizes="(min-width: 1536px) 112px, (min-width: 1280px) 96px, (min-width: 1024px) 80px, 112px"
-              className="scale-125 object-cover object-[center_32%]"
+              sizes="(min-width: 1536px) 128px, (min-width: 1280px) 112px, (min-width: 1024px) 96px, 128px"
+              className="scale-110 object-cover object-[center_12%]"
             />
           </div>
         </div>
