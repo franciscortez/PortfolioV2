@@ -13,6 +13,8 @@ import {
   FaSun,
   FaUniversity,
   FaCreditCard,
+  FaAward,
+  FaExternalLinkAlt,
 } from "react-icons/fa";
 import type { IconType } from "react-icons";
 import { IoClose } from "react-icons/io5";
@@ -107,9 +109,11 @@ export const siteIcons = {
   close: IoClose,
   briefcase: FaBriefcase,
   calendar: FaCalendarAlt,
+  certificate: FaAward,
   code: FaCode,
   email: FaEnvelope,
   education: FaGraduationCap,
+  externalLink: FaExternalLinkAlt,
   focus: FaBullseye,
   github: FaGithub,
   layers: FaLayerGroup,

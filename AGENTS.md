@@ -88,7 +88,7 @@ The site is deployed and functional, and the first SEO implementation pass has b
 - `src/components/sections/home/what-i-do-section.tsx`: Homepage services section.
 - `src/components/sections/home/skills-section.tsx`: Homepage featured skills section.
 - `src/components/sections/projects/*`: Projects header, list, and detail/lightbox UI.
-- `src/components/sections/experience/*`: Work experience and education sections.
+- `src/components/sections/experience/*`: Work experience, education, and certifications sections.
 - `src/components/sections/skills/*`: Skills summary and filterable skills UI.
 - `src/components/sections/contact/*`: Contact overview, server wrapper, and client form.
 - `src/components/ui/animated-role.tsx`: Client-side animated role label.
@@ -99,7 +99,7 @@ The site is deployed and functional, and the first SEO implementation pass has b
 - `src/components/ui/toast.tsx`: Lightweight client-side toast system.
 - `src/data/portfolio.ts`: Editable profile, navigation, external links, services, and build notes.
 - `src/data/project.ts`: Editable project data and project image/link/tech types.
-- `src/data/experience.ts`: Editable work experience and education data.
+- `src/data/experience.ts`: Editable work experience, education, and certifications data.
 - `src/data/skills.ts`: Editable skill categories and featured/home skills.
 - `src/data/icons.ts`: Shared icon import and mapping.
 - `src/lib/site.ts`: Shared site URL and absolute URL helpers.
@@ -133,8 +133,9 @@ Real personal details are present in the data files:
 - LinkedIn: `https://www.linkedin.com/in/francisemilcortez/`
 - Resume: `/documents/resume.pdf`
 - Profile image: `/images/profile/profile-2x2.jpeg`
-- Work experience includes SATEZO and Nola Web Solutions.
-- Education includes Pampanga State University and Assumpta Technical High School.
+- Work experience includes Leveric, SATEZO, and Nola Web Solutions.
+- Education includes Pampanga State University (BS Information Technology, Magna Cum Laude).
+- Certifications include Cloud Computing Fundamentals, JavaScript Essentials 1, Introduction to IoT and Digital Transformation, and Technical Support Fundamentals.
 
 Do not invent additional real credentials, employers, schools, awards, or metrics. Placeholder content may be used only when clearly labeled or when the user requests it.
 

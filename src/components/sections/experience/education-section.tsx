@@ -19,7 +19,7 @@ export function EducationSection() {
             key={`${item.institution}-${item.degree}`}
             className="border border-border bg-panel p-6 sm:p-8 xl:p-10 massive:p-12"
           >
-            <div className="grid gap-3 border-b border-border pb-5">
+            <div className="grid gap-4">
               <div className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start">
                 <h3 className="font-heading text-2xl font-semibold tracking-tight text-foreground xl:text-3xl massive:text-4xl">
                   {item.degree}
@@ -29,14 +29,22 @@ export function EducationSection() {
                 </p>
               </div>
 
-              <div className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start">
-                <p className="text-sm font-medium text-foreground massive:text-base">
-                  {item.institution}
-                </p>
-                {item.note ? (
-                  <p className="text-sm leading-6 text-muted sm:text-right massive:text-base">
-                    {item.note}
+              <div className="grid gap-2 border-t border-border pt-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+                <div>
+                  <p className="text-sm font-medium text-foreground massive:text-base">
+                    {item.institution}
                   </p>
+                  {item.note ? (
+                    <p className="text-xs text-muted massive:text-sm">
+                      {item.note}
+                    </p>
+                  ) : null}
+                </div>
+
+                {item.honors ? (
+                  <span className="inline-flex w-fit items-center border border-accent/30 bg-accent/10 px-2.5 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-accent massive:text-sm">
+                    {item.honors}
+                  </span>
                 ) : null}
               </div>
             </div>
