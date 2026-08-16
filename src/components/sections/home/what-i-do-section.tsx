@@ -26,8 +26,9 @@ const services = [
 export function WhatIDoSection() {
   return (
     <section className="border border-border bg-background">
-      <div className="border-b border-border p-6 sm:p-8 xl:p-10 massive:p-14">
-        <h2 className="font-mono text-xs uppercase tracking-[0.24em] text-accent massive:text-sm">
+      {/* Section Header */}
+      <div className="border-b border-border px-5 py-4 sm:px-6 sm:py-4.5">
+        <h2 className="font-mono text-xs uppercase tracking-[0.24em] text-accent">
           What I do
         </h2>
       </div>
@@ -36,16 +37,16 @@ export function WhatIDoSection() {
         {services.map((service, index) => (
           <article
             key={service.title}
-            className={`group p-6 transition-colors hover:bg-panel sm:p-8 xl:p-10 massive:p-14 ${
+            className={`group p-5 transition-colors hover:bg-panel sm:p-6 lg:p-7 ${
               index === 0 ? "border-b border-border lg:border-b-0 lg:border-r" : ""
             }`}
           >
             <div className="flex items-start justify-between gap-6">
               <div>
-                <p className="font-mono text-xs uppercase tracking-[0.24em] text-muted transition-colors group-hover:text-accent massive:text-sm">
+                <p className="font-mono text-xs uppercase tracking-[0.24em] text-muted transition-colors group-hover:text-accent">
                   {service.label}
                 </p>
-                <h3 className="mt-5 font-heading text-2xl font-semibold tracking-tight text-foreground xl:text-3xl massive:text-4xl">
+                <h3 className="mt-3.5 font-heading text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
                   {service.title}
                 </h3>
               </div>
@@ -55,15 +56,15 @@ export function WhatIDoSection() {
               />
             </div>
 
-            <p className="mt-5 max-w-xl text-sm leading-7 text-muted massive:text-base">
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">
               {service.description}
             </p>
 
-            <ul className="mt-8 grid gap-3">
+            <ul className="mt-5 grid gap-2.5">
               {service.details.map((detail) => (
                 <li
                   key={detail}
-                  className="flex items-center gap-3 border-t border-border pt-3 font-mono text-xs uppercase tracking-[0.16em] text-muted massive:text-sm"
+                  className="flex items-center gap-3 border-t border-border pt-2.5 font-mono text-xs uppercase tracking-[0.16em] text-muted"
                 >
                   <span className="size-1.5 bg-accent" aria-hidden="true" />
                   {detail}

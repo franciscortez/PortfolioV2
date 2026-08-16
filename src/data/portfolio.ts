@@ -44,9 +44,10 @@ export type StatItem = {
 
 export type WorkflowStep = {
   number: string;
+  phase: string;
+  status: string;
   title: string;
   summary: string;
-  deliverables: string[];
 };
 
 export type Experience = {
@@ -152,47 +153,35 @@ export const portfolioData: PortfolioData = {
   workflowSteps: [
     {
       number: "01",
-      title: "Discovery Call",
+      phase: "PHASE 01",
+      status: "INIT",
+      title: "Discovery & Technical Scoping",
       summary:
-        "Understand your product goals, target audience, core requirements, and technical constraints.",
-      deliverables: [
-        "Requirements gathering",
-        "Scope alignment",
-        "Goal definition",
-      ],
+        "Align on core requirements, map user flows, evaluate technical constraints, and define measurable project milestones.",
     },
     {
       number: "02",
-      title: "Planning & Architecture",
+      phase: "PHASE 02",
+      status: "SPEC",
+      title: "Architecture & Schema Design",
       summary:
-        "Design database models, select optimal tech stack, structure REST APIs, and outline milestone deliverables.",
-      deliverables: [
-        "System architecture",
-        "Database schema",
-        "Milestone roadmap",
-      ],
+        "Structure database schemas, design modular API endpoints, define component hierarchies, and plan data validation flows.",
     },
     {
       number: "03",
-      title: "Development & Integration",
+      phase: "PHASE 03",
+      status: "BUILD",
+      title: "Full-Stack Build & Integration",
       summary:
-        "Build clean UI components, implement backend services, integrate third-party APIs, and perform iterative tests.",
-      deliverables: [
-        "Clean TypeScript code",
-        "API & webhook integration",
-        "Automated testing",
-      ],
+        "Build responsive UI components, implement backend services, integrate third-party APIs and webhooks, and test iteratively.",
     },
     {
       number: "04",
-      title: "Delivery & Support",
+      phase: "PHASE 04",
+      status: "DEPLOY",
+      title: "Production Polish, SEO & Handoff",
       summary:
-        "Deploy to production, perform final performance & SEO checks, deliver documentation, and ensure smooth handoff.",
-      deliverables: [
-        "Production deployment",
-        "Performance optimization",
-        "Handoff & documentation",
-      ],
+        "Audit performance and accessibility, configure CI/CD deployments, optimize metadata & structured data, and complete documentation.",
     },
   ],
   experience: [
