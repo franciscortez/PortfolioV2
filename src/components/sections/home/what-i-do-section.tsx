@@ -15,11 +15,7 @@ const services = [
     title: "AI Automation",
     description:
       "I connect tools, APIs, webhooks, and AI services into practical systems that reduce manual work and turn raw data into useful actions.",
-    details: [
-      "Workflow automation",
-      "API integrations",
-      "AI-powered features",
-    ],
+    details: ["Workflow automation", "API integrations", "AI-powered features"],
   },
 ];
 
@@ -38,7 +34,9 @@ export function WhatIDoSection() {
           <article
             key={service.title}
             className={`group p-5 transition-colors hover:bg-panel sm:p-6 lg:p-7 ${
-              index === 0 ? "border-b border-border lg:border-b-0 lg:border-r" : ""
+              index === 0
+                ? "border-b border-border lg:border-b-0 lg:border-r"
+                : ""
             }`}
           >
             <div className="flex items-start justify-between gap-6">

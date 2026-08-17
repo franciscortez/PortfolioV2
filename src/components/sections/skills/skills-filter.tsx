@@ -15,19 +15,18 @@ export function SkillsFilter({ categories }: SkillsFilterProps) {
 
   const filters = useMemo(
     () => ["All", ...categories.map((category) => category.title)] as const,
-    [categories],
+    [categories]
   );
 
   const visibleSkills = categories
     .filter(
-      (category) =>
-        activeFilter === "All" || category.title === activeFilter,
+      (category) => activeFilter === "All" || category.title === activeFilter
     )
     .flatMap((category) =>
       category.skills.map((skill) => ({
         ...skill,
         category: category.title,
-      })),
+      }))
     );
 
   return (

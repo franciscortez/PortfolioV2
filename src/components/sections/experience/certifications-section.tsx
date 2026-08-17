@@ -21,7 +21,10 @@ export function CertificationsSection() {
 
             const content = (
               <>
-                <span className="size-1.5 shrink-0 bg-accent" aria-hidden="true" />
+                <span
+                  className="size-1.5 shrink-0 bg-accent"
+                  aria-hidden="true"
+                />
                 <div className="min-w-0 flex-1">
                   <div className="text-sm font-medium text-foreground transition-colors group-hover:text-accent massive:text-base">
                     {cert.title}

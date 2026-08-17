@@ -1,0 +1,44 @@
+{
+  "prettier-formatter": {
+    "PostToolUse": [
+      {
+        "matcher": "write_to_file|replace_file_content|multi_replace_file_content",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node hooks/format-hook.mjs",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  },
+  "auto-tester": {
+    "PostToolUse": [
+      {
+        "matcher": "write_to_file|replace_file_content|multi_replace_file_content",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node hooks/test-hook.mjs",
+            "timeout": 45
+          }
+        ]
+      }
+    ]
+  },
+  "safety-guard": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command|write_to_file|replace_file_content|multi_replace_file_content",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node hooks/safety-guard.mjs",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

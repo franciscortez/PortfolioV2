@@ -63,7 +63,7 @@ export function AnimatedCounter({
       },
       {
         threshold: 0.2,
-      },
+      }
     );
 
     observer.observe(node);

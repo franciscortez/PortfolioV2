@@ -27,6 +27,7 @@ import {
   GoogleCloudIcon,
   LinearIcon,
   NeonIcon,
+  PlaywrightIcon,
   SlackIcon,
 } from "@/components/ui/icon";
 import {
@@ -50,11 +51,13 @@ import {
   SiReact,
   SiSupabase,
   SiTailwindcss,
+  SiTestinglibrary,
   SiTrello,
   SiTypescript,
   SiOpenai,
   SiDrizzle,
   SiVercel,
+  SiVitest,
 } from "react-icons/si";
 import { TbApi, TbDatabase } from "react-icons/tb";
 
@@ -92,6 +95,10 @@ export const skillIcons = {
   paymongo: FaCreditCard,
   vercel: SiVercel,
   claudeCode: SiClaude,
+
+  vitest: SiVitest,
+  playwright: PlaywrightIcon,
+  testingLibrary: SiTestinglibrary,
 
   git: SiGit,
   github: SiGithub,

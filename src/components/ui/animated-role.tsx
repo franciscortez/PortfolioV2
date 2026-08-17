@@ -29,7 +29,7 @@ export function AnimatedRole() {
       }
 
       setLetterCount((currentCount) =>
-        isDeleting ? currentCount - 1 : currentCount + 1,
+        isDeleting ? currentCount - 1 : currentCount + 1
       );
     }, delay);
 

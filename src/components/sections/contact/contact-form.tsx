@@ -4,5 +4,7 @@ export function ContactForm() {
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
   const isConfigured = Boolean(accessKey);
 
-  return <ContactFormClient isConfigured={isConfigured} accessKey={accessKey} />;
+  return (
+    <ContactFormClient isConfigured={isConfigured} accessKey={accessKey} />
+  );
 }
