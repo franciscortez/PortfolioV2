@@ -1,12 +1,19 @@
 #!/usr/bin/env node
 import path from "node:path";
 
+function isActualGitPush(command) {
+  if (!command) return false;
+  // If this is a git commit, it's not a push
+  if (/^\s*git\s+commit\b/i.test(command)) return false;
+  // Match actual git push invocation
+  return /(?:^|[;&|\r\n])\s*git\s+push\b/i.test(command);
+}
+
 const BLOCKED_PATTERNS = [
   {
-    regex: /\bgit\s+push\b/i,
-    checkException: (command) => isPushAllowed(command),
+    check: (command) => isActualGitPush(command),
     reason:
-      "Auto git push is blocked by AI safety guardrail. When instructed to push, run with ALLOW_GIT_PUSH=1 or include --allow-push.",
+      "git push is strictly blocked in AI hooks. AI cannot push. Push manually in terminal.",
   },
   {
     regex:
@@ -37,24 +44,6 @@ const BLOCKED_PATTERNS = [
     reason: "Modifying package.json dependencies via AI command is blocked.",
   },
 ];
-
-function isPushAllowed(command) {
-  if (
-    process.env.ALLOW_GIT_PUSH === "1" ||
-    process.env.ALLOW_GIT_PUSH === "true"
-  ) {
-    return true;
-  }
-  if (
-    command &&
-    /(?:--allow-push|ALLOW_GIT_PUSH=1|\$env:ALLOW_GIT_PUSH\s*=\s*["']?1["']?|-o\s+allow-push)/i.test(
-      command
-    )
-  ) {
-    return true;
-  }
-  return false;
-}
 
 async function readStdin() {
   return new Promise((resolve) => {
@@ -158,10 +147,10 @@ async function main() {
     // Check shell commands against safety rules
     if (command) {
       for (const rule of BLOCKED_PATTERNS) {
-        if (rule.regex.test(command)) {
-          if (rule.checkException && rule.checkException(command)) {
-            continue;
-          }
+        const isBlocked = rule.check
+          ? rule.check(command)
+          : rule.regex.test(command);
+        if (isBlocked) {
           if (isAntigravity) {
             process.stdout.write(
               JSON.stringify({
