@@ -100,7 +100,8 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                 >
                   <Icon
                     aria-hidden="true"
-                    className="size-3.5 text-muted transition-colors group-hover:text-foreground massive:size-4"
+                    className="size-3.5 transition-colors massive:size-4"
+                    style={{ color: t.color }}
                   />
                   <span className="text-xs font-medium text-muted massive:text-sm">
                     {t.name}

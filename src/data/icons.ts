@@ -12,7 +12,6 @@ import {
   FaMoon,
   FaSun,
   FaUniversity,
-  FaCreditCard,
   FaAward,
   FaExternalLinkAlt,
 } from "react-icons/fa";
@@ -27,6 +26,7 @@ import {
   GoogleCloudIcon,
   LinearIcon,
   NeonIcon,
+  PayMongoIcon,
   PlaywrightIcon,
   SlackIcon,
 } from "@/components/ui/icon";
@@ -92,7 +92,7 @@ export const skillIcons = {
   openApi: TbApi,
   googleGemini: GeminiIcon,
   codex: SiOpenai,
-  paymongo: FaCreditCard,
+  paymongo: PayMongoIcon,
   vercel: SiVercel,
   claudeCode: SiClaude,
 
