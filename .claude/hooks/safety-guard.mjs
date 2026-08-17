@@ -45,7 +45,12 @@ function isPushAllowed(command) {
   ) {
     return true;
   }
-  if (command && /(?:--allow-push|ALLOW_GIT_PUSH=1)/i.test(command)) {
+  if (
+    command &&
+    /(?:--allow-push|ALLOW_GIT_PUSH=1|\$env:ALLOW_GIT_PUSH\s*=\s*["']?1["']?|-o\s+allow-push)/i.test(
+      command
+    )
+  ) {
     return true;
   }
   return false;
