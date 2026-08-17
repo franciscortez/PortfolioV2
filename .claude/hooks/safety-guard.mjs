@@ -1,6 +1,24 @@
 #!/usr/bin/env node
 import path from "node:path";
 
+function isPushAllowed(command) {
+  if (
+    process.env.ALLOW_GIT_PUSH === "1" ||
+    process.env.ALLOW_GIT_PUSH === "true"
+  ) {
+    return true;
+  }
+  if (
+    command &&
+    /(?:--allow-push|ALLOW_GIT_PUSH=1|\$env:ALLOW_GIT_PUSH\s*=\s*["']?1["']?)/i.test(
+      command
+    )
+  ) {
+    return true;
+  }
+  return false;
+}
+
 function isCommitAllowed(command) {
   if (
     process.env.ALLOW_GIT_COMMIT === "1" ||
@@ -21,6 +39,7 @@ function isCommitAllowed(command) {
 
 function isActualGitPush(command) {
   if (!command) return false;
+  if (isPushAllowed(command)) return false;
   return /(?:^|[;&|\r\n])\s*git\s+push\b/i.test(command);
 }
 
@@ -34,7 +53,7 @@ const BLOCKED_PATTERNS = [
   {
     check: (command) => isActualGitPush(command),
     reason:
-      "git push is strictly blocked in AI hooks. AI cannot push. Push manually in terminal.",
+      "git push is blocked by AI safety guardrail unless instructed. When instructed, run with ALLOW_GIT_PUSH=1 or include --allow-push.",
   },
   {
     check: (command) => isActualGitCommit(command),
