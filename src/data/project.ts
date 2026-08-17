@@ -15,6 +15,7 @@ export type ProjectLink = {
 export type ProjectTech = {
   name: string;
   icon: SkillIconName;
+  color?: string;
 };
 
 export type Project = {
@@ -47,10 +48,10 @@ export const projects: Project[] = [
     ],
     tags: ["Full Stack", "AI / ML", "Data Visualization"],
     tech: [
-      { name: "React", icon: "react" },
-      { name: "Flask", icon: "flask" },
-      { name: "MongoDB", icon: "mongodb" },
-      { name: "Python", icon: "python" },
+      { name: "React", icon: "react", color: "#61DAFB" },
+      { name: "Flask", icon: "flask", color: "#3BABC3" },
+      { name: "MongoDB", icon: "mongodb", color: "#47A248" },
+      { name: "Python", icon: "python", color: "#3776AB" },
     ],
     links: [
       {
@@ -85,14 +86,14 @@ export const projects: Project[] = [
     ],
     tags: ["Full Stack", "Payments", "Booking System"],
     tech: [
-      { name: "React", icon: "react" },
-      { name: "Express", icon: "express" },
-      { name: "TypeScript", icon: "typescript" },
-      { name: "PostgreSQL", icon: "postgresql" },
-      { name: "Neon", icon: "neon" },
-      { name: "Drizzle ORM", icon: "drizzle" },
-      { name: "PayMongo", icon: "paymongo" },
-      { name: "Vercel", icon: "vercel" },
+      { name: "React", icon: "react", color: "#61DAFB" },
+      { name: "Express", icon: "express", color: "var(--foreground)" },
+      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
+      { name: "PostgreSQL", icon: "postgresql", color: "#4169E1" },
+      { name: "Neon", icon: "neon", color: "#34D59A" },
+      { name: "Drizzle ORM", icon: "drizzle", color: "#C5F74F" },
+      { name: "PayMongo", icon: "paymongo", color: "#24B47E" },
+      { name: "Vercel", icon: "vercel", color: "var(--foreground)" },
     ],
     links: [
       {
@@ -133,10 +134,11 @@ export const projects: Project[] = [
     ],
     tags: ["Full Stack", "Payments", "Integration"],
     tech: [
-      { name: "Laravel", icon: "laravel" },
-      { name: "Tailwind CSS", icon: "tailwind" },
-      { name: "PHP", icon: "php" },
-      { name: "MySQL", icon: "mysql" },
+      { name: "Laravel", icon: "laravel", color: "#FF2D20" },
+      { name: "Tailwind CSS", icon: "tailwind", color: "#06B6D4" },
+      { name: "PHP", icon: "php", color: "#777BB4" },
+      { name: "MySQL", icon: "mysql", color: "#4479A1" },
+      { name: "PayMongo", icon: "paymongo", color: "#24B47E" },
     ],
     links: [],
     images: [
@@ -167,14 +169,14 @@ export const projects: Project[] = [
     ],
     tags: ["Full Stack", "AI", "Testing", "Finance"],
     tech: [
-      { name: "React", icon: "react" },
-      { name: "TypeScript", icon: "typescript" },
-      { name: "Tailwind CSS", icon: "tailwind" },
-      { name: "Supabase", icon: "supabase" },
-      { name: "PostgreSQL", icon: "postgresql" },
-      { name: "Vitest", icon: "vitest" },
-      { name: "Playwright", icon: "playwright" },
-      { name: "Google Gemini", icon: "googleGemini" },
+      { name: "React", icon: "react", color: "#61DAFB" },
+      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
+      { name: "Tailwind CSS", icon: "tailwind", color: "#06B6D4" },
+      { name: "Supabase", icon: "supabase", color: "#3FCF8E" },
+      { name: "PostgreSQL", icon: "postgresql", color: "#4169E1" },
+      { name: "Vitest", icon: "vitest", color: "#FCC72B" },
+      { name: "Playwright", icon: "playwright", color: "#2EAD33" },
+      { name: "Google Gemini", icon: "googleGemini", color: "#886FBF" },
     ],
     links: [
       {
@@ -215,13 +217,13 @@ export const projects: Project[] = [
     ],
     tags: ["Full Stack", "AI Workflows", "Testing", "Next.js"],
     tech: [
-      { name: "Next.js", icon: "nextjs" },
-      { name: "TypeScript", icon: "typescript" },
-      { name: "Tailwind CSS", icon: "tailwind" },
-      { name: "Vitest", icon: "vitest" },
-      { name: "Playwright", icon: "playwright" },
-      { name: "Claude Code", icon: "claudeCode" },
-      { name: "Codex", icon: "codex" },
+      { name: "Next.js", icon: "nextjs", color: "var(--foreground)" },
+      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
+      { name: "Tailwind CSS", icon: "tailwind", color: "#06B6D4" },
+      { name: "Vitest", icon: "vitest", color: "#FCC72B" },
+      { name: "Playwright", icon: "playwright", color: "#2EAD33" },
+      { name: "Claude Code", icon: "claudeCode", color: "#D97757" },
+      { name: "Codex", icon: "codex", color: "var(--foreground)" },
     ],
     links: [
       {
