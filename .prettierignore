@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+dist
+build
+public
+package-lock.json
+.git
+test-results
+playwright-report
+.last-run.json

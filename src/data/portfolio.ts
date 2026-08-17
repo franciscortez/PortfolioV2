@@ -1,7 +1,6 @@
 import type { SiteIconName } from "@/data/icons";
 import { type Project, projects } from "@/data/project";
 
-
 export type NavigationItem = {
   label: string;
   href: string;
@@ -27,8 +26,6 @@ export type ExternalLink = {
   href: string;
   icon: Exclude<SiteIconName, "close" | "moon" | "sun">;
 };
-
-
 
 export type Service = {
   title: string;
@@ -118,7 +115,11 @@ export const portfolioData: PortfolioData = {
       title: "Full Stack Web Development",
       description:
         "Build responsive web applications from interface to backend integration.",
-      deliverables: ["Frontend UI", "API integration", "Deployment-ready build"],
+      deliverables: [
+        "Frontend UI",
+        "API integration",
+        "Deployment-ready build",
+      ],
     },
     {
       title: "Portfolio and Landing Pages",
@@ -130,7 +131,11 @@ export const portfolioData: PortfolioData = {
       title: "UI Polish and Accessibility",
       description:
         "Improve existing interfaces with sharper spacing, stronger contrast, and better usability.",
-      deliverables: ["Visual refinement", "Responsive cleanup", "Accessibility pass"],
+      deliverables: [
+        "Visual refinement",
+        "Responsive cleanup",
+        "Accessibility pass",
+      ],
     },
   ],
   stats: [

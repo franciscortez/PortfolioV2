@@ -57,7 +57,8 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     title: "AI & Automation",
-    summary: "AI coding agents, workflow automation, and integration protocols.",
+    summary:
+      "AI coding agents, workflow automation, and integration protocols.",
     skills: [
       { name: "n8n", icon: "n8n", color: "#EA4B71" },
       { name: "GoHighLevel", icon: "goHighLevel", color: "#0EA5E9" },
@@ -67,13 +68,20 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     title: "Tools & Platforms",
-    summary: "Development, deployment, project tracking, and cloud tooling.",
+    summary:
+      "Development, deployment, automated testing, project tracking, and cloud tooling.",
     skills: [
+      { name: "Vitest", icon: "vitest", color: "#FCC72B" },
+      { name: "Playwright", icon: "playwright", color: "#2EAD33" },
       { name: "Git", icon: "git", color: "#F05032" },
       { name: "GitHub", icon: "github", color: "var(--foreground)" },
       { name: "Docker", icon: "docker", color: "#2496ED" },
       { name: "Hostinger", icon: "hostinger", color: "#673DE6" },
-      { name: "Google Cloud Platform (GCP)", icon: "googleCloud", color: "#4285F4" },
+      {
+        name: "Google Cloud Platform (GCP)",
+        icon: "googleCloud",
+        color: "#4285F4",
+      },
       { name: "Linear", icon: "linear", color: "var(--foreground)" },
       { name: "Slack", icon: "slack", color: "#4A154B" },
     ],
@@ -84,7 +92,7 @@ export const featuredSkills = skillCategories.flatMap((category) =>
   category.skills.map((skill) => ({
     ...skill,
     category: category.title,
-  })),
+  }))
 );
 
 const featuredSkillNames = [
@@ -94,11 +102,9 @@ const featuredSkillNames = [
   "Express",
   "Node.js",
   "Express.js",
-  "Supabase"
+  "Supabase",
 ];
 
 export const homeSkills = featuredSkillNames
-  .map((skillName) =>
-    featuredSkills.find((skill) => skill.name === skillName),
-  )
+  .map((skillName) => featuredSkills.find((skill) => skill.name === skillName))
   .filter((skill): skill is (typeof featuredSkills)[number] => Boolean(skill));

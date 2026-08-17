@@ -22,10 +22,9 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = rootMetadata;
 
-
 export default function RootLayout({
   children,
-}: Readonly<{ 
+}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
@@ -35,7 +34,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+        >
           <SiteShell>{children}</SiteShell>
         </ThemeProvider>
       </body>

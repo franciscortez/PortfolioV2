@@ -35,8 +35,7 @@ export const projects: Project[] = [
     slug: "twitch-insights",
     title: "Twitch Insights",
     subtitle: "Personal Project",
-    summary:
-      "Real-time sentiment analysis app for Twitch stream chat data.",
+    summary: "Real-time sentiment analysis app for Twitch stream chat data.",
     explanation:
       "Twitch Insights connects to live Twitch streams via the Twitch API and captures chat messages in real time. Each message is processed through a RoBERTa-based sentiment analysis model running on a Flask backend, classifying text as positive, negative, or neutral. The results are stored in MongoDB and served to a React dashboard that renders live sentiment graphs, mood distribution charts, word-cloud visualizations, and exportable reports. The system is designed to help streamers and analysts understand audience engagement patterns during broadcasts.",
     features: [
@@ -154,10 +153,11 @@ export const projects: Project[] = [
     title: "PennyWings Budget Tracker",
     subtitle: "Personal Project",
     summary:
-      "A scalable full-stack budget tracking application featuring real-time synchronization, AI-powered financial insights, and secure authentication.",
+      "A scalable full-stack budget tracking application built with AI-assisted development, automated testing (Vitest & Playwright), real-time synchronization, and AI-powered insights.",
     explanation:
-      "Built a scalable full-stack app using ReactJS, Tailwind CSS, and Supabase (PostgreSQL, Auth, Realtime) with secure authentication and Row Level Security (RLS). Implemented real-time data synchronization and caching using Supabase Realtime and TanStack Query, enabling fast, responsive financial tracking across devices. Developed core features including accounts, transactions, budgets, analytics dashboards, and an AI assistant (Google Gemini API) for personalized financial insights.",
+      "Built a scalable full-stack app using React, TypeScript, Tailwind CSS, and Supabase (PostgreSQL, Auth, Realtime) with secure authentication and Row Level Security (RLS). Developed using AI-assisted workflows with deterministic hooks, covered by Vitest unit tests and Playwright end-to-end tests. Implemented real-time data synchronization with Supabase Realtime and TanStack Query, core budget tracking, analytics dashboards, and an AI assistant (Google Gemini API) for personalized financial insights.",
     features: [
+      "AI-Assisted Development & Automated Testing (Vitest + Playwright)",
       "Secure Authentication & Row Level Security (RLS)",
       "Real-time Data Synchronization with Supabase",
       "Efficient Caching with TanStack Query",
@@ -165,13 +165,15 @@ export const projects: Project[] = [
       "Comprehensive Analytics Dashboards",
       "Multi-device Responsive Tracking",
     ],
-    tags: ["Full Stack", "AI", "Finance"],
+    tags: ["Full Stack", "AI", "Testing", "Finance"],
     tech: [
       { name: "React", icon: "react" },
       { name: "TypeScript", icon: "typescript" },
       { name: "Tailwind CSS", icon: "tailwind" },
       { name: "Supabase", icon: "supabase" },
       { name: "PostgreSQL", icon: "postgresql" },
+      { name: "Vitest", icon: "vitest" },
+      { name: "Playwright", icon: "playwright" },
       { name: "Google Gemini", icon: "googleGemini" },
     ],
     links: [
@@ -200,22 +202,26 @@ export const projects: Project[] = [
     title: "Personal Portfolio",
     subtitle: "Personal Project",
     summary:
-      "A black-and-white portfolio website with responsive sidebar navigation and persisted light/dark themes.",
+      "A high-performance portfolio website engineered with Next.js 16, AI-assisted development workflows, automated Prettier hooks, Vitest unit tests, and Playwright E2E tests.",
     explanation:
-      "This portfolio website is built with Next.js 16 and the App Router, using React 19 server and client components. The design follows a black-and-white aesthetic inspired by the visual restraint of the Next.js website. It features a persistent desktop sidebar with profile information and route navigation, a mobile hamburger drawer, light and dark theme support, animated role text with a typewriter effect, a boot loading screen, and modular page components. Styling is handled through Tailwind CSS v4 with custom CSS variables for the color system. The site is fully responsive and statically generated for optimal performance.",
+      "This portfolio website is built with Next.js 16 App Router and React 19, engineered using AI-assisted development workflows across Antigravity, Claude Code, and Codex. Features deterministic Prettier auto-formatting hooks, strict safety guardrails blocking destructive commands and unauthorized package mutations, unit/component test coverage with Vitest, and end-to-end testing with Playwright. Follows a minimal black-and-white visual direction inspired by the Next.js website with persistent sidebar navigation, mobile drawer, persisted themes, and accessible styling.",
     features: [
-      "Black & White Theme System",
-      "Persistent Desktop Sidebar Navigation",
-      "Mobile Hamburger Drawer",
-      "Animated Typewriter Role Text",
-      "Boot Loading Screen",
-      "Statically Generated for Performance",
+      "AI-Assisted Workflow with Multi-Agent Lifecycle Hooks & Guardrails",
+      "Automated Testing Suite with Vitest & Playwright E2E",
+      "Black & White Theme System with next-themes",
+      "Persistent Desktop Sidebar & Mobile Hamburger Drawer",
+      "Animated Typewriter Role Text & Route Transitions",
+      "Statically Generated for Ultra-Fast Performance",
     ],
-    tags: ["Full Stack", "Portfolio", "Responsive"],
+    tags: ["Full Stack", "AI Workflows", "Testing", "Next.js"],
     tech: [
       { name: "Next.js", icon: "nextjs" },
       { name: "TypeScript", icon: "typescript" },
       { name: "Tailwind CSS", icon: "tailwind" },
+      { name: "Vitest", icon: "vitest" },
+      { name: "Playwright", icon: "playwright" },
+      { name: "Claude Code", icon: "claudeCode" },
+      { name: "Codex", icon: "codex" },
     ],
     links: [
       {

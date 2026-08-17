@@ -104,12 +104,17 @@ function SidebarProfile({
               key={link.label}
               href={link.href}
               target={link.href.startsWith("http") ? "_blank" : undefined}
-              rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              rel={
+                link.href.startsWith("http") ? "noopener noreferrer" : undefined
+              }
               aria-label={link.label}
               title={link.label}
               className="grid size-10 place-items-center border border-border bg-background text-muted transition-colors hover:border-accent hover:bg-accent-dark hover:text-accent sm:size-10 lg:size-8 xl:size-9 massive:size-10"
             >
-              <SocialIcon link={link} className="size-4 lg:size-3.5 xl:size-4 massive:size-4" />
+              <SocialIcon
+                link={link}
+                className="size-4 lg:size-3.5 xl:size-4 massive:size-4"
+              />
             </Link>
           ))}
         </div>

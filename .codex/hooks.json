@@ -1,0 +1,41 @@
+{
+  "safety-guard": {
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .codex/hooks/safety-guard.mjs"
+          }
+        ]
+      }
+    ]
+  },
+  "prettier-formatter": {
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .codex/hooks/format-hook.mjs"
+          }
+        ]
+      }
+    ]
+  },
+  "auto-tester": {
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .codex/hooks/test-hook.mjs"
+          }
+        ]
+      }
+    ]
+  }
+}

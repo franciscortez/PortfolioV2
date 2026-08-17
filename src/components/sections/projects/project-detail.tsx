@@ -36,15 +36,22 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-2 border px-4 py-2.5 text-xs font-medium transition-colors massive:px-5 massive:py-3 massive:text-sm ${isGithub
-                    ? "border-border text-muted hover:border-accent hover:text-accent"
-                    : "button-accent"
-                    }`}
+                  className={`inline-flex items-center gap-2 border px-4 py-2.5 text-xs font-medium transition-colors massive:px-5 massive:py-3 massive:text-sm ${
+                    isGithub
+                      ? "border-border text-muted hover:border-accent hover:text-accent"
+                      : "button-accent"
+                  }`}
                 >
                   {isGithub ? (
-                    <FaGithub aria-hidden="true" className="size-3.5 massive:size-4" />
+                    <FaGithub
+                      aria-hidden="true"
+                      className="size-3.5 massive:size-4"
+                    />
                   ) : (
-                    <FaExternalLinkAlt aria-hidden="true" className="size-3 massive:size-3.5" />
+                    <FaExternalLinkAlt
+                      aria-hidden="true"
+                      className="size-3 massive:size-3.5"
+                    />
                   )}
                   {link.label}
                 </a>

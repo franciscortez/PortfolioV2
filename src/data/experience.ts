@@ -21,7 +21,7 @@ export const workExperience: ResumeExperience[] = [
   {
     role: "Software Developer - Full Time",
     organization: "Leveric",
-    location: "Pampanga, Philippines",
+    location: "Victoria, Australia (Remote)",
     period: "July 2026 - Present",
     responsibilities: [
       "Develop production-ready application features using Next.js, TypeScript, and Supabase, enabling reliable user workflows and consistent access to real-time application data.",

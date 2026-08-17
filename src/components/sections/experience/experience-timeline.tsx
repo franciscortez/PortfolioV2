@@ -39,19 +39,19 @@ export function ExperienceTimeline() {
 
               <div className="pt-5">
                 <ul className="grid gap-3">
-                {item.responsibilities.map((responsibility) => (
-                  <li
-                    key={responsibility}
-                    className="grid grid-cols-[auto_minmax(0,1fr)] gap-3 text-sm leading-7 text-muted massive:text-base"
-                  >
-                    <span
-                      className="mt-3 size-1.5 bg-accent"
-                      aria-hidden="true"
-                    />
-                    <span>{responsibility}</span>
-                  </li>
-                ))}
-              </ul>
+                  {item.responsibilities.map((responsibility) => (
+                    <li
+                      key={responsibility}
+                      className="grid grid-cols-[auto_minmax(0,1fr)] gap-3 text-sm leading-7 text-muted massive:text-base"
+                    >
+                      <span
+                        className="mt-3 size-1.5 bg-accent"
+                        aria-hidden="true"
+                      />
+                      <span>{responsibility}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </article>
           </li>

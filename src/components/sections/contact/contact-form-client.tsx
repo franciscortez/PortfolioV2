@@ -53,7 +53,10 @@ export function ContactFormClient({
       const result = await response.json();
 
       if (result.success) {
-        showToast("Message sent successfully! I'll get back to you soon.", "success");
+        showToast(
+          "Message sent successfully! I'll get back to you soon.",
+          "success"
+        );
         formRef.current?.reset();
       } else {
         showToast(result.message || "Failed to send message.", "error");
@@ -61,7 +64,7 @@ export function ContactFormClient({
     } catch (error) {
       showToast(
         error instanceof Error ? error.message : "Something went wrong.",
-        "error",
+        "error"
       );
     } finally {
       setStatus("idle");
@@ -89,7 +92,11 @@ export function ContactFormClient({
         ) : null}
       </div>
 
-      <form ref={formRef} onSubmit={handleSubmit} className="grid gap-5 p-6 sm:p-8 xl:gap-6 xl:p-10 massive:gap-8 massive:p-14">
+      <form
+        ref={formRef}
+        onSubmit={handleSubmit}
+        className="grid gap-5 p-6 sm:p-8 xl:gap-6 xl:p-10 massive:gap-8 massive:p-14"
+      >
         <input
           type="checkbox"
           name="botcheck"
