@@ -23,7 +23,8 @@ _Note for Windows PowerShell users: if execution policy restricts `npm`, use `np
 
 `PreToolUse` lifecycle hooks intercept agent tool calls and enforce strict safety policies:
 
-- **Git Push Protection & Overrides**: Uninstructed `git push` is blocked across all agents. When explicitly authorized or instructed to push, pass `ALLOW_GIT_PUSH=1` or include `--allow-push` in the command.
+- **Git Push Protection**: `git push` is strictly blocked in AI hooks. AI cannot push. Push manually in terminal.
+- **Git Commit Protection**: `git commit` is blocked unless explicitly instructed. When instructed, pass `ALLOW_GIT_COMMIT=1` or include `--allow-commit`.
 - **Package.json Protection**: Adding/removing dependencies (`npm i <pkg>`, `npm rm <pkg>`, `yarn add`, `pnpm add`) and directly modifying `package.json` / `package-lock.json` via file tools is strictly blocked.
 - **Secrets & Environment Files**: Staging/committing `.env`, `.env.local`, `.env.production` is blocked (except `.env.example`).
 - **Destructive Git Commands**: `git reset --hard`, `git clean -f`, and forced branch rollbacks are blocked to prevent data loss.

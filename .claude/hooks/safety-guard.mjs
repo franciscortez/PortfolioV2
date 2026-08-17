@@ -1,12 +1,33 @@
 #!/usr/bin/env node
 import path from "node:path";
 
+function isCommitAllowed(command) {
+  if (
+    process.env.ALLOW_GIT_COMMIT === "1" ||
+    process.env.ALLOW_GIT_COMMIT === "true"
+  ) {
+    return true;
+  }
+  if (
+    command &&
+    /(?:--allow-commit|ALLOW_GIT_COMMIT=1|\$env:ALLOW_GIT_COMMIT\s*=\s*["']?1["']?)/i.test(
+      command
+    )
+  ) {
+    return true;
+  }
+  return false;
+}
+
 function isActualGitPush(command) {
   if (!command) return false;
-  // If this is a git commit, it's not a push
-  if (/^\s*git\s+commit\b/i.test(command)) return false;
-  // Match actual git push invocation
   return /(?:^|[;&|\r\n])\s*git\s+push\b/i.test(command);
+}
+
+function isActualGitCommit(command) {
+  if (!command) return false;
+  if (isCommitAllowed(command)) return false;
+  return /(?:^|[;&|\r\n])\s*git\s+commit\b/i.test(command);
 }
 
 const BLOCKED_PATTERNS = [
@@ -14,6 +35,11 @@ const BLOCKED_PATTERNS = [
     check: (command) => isActualGitPush(command),
     reason:
       "git push is strictly blocked in AI hooks. AI cannot push. Push manually in terminal.",
+  },
+  {
+    check: (command) => isActualGitCommit(command),
+    reason:
+      "git commit is blocked by AI safety guardrail unless instructed. When instructed, run with ALLOW_GIT_COMMIT=1 or include --allow-commit.",
   },
   {
     regex:

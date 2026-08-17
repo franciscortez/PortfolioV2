@@ -28,7 +28,7 @@ Design aesthetic: minimal, black-and-white, sharp, technical, inspired by the Ne
    - Always verify changes with `npm test`, `npm run lint`, and `npm run format:check`.
 
 5. **AI Safety & Commits**:
-   - `PreToolUse` hooks block uninstructed pushes (permit with `ALLOW_GIT_PUSH=1` or `--allow-push`), `package.json` modifications, `.env` secrets staging, and destructive git operations.
+   - `PreToolUse` hooks strictly block pushes, block uninstructed commits (`ALLOW_GIT_COMMIT=1` / `--allow-commit` to permit), block `package.json` package mutations, block `.env` secrets staging, and block destructive git operations.
    - Keep commits minimal and use caveman commit style (e.g. `feat: add auto test hook`).
 
 ---
