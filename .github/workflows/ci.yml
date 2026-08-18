@@ -38,6 +38,9 @@ jobs:
       - name: Run linter
         run: npm run lint
 
+      - name: Run type check
+        run: npx tsc --noEmit
+
       - name: Run unit & component tests
         run: npm test
 
