@@ -26,8 +26,10 @@ import {
   GoogleCloudIcon,
   LinearIcon,
   NeonIcon,
+  NodeJsIcon,
   PayMongoIcon,
   PlaywrightIcon,
+  PostgresqlIcon,
   SlackIcon,
 } from "@/components/ui/icon";
 import {
@@ -44,9 +46,7 @@ import {
   SiMysql,
   SiN8N,
   SiNextdotjs,
-  SiNodedotjs,
   SiPhp,
-  SiPostgresql,
   SiPython,
   SiReact,
   SiSupabase,
@@ -77,11 +77,11 @@ export const skillIcons = {
 
   laravel: SiLaravel,
   express: SiExpress,
-  nodejs: SiNodedotjs,
+  nodejs: NodeJsIcon,
   flask: FlaskIcon,
 
   mongodb: SiMongodb,
-  postgresql: SiPostgresql,
+  postgresql: PostgresqlIcon,
   firebase: FirebaseIcon,
   supabase: SiSupabase,
   neon: NeonIcon,

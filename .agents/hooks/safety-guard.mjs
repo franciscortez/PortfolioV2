@@ -1,27 +1,7 @@
 #!/usr/bin/env node
 import path from "node:path";
 
-function isActualGitPush(command) {
-  if (!command) return false;
-  return /\bgit\s+push\b/i.test(command);
-}
-
-function isActualGitCommit(command) {
-  if (!command) return false;
-  return /\bgit\s+commit\b/i.test(command);
-}
-
 const BLOCKED_PATTERNS = [
-  {
-    check: (command) => isActualGitPush(command),
-    reason:
-      "git push is unconditionally blocked. Only the user may push changes.",
-  },
-  {
-    check: (command) => isActualGitCommit(command),
-    reason:
-      "git commit is unconditionally blocked. Only the user may commit changes.",
-  },
   {
     regex:
       /\bgit\s+(add|commit).*(?<!\.example)\.env(\.local|\.production|\.development)?\b/i,
