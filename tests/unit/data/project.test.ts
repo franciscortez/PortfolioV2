@@ -21,7 +21,7 @@ describe("Project Data", () => {
 
   it("defines standard categories and assigns valid categories to all projects", () => {
     expect(PROJECT_CATEGORIES).toEqual([
-      { id: "web-development", label: "Web Development" },
+      { id: "web-development", label: "Web Dev" },
       { id: "automation", label: "Automation" },
     ]);
 

@@ -7,56 +7,43 @@ import { ContactPage } from "@/components/pages/contact-page";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 
 describe("ProjectsPage Component", () => {
-  it("renders projects list and heading", () => {
-    render(
-      <ThemeProvider>
-        <ProjectsPage />
-      </ThemeProvider>
-    );
-
+  it("renders all six project stories and contact link", () => {
+    render(<ProjectsPage />);
     expect(
       screen.getByRole("heading", { level: 1, name: /projects/i })
     ).toBeInTheDocument();
-    expect(screen.getAllByText("Twitch Insights").length).toBeGreaterThan(0);
+    expect(screen.getAllByRole("article")).toHaveLength(6);
+    expect(screen.getByRole("button", { name: "All 6" })).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
+    expect(screen.getByRole("link", { name: /get in touch/i })).toHaveAttribute(
+      "href",
+      "/contact"
+    );
   });
 
-  it("renders category tabs with Web Development active by default", () => {
-    render(
-      <ThemeProvider>
-        <ProjectsPage />
-      </ThemeProvider>
-    );
-
-    const webDevTab = screen.getByRole("tab", { name: /web development/i });
-    const automationTab = screen.getByRole("tab", { name: /automation/i });
-
-    expect(webDevTab).toBeInTheDocument();
-    expect(automationTab).toBeInTheDocument();
-    expect(webDevTab).toHaveAttribute("aria-selected", "true");
-    expect(automationTab).toHaveAttribute("aria-selected", "false");
-
-    // Web projects should be present
-    expect(screen.getAllByText("Twitch Insights").length).toBeGreaterThan(0);
-  });
-
-  it("switches category to Automation and displays automation projects", () => {
-    render(
-      <ThemeProvider>
-        <ProjectsPage />
-      </ThemeProvider>
-    );
-
-    const automationTab = screen.getByRole("tab", { name: /automation/i });
-    fireEvent.click(automationTab);
-
-    expect(automationTab).toHaveAttribute("aria-selected", "true");
-    const webDevTab = screen.getByRole("tab", { name: /web development/i });
-    expect(webDevTab).toHaveAttribute("aria-selected", "false");
-
-    // Automation project NOLA PayMongo is displayed
-    expect(screen.getAllByText("NOLA PayMongo").length).toBeGreaterThan(0);
-    // Twitch Insights is not in the automation category
-    expect(screen.queryByText("Twitch Insights")).not.toBeInTheDocument();
+  it("filters category membership and restores all projects", () => {
+    render(<ProjectsPage />);
+    fireEvent.click(screen.getByRole("button", { name: "Automation 2" }));
+    expect(screen.getAllByRole("article")).toHaveLength(2);
+    expect(
+      screen.getByRole("heading", { name: "NOLA PayMongo" })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Gmail Inbox Organizer" })
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { name: "Twitch Insights" })
+    ).not.toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveTextContent("2 projects");
+    fireEvent.click(screen.getByRole("button", { name: "Web Dev 4" }));
+    expect(screen.getAllByRole("article")).toHaveLength(4);
+    expect(
+      screen.queryByRole("heading", { name: "NOLA PayMongo" })
+    ).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "All 6" }));
+    expect(screen.getAllByRole("article")).toHaveLength(6);
   });
 });
 

@@ -60,6 +60,11 @@ export const skillCategories: SkillCategory[] = [
     summary:
       "AI coding agents, workflow automation, and integration protocols.",
     skills: [
+      {
+        name: "Google Apps Script",
+        icon: "googleAppsScript",
+        color: "#4285F4",
+      },
       { name: "n8n", icon: "n8n", color: "#EA4B71" },
       { name: "GoHighLevel", icon: "goHighLevel", color: "#0EA5E9" },
       { name: "Claude Code", icon: "claudeCode", color: "#D97757" },

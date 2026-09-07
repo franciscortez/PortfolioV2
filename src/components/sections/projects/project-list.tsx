@@ -1,60 +1,105 @@
 "use client";
 
-import type { Project } from "@/data/project";
+import { useState } from "react";
+import { siteIcons } from "@/data/icons";
+import {
+  PROJECT_CATEGORIES,
+  type Project,
+  type ProjectFilter,
+} from "@/data/project";
+import { ProjectCard } from "@/components/sections/projects/project-card";
 
-type ProjectListProps = {
-  projects: Project[];
-  activeSlug: string;
-  onSelect: (slug: string) => void;
+const filters = [{ id: "all", label: "All" }, ...PROJECT_CATEGORIES] as const;
+const filterIcons = {
+  all: siteIcons.layers,
+  "web-development": siteIcons.code,
+  automation: siteIcons.automation,
 };
 
-export function ProjectList({
-  projects,
-  activeSlug,
-  onSelect,
-}: ProjectListProps) {
+function matchesFilter(project: Project, filter: ProjectFilter) {
   return (
-    <nav aria-label="Project list" className="flex flex-col">
-      <div className="scrollbar-hidden max-h-72 overflow-y-auto lg:grid lg:grid-flow-col lg:auto-cols-fr lg:max-h-none lg:overflow-x-hidden lg:overflow-y-hidden">
-        {projects.map((project, index) => {
-          const isActive = project.slug === activeSlug;
-          const formattedIndex = String(index + 1).padStart(2, "0");
+    filter === "all" ||
+    (Array.isArray(project.category)
+      ? project.category.includes(filter)
+      : project.category === filter)
+  );
+}
 
-          return (
-            <button
-              key={project.slug}
-              type="button"
-              onClick={() => onSelect(project.slug)}
-              aria-current={isActive ? "true" : undefined}
-              className={`group relative flex w-full flex-col gap-1 border-b border-border px-5 py-3 text-left transition-colors duration-150 lg:w-full lg:border-b-0 lg:border-r lg:last:border-r-0 lg:px-4 lg:py-4 xl:px-5 xl:py-5 massive:px-8 massive:py-8 ${
-                isActive
-                  ? "bg-panel text-foreground"
-                  : "text-muted hover:bg-panel hover:text-foreground"
-              }`}
-            >
-              <span
-                aria-hidden="true"
-                className={`absolute bottom-0 left-0 h-0.5 w-full origin-left bg-accent transition-transform duration-200 ease-out ${
-                  isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                }`}
-              />
+export function ProjectList({ projects }: { projects: Project[] }) {
+  const [filter, setFilter] = useState<ProjectFilter>("all");
+  const visibleProjects = projects.filter((project) =>
+    matchesFilter(project, filter)
+  );
 
-              <div className="flex items-center gap-2.5">
-                <span className="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-muted lg:text-[0.68rem] xl:text-xs massive:text-sm">
-                  {formattedIndex}
+  return (
+    <section aria-label="Project collection">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-4">
+        <div
+          role="group"
+          aria-label="Filter projects by category"
+          className="grid w-full grid-cols-[auto_auto_auto] gap-1 sm:flex sm:w-auto sm:gap-2"
+        >
+          {filters.map((option) => {
+            const Icon = filterIcons[option.id];
+            return (
+              <button
+                key={option.id}
+                type="button"
+                aria-pressed={filter === option.id}
+                aria-controls="project-results"
+                onClick={() => setFilter(option.id)}
+                className={`inline-flex min-h-11 items-center justify-center gap-1.5 border px-2 py-2 text-xs transition-colors sm:gap-3 sm:px-4 sm:text-sm ${filter === option.id ? "button-accent font-medium" : "border-transparent text-muted hover:border-accent hover:text-accent"}`}
+              >
+                <Icon aria-hidden="true" className="size-3.5 shrink-0" />
+                {option.label}{" "}
+                <span className="tabular-nums">
+                  {
+                    projects.filter((project) =>
+                      matchesFilter(project, option.id)
+                    ).length
+                  }
                 </span>
-                <span
-                  className={`text-sm font-medium transition-colors lg:text-sm xl:text-base massive:text-xl ${
-                    isActive ? "text-foreground" : ""
-                  }`}
-                >
-                  {project.title}
-                </span>
-              </div>
-            </button>
-          );
-        })}
+              </button>
+            );
+          })}
+        </div>
+        <p
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          className="text-xs text-muted"
+        >
+          {visibleProjects.length}{" "}
+          {visibleProjects.length === 1 ? "project" : "projects"}
+        </p>
       </div>
-    </nav>
+      <div
+        id="project-results"
+        className="grid gap-x-7 gap-y-8 pt-6 md:grid-cols-2 xl:gap-x-8 xl:gap-y-10"
+      >
+        {visibleProjects.map((project) => (
+          <ProjectCard
+            key={project.slug}
+            project={project}
+            priority={project.slug === projects[0]?.slug}
+          />
+        ))}
+        {visibleProjects.length === 0 && (
+          <div className="border-b border-border py-16 text-center">
+            <h2 className="text-xl font-semibold">No projects to show yet.</h2>
+            <p className="mt-3 text-sm text-muted">Check back for more work.</p>
+            {filter !== "all" && (
+              <button
+                type="button"
+                onClick={() => setFilter("all")}
+                className="mt-6 min-h-11 border border-border px-4 text-sm hover:border-accent"
+              >
+                Show all projects
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+    </section>
   );
 }

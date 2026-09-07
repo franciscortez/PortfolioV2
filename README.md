@@ -17,7 +17,7 @@ A personal portfolio built with Next.js App Router, React, TypeScript, and Tailw
 Create a local `.env` file from `.env.example`.
 
 ```env
-NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=
+WEB3FORMS_ACCESS_KEY=
 NEXT_PUBLIC_SITE_URL=
 ```
 
@@ -50,3 +50,9 @@ npm.cmd run build
 - Homepage structured data is rendered through `src/components/seo/portfolio-json-ld.tsx`.
 
 After deployment, verify `/sitemap.xml`, `/robots.txt`, and `/opengraph-image`, then submit the sitemap in Google Search Console.
+
+### Contact form delivery
+
+Set `WEB3FORMS_ACCESS_KEY` to your Web3Forms form access key before building or deploying. The server component passes this public form identifier to the browser, which submits directly to Web3Forms as recommended by the provider. This is a public form access key, not a private account credential. The legacy `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` name remains supported. Restart development or rebuild/redeploy after changing environment values.
+
+The UI preserves entered text on rejection, network failure, or timeout; it clears the form only after an HTTP-success JSON response with `success: true`. Automated E2E tests mock provider responses and do not send email. A separate, authorized live test is required to confirm provider acceptance; inbox delivery must be checked by the recipient.

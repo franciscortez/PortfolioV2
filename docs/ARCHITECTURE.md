@@ -9,7 +9,7 @@
 - **Typography**: Geist Sans & Geist Mono (`next/font/google`)
 - **Icons**: `react-icons` (centralized in `src/data/icons.ts`)
 - **Theme**: `next-themes` (dark-first, light support)
-- **Forms**: Web3Forms client-side integration
+- **Forms**: Web3Forms submitted directly from the browser through `src/lib/web3forms.ts`; no server proxy
 - **Formatting & Linting**: Prettier + ESLint 9
 - **Testing**: Vitest + React Testing Library (Unit/Component), Playwright (E2E)
 

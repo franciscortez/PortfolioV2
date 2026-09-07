@@ -4,7 +4,7 @@ import { ContactFormClient } from "@/components/sections/contact/contact-form-cl
 
 describe("ContactFormClient Component", () => {
   it("renders form inputs for name, email, subject, and message", () => {
-    render(<ContactFormClient isConfigured={true} accessKey="test-key" />);
+    render(<ContactFormClient accessKey="test-form-key" />);
 
     expect(screen.getByLabelText(/^name$/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/^email$/i)).toBeInTheDocument();
@@ -15,11 +15,11 @@ describe("ContactFormClient Component", () => {
     ).toBeInTheDocument();
   });
 
-  it("shows disabled/unconfigured banner when isConfigured is false", () => {
-    render(<ContactFormClient isConfigured={false} />);
+  it("shows disabled/unconfigured banner when no access key is configured", () => {
+    render(<ContactFormClient accessKey="" />);
 
     expect(
-      screen.getByText(/contact form is waiting for/i)
+      screen.getByText(/message form is temporarily unavailable/i)
     ).toBeInTheDocument();
   });
 });

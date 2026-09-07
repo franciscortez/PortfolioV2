@@ -4,7 +4,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "Projects",
   description:
-    "Selected full-stack projects by Francis Emil M. Cortez, including web applications, payment integrations, AI-powered tools, dashboards, and portfolio work.",
+    "Web applications and automations by Francis Emil M. Cortez, spanning booking, payment integrations, budget tracking, and inbox workflows.",
   path: "/projects",
 });
 

@@ -1,165 +1,145 @@
-"use client";
-
 import Image from "next/image";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
-import { skillIcons } from "@/data/icons";
-import type { Project } from "@/data/project";
+import Link from "next/link";
+import { siteIcons, skillIcons } from "@/data/icons";
+import { PROJECT_CATEGORIES, type Project } from "@/data/project";
 
-type ProjectDetailProps = {
-  project: Project;
-};
-
-export function ProjectDetail({ project }: ProjectDetailProps) {
+export function ProjectDetail({ project }: { project: Project }) {
+  const categories = Array.isArray(project.category)
+    ? project.category
+    : [project.category];
   return (
-    <div>
-      {/* Title + Links */}
-      <div className="border-b border-border px-6 py-6 sm:px-8 xl:px-10 xl:py-8 massive:px-14 massive:py-10">
-        <p className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted massive:text-xs">
-          {project.subtitle}
+    <article className="font-sans" aria-labelledby="project-title">
+      <Link
+        href="/projects"
+        className="mb-4 inline-flex min-h-11 items-center text-sm text-muted underline decoration-border underline-offset-4 hover:text-foreground"
+      >
+        Back to projects
+      </Link>
+      <header className="mb-6">
+        <p className="mb-2 text-sm text-muted">
+          {categories
+            .map(
+              (category) =>
+                PROJECT_CATEGORIES.find((option) => option.id === category)
+                  ?.label
+            )
+            .join(" / ")}{" "}
+          / {project.subtitle}
         </p>
-        <h2 className="mt-2 font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl xl:text-4xl massive:text-5xl">
+        <h1
+          id="project-title"
+          className="max-w-[22ch] text-3xl font-semibold tracking-[-0.04em] sm:text-4xl xl:text-5xl"
+        >
           {project.title}
-        </h2>
-        <p className="mt-3 text-sm leading-7 text-muted massive:text-base">
+        </h1>
+        <p className="mt-3 max-w-[65ch] text-base leading-7 text-muted">
           {project.summary}
         </p>
-
-        {/* Links */}
         {project.links.length > 0 && (
-          <div className="mt-5 flex flex-wrap gap-3">
+          <div className="mt-3 flex flex-wrap gap-x-6">
             {project.links.map((link) => {
-              const isGithub = link.type === "github";
-
+              const Icon =
+                link.type === "github"
+                  ? siteIcons.github
+                  : siteIcons.externalLink;
               return (
                 <a
-                  key={link.label}
+                  key={link.href}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-2 border px-4 py-2.5 text-xs font-medium transition-colors massive:px-5 massive:py-3 massive:text-sm ${
-                    isGithub
-                      ? "border-border text-muted hover:border-accent hover:text-accent"
-                      : "button-accent"
-                  }`}
+                  className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent"
                 >
-                  {isGithub ? (
-                    <FaGithub
-                      aria-hidden="true"
-                      className="size-3.5 massive:size-4"
-                    />
-                  ) : (
-                    <FaExternalLinkAlt
-                      aria-hidden="true"
-                      className="size-3 massive:size-3.5"
-                    />
-                  )}
+                  <Icon aria-hidden="true" className="size-4 shrink-0" />
                   {link.label}
+                  <span className="sr-only"> (opens in new tab)</span>
                 </a>
               );
             })}
           </div>
         )}
-      </div>
-
-      {/* Image */}
-      {project.images.length > 0 && (
-        <div className="border-b border-border">
-          {project.images.map((img, index) => (
-            <figure key={img.src} className="flex flex-col">
-              <div className="relative aspect-video w-full overflow-hidden bg-background">
+      </header>
+      <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(0,1fr)] xl:gap-8">
+        <div className="min-w-0 space-y-4">
+          {project.images.map((image, index) => (
+            <figure key={image.src}>
+              <div className="relative aspect-video overflow-hidden bg-panel">
                 <Image
-                  src={img.src}
-                  alt={img.alt}
+                  src={image.src}
+                  alt={image.alt}
                   fill
-                  className="object-contain transition-opacity hover:opacity-90"
-                  sizes="(min-width: 1024px) 80vw, 100vw"
-                  loading={index === 0 ? "eager" : "lazy"}
-                  fetchPriority={index === 0 ? "high" : "auto"}
-                  quality={100}
+                  className="object-contain"
+                  sizes="(min-width: 1280px) 45vw, (min-width: 1024px) 65vw, 100vw"
+                  priority={index === 0}
                 />
               </div>
+              <figcaption className="mt-2 max-w-[70ch] text-xs leading-5 text-muted">
+                {image.description}
+              </figcaption>
             </figure>
           ))}
         </div>
-      )}
-
-      {/* Tech Stack | Overview — side by side on desktop */}
-      <div className="grid lg:grid-cols-[minmax(12rem,35%)_minmax(0,1fr)]">
-        {/* Tech Stack */}
-        <div className="border-b border-border px-6 py-6 sm:px-8 lg:border-b-0 lg:border-r xl:px-10 xl:py-8 massive:px-14 massive:py-10">
-          <p className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted massive:text-xs">
-            Tech Stack
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {project.tech.map((t) => {
-              const Icon = skillIcons[t.icon];
-              return (
-                <div
-                  key={t.name}
-                  className="group flex items-center gap-2 border border-border bg-background px-3 py-2 transition-colors hover:border-muted massive:px-4 massive:py-2.5"
-                >
-                  <Icon
-                    aria-hidden="true"
-                    className="size-3.5 transition-colors massive:size-4"
-                    style={{ color: t.color }}
-                  />
-                  <span className="text-xs font-medium text-muted massive:text-sm">
-                    {t.name}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Categories */}
-          <p className="mt-6 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted massive:text-xs">
-            Categories
-          </p>
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="border border-border bg-background px-2.5 py-1 font-mono text-[0.58rem] uppercase tracking-[0.14em] text-muted massive:px-3 massive:py-1.5 massive:text-xs"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Overview + Key Features */}
-        <div className="px-6 py-6 sm:px-8 xl:px-10 xl:py-8 massive:px-14 massive:py-10">
-          <p className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted massive:text-xs">
-            Overview
-          </p>
-          <p className="mt-4 text-sm leading-8 text-muted massive:text-base">
-            {project.explanation}
-          </p>
-
-          {/* Key Features */}
-          {project.features.length > 0 && (
-            <div className="mt-6">
-              <p className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted massive:text-xs">
-                Key Features
-              </p>
-              <ul className="mt-3 grid gap-2">
-                {project.features.map((feature) => (
+        <div className="min-w-0 space-y-5">
+          <section aria-labelledby="overview-title">
+            <h2 id="overview-title" className="text-base font-semibold">
+              How it works
+            </h2>
+            <p className="mt-2 max-w-[70ch] text-sm leading-6 text-muted">
+              {project.explanation}
+            </p>
+          </section>
+          <section aria-labelledby="features-title">
+            <h2 id="features-title" className="text-base font-semibold">
+              Capabilities
+            </h2>
+            <ul className="mt-2 list-disc space-y-1 pl-4 text-sm leading-6 text-muted">
+              {project.features.map((feature) => (
+                <li key={feature}>{feature}</li>
+              ))}
+            </ul>
+          </section>
+          <section
+            aria-labelledby="stack-title"
+            className="border-t border-border pt-4"
+          >
+            <h2 id="stack-title" className="text-base font-semibold">
+              Built with
+            </h2>
+            <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-2 font-mono text-xs leading-5 text-muted">
+              {project.tech.map((tech) => {
+                const Icon = skillIcons[tech.icon];
+                return (
                   <li
-                    key={feature}
-                    className="flex items-start gap-2.5 text-sm leading-relaxed text-muted massive:text-base"
+                    key={tech.name}
+                    className="inline-flex items-center gap-2 text-foreground"
                   >
-                    <span
-                      className="mt-2 size-1 shrink-0 bg-accent"
+                    <Icon
                       aria-hidden="true"
+                      className="size-5 shrink-0"
+                      style={{ color: tech.color }}
                     />
-                    {feature}
+                    {tech.name}
                   </li>
-                ))}
-              </ul>
-            </div>
-          )}
+                );
+              })}
+            </ul>
+          </section>
         </div>
       </div>
-    </div>
+      <footer className="mt-8 flex flex-wrap justify-between gap-3 border-t border-border pt-4">
+        <Link
+          href="/projects"
+          className="inline-flex min-h-11 items-center text-sm underline decoration-border underline-offset-4 hover:text-accent"
+        >
+          Browse all projects
+        </Link>
+        <Link
+          href="/contact"
+          className="inline-flex min-h-11 items-center text-sm underline decoration-border underline-offset-4 hover:text-accent"
+        >
+          Get in touch
+        </Link>
+      </footer>
+    </article>
   );
 }

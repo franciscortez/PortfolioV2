@@ -2,11 +2,11 @@
 
 import { useRef, useState, type FormEvent, type ReactNode } from "react";
 import { siteIcons } from "@/data/icons";
+import { submitContactForm } from "@/lib/web3forms";
 import { showToast } from "@/components/ui/toast";
 
 type ContactFormClientProps = {
-  isConfigured: boolean;
-  accessKey?: string;
+  accessKey: string;
 };
 
 type FormStatus = "idle" | "submitting";
@@ -17,10 +17,9 @@ const inputClassName =
 const labelClassName =
   "font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted massive:text-xs";
 
-export function ContactFormClient({
-  isConfigured,
-  accessKey,
-}: ContactFormClientProps) {
+export function ContactFormClient({ accessKey }: ContactFormClientProps) {
+  const isConfigured = Boolean(accessKey);
+  const submitting = useRef(false);
   const EmailIcon = siteIcons.email;
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<FormStatus>("idle");
@@ -28,45 +27,42 @@ export function ContactFormClient({
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (!isConfigured || !accessKey) {
+    if (submitting.current) return;
+
+    if (!isConfigured) {
       showToast("Contact form is not configured.", "error");
       return;
     }
 
+    submitting.current = true;
     setStatus("submitting");
 
     const formData = new FormData(event.currentTarget);
-    const data = Object.fromEntries(formData);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          access_key: accessKey,
-          ...data,
-        }),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        showToast(
-          "Message sent successfully! I'll get back to you soon.",
-          "success"
-        );
-        formRef.current?.reset();
-      } else {
-        showToast(result.message || "Failed to send message.", "error");
-      }
-    } catch (error) {
+      await submitContactForm(formData, accessKey);
       showToast(
-        error instanceof Error ? error.message : "Something went wrong.",
+        "Message sent successfully! I'll get back to you soon.",
+        "success"
+      );
+      formRef.current?.reset();
+    } catch (error) {
+      const isNetworkError = error instanceof TypeError;
+      const isTimeout =
+        error instanceof Error &&
+        ["TimeoutError", "AbortError"].includes(error.name);
+      showToast(
+        isTimeout
+          ? "Sending timed out. Delivery is unconfirmed; please use the email link above."
+          : isNetworkError
+            ? "Could not reach the contact service. Please check your connection or use the email link above."
+            : error instanceof Error
+              ? error.message
+              : "Could not send your message. Please use the email link above.",
         "error"
       );
     } finally {
+      submitting.current = false;
       setStatus("idle");
     }
   }
@@ -83,11 +79,8 @@ export function ContactFormClient({
 
         {!isConfigured ? (
           <p className="mt-5 border border-border bg-panel p-4 text-sm leading-7 text-muted massive:text-base">
-            Contact form is waiting for
-            <code className="mx-1 font-mono text-xs text-accent">
-              NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
-            </code>
-            in the environment. Static contact links above still work.
+            The message form is temporarily unavailable. Please use the email
+            link above to get in touch.
           </p>
         ) : null}
       </div>

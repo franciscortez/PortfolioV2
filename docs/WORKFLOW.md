@@ -77,7 +77,7 @@ Create `.env` based on `.env.example`:
 
 ```bash
 NEXT_PUBLIC_SITE_URL=https://francisemilcortez.vercel.app
-NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your_access_key_here
+WEB3FORMS_ACCESS_KEY=your_access_key_here
 ```
 
 ---
@@ -89,3 +89,9 @@ NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your_access_key_here
 - **Sitemap & Robots**: Dynamically generated via `src/app/sitemap.ts` and `src/app/robots.ts`.
 - **Structured Data**: JSON-LD `Person` and `WebSite` schemas rendered via `src/components/seo/portfolio-json-ld.tsx`.
 - **Social Preview**: Branded image dynamically generated in `src/app/opengraph-image.tsx`.
+
+### Contact form delivery
+
+Set `WEB3FORMS_ACCESS_KEY` to your Web3Forms form access key before building or deploying. The server component passes this public form identifier to the browser, which submits directly to Web3Forms as recommended by the provider. This is a public form access key, not a private account credential. The legacy `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` name remains supported. Restart development or rebuild/redeploy after changing environment values.
+
+The UI preserves entered text on rejection, network failure, or timeout; it clears the form only after an HTTP-success JSON response with `success: true`. Automated E2E tests mock provider responses and do not send email. A separate, authorized live test is required to confirm provider acceptance; inbox delivery must be checked by the recipient.

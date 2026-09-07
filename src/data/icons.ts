@@ -1,5 +1,6 @@
 import {
   FaBriefcase,
+  FaCogs,
   FaBullseye,
   FaCalendarAlt,
   FaCode,
@@ -24,6 +25,7 @@ import {
   GeminiIcon,
   GoHighLevelIcon,
   GoogleCloudIcon,
+  GoogleAppsScriptIcon,
   LinearIcon,
   NeonIcon,
   NodeJsIcon,
@@ -58,7 +60,6 @@ import {
   SiDrizzle,
   SiVercel,
   SiVitest,
-  SiGoogleappsscript,
   SiGmail,
 } from "react-icons/si";
 import { TbApi, TbDatabase } from "react-icons/tb";
@@ -90,7 +91,7 @@ export const skillIcons = {
   drizzle: SiDrizzle,
 
   goHighLevel: GoHighLevelIcon,
-  googleAppsScript: SiGoogleappsscript,
+  googleAppsScript: GoogleAppsScriptIcon,
   gmail: SiGmail,
   n8n: SiN8N,
   openApi: TbApi,
@@ -117,6 +118,7 @@ export const skillIcons = {
 export type SkillIconName = keyof typeof skillIcons;
 
 export const siteIcons = {
+  automation: FaCogs,
   close: IoClose,
   briefcase: FaBriefcase,
   calendar: FaCalendarAlt,

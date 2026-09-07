@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { projects } from "@/data/project";
 import { absoluteUrl } from "@/lib/site";
 
 const routes = [
@@ -13,7 +14,13 @@ const routes = [
 }>;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((route) => ({
+  return [
+    ...routes,
+    ...projects.map((project) => ({
+      path: `/projects/${project.slug}`,
+      priority: 0.7,
+    })),
+  ].map((route) => ({
     url: absoluteUrl(route.path),
     changeFrequency: "monthly",
     priority: route.priority,

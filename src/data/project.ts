@@ -20,8 +20,10 @@ export type ProjectTech = {
 
 export type ProjectCategory = "web-development" | "automation";
 
+export type ProjectFilter = "all" | ProjectCategory;
+
 export const PROJECT_CATEGORIES = [
-  { id: "web-development", label: "Web Development" },
+  { id: "web-development", label: "Web Dev" },
   { id: "automation", label: "Automation" },
 ] as const;
 
@@ -41,57 +43,19 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "twitch-insights",
-    title: "Twitch Insights",
-    subtitle: "Personal Project",
-    summary: "Real-time sentiment analysis app for Twitch stream chat data.",
-    explanation:
-      "Twitch Insights connects to live Twitch streams via the Twitch API and captures chat messages in real time. Each message is processed through a RoBERTa-based sentiment analysis model running on a Flask backend, classifying text as positive, negative, or neutral. The results are stored in MongoDB and served to a React dashboard that renders live sentiment graphs, mood distribution charts, word-cloud visualizations, and exportable reports. The system is designed to help streamers and analysts understand audience engagement patterns during broadcasts.",
-    features: [
-      "Real-time Chat Sentiment Analysis (RoBERTa)",
-      "Live Sentiment Timeline & Mood Distribution Charts",
-      "Word-cloud Visualizations",
-      "Exportable Reports",
-      "Twitch API Integration",
-    ],
-    tags: ["Full Stack", "AI / ML", "Data Visualization"],
-    tech: [
-      { name: "React", icon: "react", color: "#61DAFB" },
-      { name: "Flask", icon: "flask", color: "#3BABC3" },
-      { name: "MongoDB", icon: "mongodb", color: "#47A248" },
-      { name: "Python", icon: "python", color: "#3776AB" },
-    ],
-    links: [
-      {
-        label: "View Code",
-        href: "https://github.com/franciscortez/Twitch-Insight/tree/v5",
-        type: "github",
-      },
-    ],
-    images: [
-      {
-        src: "/images/projects/twitch-insight.png",
-        alt: "Twitch Insights dashboard showing real-time sentiment analysis graphs and chat mood distribution",
-        description:
-          "Main dashboard view with live sentiment timeline, mood distribution pie chart, and recent chat message feed with individual sentiment scores.",
-      },
-    ],
-    category: "web-development",
-  },
-  {
     slug: "gentlemens-quarters",
     title: "Gentlemen's Quarters",
     subtitle: "Personal Project",
     summary:
-      "A premium barbershop booking and catalog system integrated with PayMongo for secure online downpayments.",
+      "A barbershop platform where clients explore services, book appointments, pay a downpayment, and reschedule without creating an account.",
     explanation:
-      "Gentlemen's Quarters is a full-stack booking and catalog platform designed for modern barbershops. Built using React and Express (both written in TypeScript), the application allows clients to explore grooming services, view the team, and book appointments seamlessly. It integrates PayMongo to handle secure downpayments, ensuring booking commitments. The backend is powered by a PostgreSQL database hosted on Neon, managed with Drizzle ORM for schema definition and queries. It also features flexible scheduling, giving users a secure link in their confirmation emails to reschedule bookings without needing a full customer account.",
+      "React and Express power the booking flow, with TypeScript across the application. PayMongo handles downpayments, while PostgreSQL on Neon and Drizzle ORM support scheduling data. Confirmation emails provide secure links for self-service rescheduling.",
     features: [
-      "Secure Online Downpayments (PayMongo Integration)",
-      "Interactive Barbershop Service & Styling Catalog",
-      "Streamlined Appointment Booking Workflow (No Account Required)",
-      "Flexible Self-Service Rescheduling via Secure Email Links",
-      "Robust Database Schema & Queries using Drizzle ORM and PostgreSQL (Neon)",
+      "Account-free appointment booking",
+      "Online downpayments through PayMongo",
+      "Self-service rescheduling via secure email links",
+      "Service and styling catalog",
+      "PostgreSQL scheduling data managed with Drizzle ORM",
     ],
     tags: ["Full Stack", "Payments", "Booking System"],
     tech: [
@@ -119,7 +83,7 @@ export const projects: Project[] = [
     images: [
       {
         src: "/images/projects/gentlemens-quarter.png",
-        alt: "Gentlemen's Quarters booking platform dashboard mockup displaying desktop and mobile views",
+        alt: "Gentlemen's Quarters barbershop homepage displayed on desktop and mobile mockups",
         description:
           "The homepage of Gentlemen's Quarters, featuring a clean dark-themed landing page, catalog view, and responsive appointment scheduling layout.",
       },
@@ -131,16 +95,15 @@ export const projects: Project[] = [
     title: "NOLA PayMongo",
     subtitle: "Intern Project",
     summary:
-      "A Laravel-based custom payment provider integrating GoHighLevel with PayMongo for checkout sessions, payment verification, refunds, webhooks, OAuth integration, and transaction tracking.",
+      "Connect GoHighLevel checkout to PayMongo, with payment verification, refunds, and transaction updates handled through one integration.",
     explanation:
-      "Built a Laravel-based custom payment provider integrating GoHighLevel with PayMongo for checkout sessions, payment verification, refunds, webhooks, OAuth integration, and transaction tracking. The system implements a complete payment lifecycle including checkout page generation, real-time payment verification via webhooks, automated refund processing, and OAuth-based authentication for the GoHighLevel marketplace. It handles webhook signature verification for security, supports multiple payment methods through PayMongo, and provides GoHighLevel with real-time payment status updates through its custom provider API.",
+      "Built during an internship, this Laravel custom payment provider connects GoHighLevel with PayMongo. It creates checkout sessions, verifies webhook signatures, tracks transactions, and sends payment status updates to GoHighLevel. OAuth supports marketplace authentication, alongside multiple payment methods and automated refunds.",
     features: [
-      "GoHighLevel Custom Payment Provider",
-      "PayMongo Checkout & Payment Verification",
-      "Automated Refund Processing",
-      "Webhook Integration & Signature Verification",
-      "OAuth Authentication for GHL Marketplace",
-      "Transaction Tracking Dashboard",
+      "GoHighLevel and PayMongo payment integration",
+      "Verified webhooks and payment status updates",
+      "Checkout, refunds, and transaction tracking",
+      "OAuth authentication for the GoHighLevel marketplace",
+      "Multiple payment methods through PayMongo",
     ],
     tags: ["Full Stack", "Payments", "Integration"],
     tech: [
@@ -154,28 +117,77 @@ export const projects: Project[] = [
     images: [
       {
         src: "/images/projects/nola-paymongo.png",
-        alt: "NOLA PayMongo payment integration interface shown on laptop and mobile device mockups",
+        alt: "NOLA PayMongo payment integration landing page displayed on a laptop mockup",
         description:
-          "Payment integration interface for GoHighLevel and PayMongo checkout, transaction tracking, and payment status workflows.",
+          "Landing page introducing the NOLA PayMongo integration for GoHighLevel and PayMongo.",
       },
     ],
     category: "automation",
+  },
+  {
+    slug: "pennywings-budget-tracker",
+    title: "PennyWings Budget Tracker",
+    subtitle: "Personal Project",
+    summary:
+      "Track budgets and transactions across devices, explore spending dashboards, and get financial insights in one place.",
+    explanation:
+      "React, TypeScript, and Tailwind CSS form the interface. Supabase provides PostgreSQL storage, authentication, Row Level Security, and realtime updates, with TanStack Query managing client-side data. A Google Gemini assistant provides personalized financial insights. Vitest and Playwright cover unit and end-to-end behavior.",
+    features: [
+      "Budget tracking and spending dashboards",
+      "Realtime synchronization across devices",
+      "Financial insights with a Gemini assistant",
+      "Authentication and Row Level Security through Supabase",
+      "Client-side caching with TanStack Query",
+      "Unit and end-to-end tests with Vitest and Playwright",
+    ],
+    tags: ["Full Stack", "AI", "Testing", "Finance"],
+    tech: [
+      { name: "React", icon: "react", color: "#61DAFB" },
+      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
+      { name: "Tailwind CSS", icon: "tailwind", color: "#06B6D4" },
+      { name: "Supabase", icon: "supabase", color: "#3FCF8E" },
+      { name: "PostgreSQL", icon: "postgresql", color: "#4169E1" },
+      { name: "Vitest", icon: "vitest", color: "#FCC72B" },
+      { name: "Playwright", icon: "playwright", color: "#2EAD33" },
+      { name: "Google Gemini", icon: "googleGemini", color: "#886FBF" },
+    ],
+    links: [
+      {
+        label: "View Code",
+        href: "https://github.com/franciscortez/PennyWingsV2",
+        type: "github",
+      },
+      {
+        label: "Live Site",
+        href: "https://pennywings.vercel.app",
+        type: "live",
+      },
+    ],
+    images: [
+      {
+        src: "/images/projects/penny-wings.png",
+        alt: "PennyWings landing page with a balance preview, displayed on desktop and mobile mockups",
+        description:
+          "Responsive PennyWings landing page introducing budget tracking with a sample balance and activity preview.",
+      },
+    ],
+    category: "web-development",
   },
   {
     slug: "gmail-inbox-organizer",
     title: "Gmail Inbox Organizer",
     subtitle: "Personal Project",
     summary:
-      "An automated Gmail triage and inbox management system built with Google Apps Script to classify, label, and selectively archive incoming emails based on contextual priority rules.",
+      "Keep important messages in view while routine email is labeled and archived automatically, without deleting messages or changing unread status.",
     explanation:
-      "Gmail Inbox Organizer is an automated email triage system built using Google Apps Script and Clasp to automatically streamline and organize incoming Gmail messages. Running on 5-minute automated triggers, the system evaluates incoming threads against contextual priority rules: it applies destination labels, keeps critical emails (such as security alerts, bank transactions, meeting notes, job applications, and urgent GitHub PR reviews or CI failures) in the Inbox, and automatically archives low-priority routine notifications after 12 hours. Engineered with strict non-destructive safety rules, it never deletes emails, never moves messages to Trash, never marks messages as read, and preserves unread states while keeping starred items in the primary inbox.",
+      "Google Apps Script runs triage every five minutes, applying contextual labels and keeping security alerts, bank transactions, meeting notes, job applications, and urgent GitHub activity in the inbox. Low-priority notifications are archived after 12 hours. Starred messages stay in the inbox; the script never deletes messages, moves them to Trash, or marks them as read. Clasp supports version-controlled deployment.",
     features: [
-      "Automated 5-Minute Inbox Triage via Google Apps Script",
-      "Contextual Destination Labeling (Banking, Security, GitHub Activity, Transactions)",
-      "Intelligent 12-Hour Archival for Low-Priority Notifications & Routine Updates",
-      "Non-Destructive Safety Rules (Zero deletions, never marks as read, preserves searchability)",
-      "Multi-Bank Transaction & Debit Monitoring (MariBank, UnionBank, BPI)",
-      "Developer Workflow & Clasp Integration for Version-Controlled Deployments",
+      "Scheduled inbox triage every five minutes",
+      "Priority labels and delayed routine-email archiving",
+      "No deletions or changes to unread status",
+      "Starred messages remain in the inbox",
+      "Contextual rules for banking, security, and developer activity",
+      "Version-controlled Apps Script deployment with Clasp",
     ],
     tags: [
       "Automation",
@@ -211,51 +223,40 @@ export const projects: Project[] = [
     category: "automation",
   },
   {
-    slug: "pennywings-budget-tracker",
-    title: "PennyWings Budget Tracker",
+    slug: "twitch-insights",
+    title: "Twitch Insights",
     subtitle: "Personal Project",
     summary:
-      "A scalable full-stack budget tracking application built with AI-assisted development, automated testing (Vitest & Playwright), real-time synchronization, and AI-powered insights.",
+      "Follow the mood of a live Twitch chat through sentiment timelines, visual breakdowns, and exportable reports.",
     explanation:
-      "Built a scalable full-stack app using React, TypeScript, Tailwind CSS, and Supabase (PostgreSQL, Auth, Realtime) with secure authentication and Row Level Security (RLS). Developed using AI-assisted workflows with deterministic hooks, covered by Vitest unit tests and Playwright end-to-end tests. Implemented real-time data synchronization with Supabase Realtime and TanStack Query, core budget tracking, analytics dashboards, and an AI assistant (Google Gemini API) for personalized financial insights.",
+      "The application captures live Twitch chat through the Twitch API. A RoBERTa model on a Flask backend classifies messages as positive, negative, or neutral. MongoDB stores the results, and a React dashboard displays sentiment timelines, mood distributions, and word clouds for streamers and analysts exploring audience engagement.",
     features: [
-      "AI-Assisted Development & Automated Testing (Vitest + Playwright)",
-      "Secure Authentication & Row Level Security (RLS)",
-      "Real-time Data Synchronization with Supabase",
-      "Efficient Caching with TanStack Query",
-      "AI Financial Assistant (Google Gemini API)",
-      "Comprehensive Analytics Dashboards",
-      "Multi-device Responsive Tracking",
+      "Live chat sentiment classification with RoBERTa",
+      "Sentiment timelines and mood distribution charts",
+      "Word clouds and exportable reports",
+      "Twitch API chat integration",
+      "Sentiment data stored in MongoDB",
     ],
-    tags: ["Full Stack", "AI", "Testing", "Finance"],
+    tags: ["Full Stack", "AI / ML", "Data Visualization"],
     tech: [
       { name: "React", icon: "react", color: "#61DAFB" },
-      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
-      { name: "Tailwind CSS", icon: "tailwind", color: "#06B6D4" },
-      { name: "Supabase", icon: "supabase", color: "#3FCF8E" },
-      { name: "PostgreSQL", icon: "postgresql", color: "#4169E1" },
-      { name: "Vitest", icon: "vitest", color: "#FCC72B" },
-      { name: "Playwright", icon: "playwright", color: "#2EAD33" },
-      { name: "Google Gemini", icon: "googleGemini", color: "#886FBF" },
+      { name: "Flask", icon: "flask", color: "#3BABC3" },
+      { name: "MongoDB", icon: "mongodb", color: "#47A248" },
+      { name: "Python", icon: "python", color: "#3776AB" },
     ],
     links: [
       {
         label: "View Code",
-        href: "https://github.com/franciscortez/PennyWingsV2",
+        href: "https://github.com/franciscortez/Twitch-Insight/tree/v5",
         type: "github",
-      },
-      {
-        label: "Live Site",
-        href: "https://pennywings.vercel.app",
-        type: "live",
       },
     ],
     images: [
       {
-        src: "/images/projects/penny-wings.png",
-        alt: "PennyWings Budget Tracker dashboard showing financial analytics and budget management interface",
+        src: "/images/projects/twitch-insight.png",
+        alt: "Twitch Insights landing page introducing chat sentiment analysis on a laptop mockup",
         description:
-          "Main dashboard view displaying accounts overview, transaction history, budget categories, and AI-powered financial insights.",
+          "Landing page introducing Twitch chat sentiment analysis, trend monitoring, and word-cloud features.",
       },
     ],
     category: "web-development",
@@ -265,26 +266,23 @@ export const projects: Project[] = [
     title: "Personal Portfolio",
     subtitle: "Personal Project",
     summary:
-      "A high-performance portfolio website engineered with Next.js 16, AI-assisted development workflows, automated Prettier hooks, Vitest unit tests, and Playwright E2E tests.",
+      "A responsive home for project stories, experience, and contact, with clear navigation and a consistent light and dark theme.",
     explanation:
-      "This portfolio website is built with Next.js 16 App Router and React 19, engineered using AI-assisted development workflows across Antigravity, Claude Code, and Codex. Features deterministic Prettier auto-formatting hooks, strict safety guardrails blocking destructive commands and unauthorized package mutations, unit/component test coverage with Vitest, and end-to-end testing with Playwright. Follows a minimal black-and-white visual direction inspired by the Next.js website with persistent sidebar navigation, mobile drawer, persisted themes, and accessible styling.",
+      "Built with Next.js 16 App Router, React 19, TypeScript, and Tailwind CSS. Centralized content supports thin page routes, a persistent desktop sidebar, and a mobile navigation drawer. Accessible focus styles and persisted themes support browsing preferences. Vitest and Playwright cover components and user journeys.",
     features: [
-      "AI-Assisted Workflow with Multi-Agent Lifecycle Hooks & Guardrails",
-      "Automated Testing Suite with Vitest & Playwright E2E",
-      "Black & White Theme System with next-themes",
-      "Persistent Desktop Sidebar & Mobile Hamburger Drawer",
-      "Animated Typewriter Role Text & Route Transitions",
-      "Statically Generated for Ultra-Fast Performance",
+      "Responsive project, experience, and contact pages",
+      "Persistent navigation with a mobile drawer",
+      "Light and dark themes with visible keyboard focus",
+      "Centralized content and thin Next.js route wrappers",
+      "Component and end-to-end coverage with Vitest and Playwright",
     ],
-    tags: ["Full Stack", "AI Workflows", "Testing", "Next.js"],
+    tags: ["Full Stack", "Testing", "Next.js"],
     tech: [
       { name: "Next.js", icon: "nextjs", color: "var(--foreground)" },
       { name: "TypeScript", icon: "typescript", color: "#3178C6" },
       { name: "Tailwind CSS", icon: "tailwind", color: "#06B6D4" },
       { name: "Vitest", icon: "vitest", color: "#FCC72B" },
       { name: "Playwright", icon: "playwright", color: "#2EAD33" },
-      { name: "Claude Code", icon: "claudeCode", color: "#D97757" },
-      { name: "Codex", icon: "codex", color: "var(--foreground)" },
     ],
     links: [
       {
