@@ -58,6 +58,8 @@ import {
   SiDrizzle,
   SiVercel,
   SiVitest,
+  SiGoogleappsscript,
+  SiGmail,
 } from "react-icons/si";
 import { TbApi, TbDatabase } from "react-icons/tb";
 
@@ -88,6 +90,8 @@ export const skillIcons = {
   drizzle: SiDrizzle,
 
   goHighLevel: GoHighLevelIcon,
+  googleAppsScript: SiGoogleappsscript,
+  gmail: SiGmail,
   n8n: SiN8N,
   openApi: TbApi,
   googleGemini: GeminiIcon,
