@@ -38,13 +38,15 @@ describe("Project Data", () => {
     }
   });
 
-  it("categorizes nola-paymongo under automation and web projects under web-development", () => {
+  it("categorizes nola-paymongo under web-development and automations correctly", () => {
     const automationProjects = projects.filter((p) =>
       Array.isArray(p.category)
         ? p.category.includes("automation")
         : p.category === "automation"
     );
-    expect(automationProjects.map((p) => p.slug)).toContain("nola-paymongo");
+    expect(automationProjects.map((p) => p.slug)).not.toContain(
+      "nola-paymongo"
+    );
     expect(automationProjects.map((p) => p.slug)).toContain(
       "gmail-inbox-organizer"
     );
@@ -54,6 +56,7 @@ describe("Project Data", () => {
         ? p.category.includes("web-development")
         : p.category === "web-development"
     );
+    expect(webProjects.map((p) => p.slug)).toContain("nola-paymongo");
     expect(webProjects.map((p) => p.slug)).toContain("twitch-insights");
     expect(webProjects.map((p) => p.slug)).toContain("gentlemens-quarters");
     expect(webProjects.map((p) => p.slug)).toContain(

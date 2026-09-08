@@ -7,12 +7,14 @@ export function ProjectDetail({ project }: { project: Project }) {
   const categories = Array.isArray(project.category)
     ? project.category
     : [project.category];
+  const BackIcon = siteIcons.back;
   return (
     <article className="font-sans" aria-labelledby="project-title">
       <Link
         href="/projects"
-        className="mb-4 inline-flex min-h-11 items-center text-sm text-muted underline decoration-border underline-offset-4 hover:text-foreground"
+        className="mb-4 inline-flex min-h-11 items-center gap-2 text-sm text-muted underline decoration-border underline-offset-4 hover:text-foreground"
       >
+        <BackIcon aria-hidden="true" className="size-4 shrink-0" />
         Back to projects
       </Link>
       <header className="mb-6">

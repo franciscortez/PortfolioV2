@@ -10,11 +10,11 @@ test.describe("Project stories", () => {
     ).toBeVisible();
   });
 
-  test("filters all six stories with keyboard and preserves focus", async ({
+  test("filters all seven stories with keyboard and preserves focus", async ({
     page,
   }) => {
-    await expect(page.getByRole("article")).toHaveCount(6);
-    await expect(page.getByRole("button", { name: "All 6" })).toHaveAttribute(
+    await expect(page.getByRole("article")).toHaveCount(7);
+    await expect(page.getByRole("button", { name: "All 7" })).toHaveAttribute(
       "aria-pressed",
       "true"
     );
@@ -26,17 +26,20 @@ test.describe("Project stories", () => {
     await expect(page.getByRole("article")).toHaveCount(2);
     await expect(
       page.getByRole("heading", { name: "NOLA PayMongo" })
-    ).toBeVisible();
+    ).toHaveCount(0);
     await expect(
       page.getByRole("heading", { name: "Gmail Inbox Organizer" })
     ).toBeVisible();
     await expect(
+      page.getByRole("heading", { name: "Job Tracker" })
+    ).toBeVisible();
+    await expect(
       page.getByRole("heading", { name: "Twitch Insights" })
     ).toHaveCount(0);
-    await page.getByRole("button", { name: "Web Dev 4" }).click();
-    await expect(page.getByRole("article")).toHaveCount(4);
-    await page.getByRole("button", { name: "All 6" }).click();
-    await expect(page.getByRole("article")).toHaveCount(6);
+    await page.getByRole("button", { name: "Web Dev 5" }).click();
+    await expect(page.getByRole("article")).toHaveCount(5);
+    await page.getByRole("button", { name: "All 7" }).click();
+    await expect(page.getByRole("article")).toHaveCount(7);
   });
 
   test("opens all project pages, preserves content and supplied links, and returns", async ({
@@ -139,7 +142,7 @@ test.describe("Project stories", () => {
   test("renders screenshots without overflow in both themes", async ({
     page,
   }, testInfo) => {
-    await expect(page.locator("article img")).toHaveCount(6);
+    await expect(page.locator("article img")).toHaveCount(7);
     for (const width of [375, 768, 1280, 1536]) {
       await page.setViewportSize({ width, height: 900 });
       for (const theme of ["dark", "light"]) {

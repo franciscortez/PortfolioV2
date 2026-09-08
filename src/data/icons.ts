@@ -1,4 +1,5 @@
 import {
+  FaArrowLeft,
   FaBriefcase,
   FaCogs,
   FaBullseye,
@@ -119,6 +120,7 @@ export type SkillIconName = keyof typeof skillIcons;
 
 export const siteIcons = {
   automation: FaCogs,
+  back: FaArrowLeft,
   close: IoClose,
   briefcase: FaBriefcase,
   calendar: FaCalendarAlt,

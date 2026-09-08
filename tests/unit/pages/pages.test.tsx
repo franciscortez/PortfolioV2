@@ -7,13 +7,13 @@ import { ContactPage } from "@/components/pages/contact-page";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 
 describe("ProjectsPage Component", () => {
-  it("renders all six project stories and contact link", () => {
+  it("renders all seven project stories and contact link", () => {
     render(<ProjectsPage />);
     expect(
       screen.getByRole("heading", { level: 1, name: /projects/i })
     ).toBeInTheDocument();
-    expect(screen.getAllByRole("article")).toHaveLength(6);
-    expect(screen.getByRole("button", { name: "All 6" })).toHaveAttribute(
+    expect(screen.getAllByRole("article")).toHaveLength(7);
+    expect(screen.getByRole("button", { name: "All 7" })).toHaveAttribute(
       "aria-pressed",
       "true"
     );
@@ -28,22 +28,25 @@ describe("ProjectsPage Component", () => {
     fireEvent.click(screen.getByRole("button", { name: "Automation 2" }));
     expect(screen.getAllByRole("article")).toHaveLength(2);
     expect(
-      screen.getByRole("heading", { name: "NOLA PayMongo" })
-    ).toBeInTheDocument();
-    expect(
       screen.getByRole("heading", { name: "Gmail Inbox Organizer" })
     ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Job Tracker" })
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { name: "NOLA PayMongo" })
+    ).not.toBeInTheDocument();
     expect(
       screen.queryByRole("heading", { name: "Twitch Insights" })
     ).not.toBeInTheDocument();
     expect(screen.getByRole("status")).toHaveTextContent("2 projects");
-    fireEvent.click(screen.getByRole("button", { name: "Web Dev 4" }));
-    expect(screen.getAllByRole("article")).toHaveLength(4);
+    fireEvent.click(screen.getByRole("button", { name: "Web Dev 5" }));
+    expect(screen.getAllByRole("article")).toHaveLength(5);
     expect(
-      screen.queryByRole("heading", { name: "NOLA PayMongo" })
-    ).not.toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: "All 6" }));
-    expect(screen.getAllByRole("article")).toHaveLength(6);
+      screen.getByRole("heading", { name: "NOLA PayMongo" })
+    ).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "All 7" }));
+    expect(screen.getAllByRole("article")).toHaveLength(7);
   });
 });
 
