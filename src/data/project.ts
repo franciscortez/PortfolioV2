@@ -43,6 +43,51 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "taxtraq",
+    title: "TaxTraq",
+    subtitle: "Personal Project",
+    summary:
+      "Philippines-focused tax-compliance SaaS helping accounting agencies manage staff, clients, filings, and deadlines without spreadsheets.",
+    explanation:
+      "React 19, Vite, and TypeScript power the marketing landing, auth, agency dashboard, client portal, and admin views, with Tailwind CSS, Zustand, TanStack Query, and React Router. Express 5 serves a versioned REST API under /api/v1 with Zod validation and a controller-service-model-Prisma flow backed by Neon PostgreSQL. JWT http-only cookies with rotating refresh sessions, role-based access, and agency tenant isolation guard the data, while Resend handles transactional email.",
+    features: [
+      "Marketing landing with auth, invite acceptance, and password recovery",
+      "Agency dashboard for clients, employees, filings, tasks, and reminders",
+      "Client portal for filings, tasks, uploads, and settings",
+      "Role-based routes with agency tenant isolation",
+      "JWT cookie auth with rotating refresh and reuse protection",
+      "Zod-validated REST API persisted with Prisma on Neon PostgreSQL",
+    ],
+    tags: ["Full Stack", "SaaS", "Tax Compliance"],
+    tech: [
+      { name: "React", icon: "react", color: "#61DAFB" },
+      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
+      { name: "Tailwind CSS", icon: "tailwind", color: "#06B6D4" },
+      { name: "Express", icon: "express", color: "var(--foreground)" },
+      { name: "Node.js", icon: "nodejs", color: "#339933" },
+      { name: "PostgreSQL", icon: "postgresql", color: "#4169E1" },
+      { name: "Neon", icon: "neon", color: "#34D59A" },
+      { name: "Prisma", icon: "prisma", color: "#5A67D8" },
+      { name: "Vitest", icon: "vitest", color: "#FCC72B" },
+    ],
+    links: [
+      {
+        label: "View Code",
+        href: "https://github.com/franciscortez/TaxTraq",
+        type: "github",
+      },
+    ],
+    images: [
+      {
+        src: "/images/projects/tax-traq.png",
+        alt: "TaxTraq landing page with tax client management headline and audience section",
+        description:
+          "TaxTraq marketing landing page introducing spreadsheet-free tax client management for Philippine accountants, with audience cards for tax filers, bookkeepers, agencies, and small businesses.",
+      },
+    ],
+    category: "web-development",
+  },
+  {
     slug: "gentlemens-quarters",
     title: "Gentlemen's Quarters",
     subtitle: "Personal Project",

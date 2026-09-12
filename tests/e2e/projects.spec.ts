@@ -10,11 +10,11 @@ test.describe("Project stories", () => {
     ).toBeVisible();
   });
 
-  test("filters all seven stories with keyboard and preserves focus", async ({
+  test("filters all eight stories with keyboard and preserves focus", async ({
     page,
   }) => {
-    await expect(page.getByRole("article")).toHaveCount(7);
-    await expect(page.getByRole("button", { name: "All 7" })).toHaveAttribute(
+    await expect(page.getByRole("article")).toHaveCount(8);
+    await expect(page.getByRole("button", { name: "All 8" })).toHaveAttribute(
       "aria-pressed",
       "true"
     );
@@ -36,10 +36,10 @@ test.describe("Project stories", () => {
     await expect(
       page.getByRole("heading", { name: "Twitch Insights" })
     ).toHaveCount(0);
-    await page.getByRole("button", { name: "Web Dev 5" }).click();
-    await expect(page.getByRole("article")).toHaveCount(5);
-    await page.getByRole("button", { name: "All 7" }).click();
-    await expect(page.getByRole("article")).toHaveCount(7);
+    await page.getByRole("button", { name: "Web Dev 6" }).click();
+    await expect(page.getByRole("article")).toHaveCount(6);
+    await page.getByRole("button", { name: "All 8" }).click();
+    await expect(page.getByRole("article")).toHaveCount(8);
   });
 
   test("opens all project pages, preserves content and supplied links, and returns", async ({
@@ -142,7 +142,7 @@ test.describe("Project stories", () => {
   test("renders screenshots without overflow in both themes", async ({
     page,
   }, testInfo) => {
-    await expect(page.locator("article img")).toHaveCount(7);
+    await expect(page.locator("article img")).toHaveCount(8);
     for (const width of [375, 768, 1280, 1536]) {
       await page.setViewportSize({ width, height: 900 });
       for (const theme of ["dark", "light"]) {
