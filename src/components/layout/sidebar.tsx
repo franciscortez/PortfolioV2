@@ -64,9 +64,8 @@ function SidebarProfile({
               src={profile.image.src}
               alt={profile.image.alt}
               fill
-              priority
-              quality={100}
-              sizes="(min-width: 1536px) 128px, (min-width: 1280px) 112px, (min-width: 1024px) 96px, 128px"
+              loading={showClose ? "eager" : "lazy"}
+              sizes="(min-width: 1536px) and (min-height: 900px) 128px, (min-width: 1280px) 112px, (min-width: 1024px) 96px, (min-width: 640px) 112px, 128px"
               className="scale-110 object-cover object-[center_12%]"
             />
           </div>

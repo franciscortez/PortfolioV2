@@ -1,5 +1,5 @@
 {
-  "safety-guard": {
+  "hooks": {
     "PreToolUse": [
       {
         "matcher": "*",
@@ -10,9 +10,7 @@
           }
         ]
       }
-    ]
-  },
-  "prettier-formatter": {
+    ],
     "PostToolUse": [
       {
         "matcher": "*",
@@ -22,11 +20,7 @@
             "command": "node .codex/hooks/format-hook.mjs"
           }
         ]
-      }
-    ]
-  },
-  "auto-tester": {
-    "PostToolUse": [
+      },
       {
         "matcher": "*",
         "hooks": [

@@ -25,10 +25,11 @@ export function ProjectCard({
             <Image
               src={image.src}
               alt={image.alt}
-              fill
-              className="object-contain"
-              sizes="(min-width: 1024px) 35vw, (min-width: 768px) 45vw, 100vw"
-              priority={priority}
+              width={1600}
+              height={900}
+              className="h-full w-full object-contain"
+              sizes="(min-width: 1536px) and (min-height: 900px) calc((100vw - 544px) / 2), (min-width: 1280px) calc((100vw - 464px) / 2), (min-width: 1024px) calc((100vw - 396px) / 2), (min-width: 768px) calc((100vw - 108px) / 2), (min-width: 640px) calc(100vw - 80px), calc(100vw - 48px)"
+              preload={priority}
             />
           </div>
         )}
