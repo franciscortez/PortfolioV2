@@ -35,6 +35,7 @@ import {
   PostgresqlIcon,
   PrismaIcon,
   SlackIcon,
+  StripeIcon,
 } from "@/components/ui/icon";
 import {
   SiClaude,
@@ -92,6 +93,7 @@ export const skillIcons = {
   neon: NeonIcon,
   drizzle: SiDrizzle,
   prisma: PrismaIcon,
+  stripe: StripeIcon,
 
   goHighLevel: GoHighLevelIcon,
   googleAppsScript: GoogleAppsScriptIcon,
