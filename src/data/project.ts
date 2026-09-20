@@ -49,16 +49,17 @@ export const projects: Project[] = [
     summary:
       "Philippines-focused tax-compliance SaaS helping accounting agencies manage staff, clients, filings, and deadlines without spreadsheets.",
     explanation:
-      "React 19, Vite, and TypeScript power the marketing landing, auth, agency dashboard, client portal, and admin views, with Tailwind CSS, Zustand, TanStack Query, and React Router. Express 5 serves a versioned REST API under /api/v1 with Zod validation and a controller-service-model-Prisma flow backed by Neon PostgreSQL. JWT http-only cookies with rotating refresh sessions, role-based access, and agency tenant isolation guard the data, while Resend handles transactional email.",
+      "React 19, Vite, and TypeScript power the marketing landing, auth, agency dashboard, client portal, and admin views, with Tailwind CSS, Zustand, TanStack Query, and React Router. Express 5 serves a versioned REST API under /api/v1 with Zod validation and a controller-service-model-Prisma flow backed by Neon PostgreSQL. Stripe handles agency subscription billing through checkout sessions, verified webhooks, plan changes, cancellation, and a customer portal across STARTER, PRO, and AGENCY tiers. JWT http-only cookies with rotating refresh sessions, role-based access, and agency tenant isolation guard the data, while Resend handles transactional email.",
     features: [
       "Marketing landing with auth, invite acceptance, and password recovery",
       "Agency dashboard for clients, employees, filings, tasks, and reminders",
       "Client portal for filings, tasks, uploads, and settings",
+      "Stripe subscription billing with checkout, webhooks, and portal",
       "Role-based routes with agency tenant isolation",
       "JWT cookie auth with rotating refresh and reuse protection",
       "Zod-validated REST API persisted with Prisma on Neon PostgreSQL",
     ],
-    tags: ["Full Stack", "SaaS", "Tax Compliance"],
+    tags: ["Full Stack", "SaaS", "Tax Compliance", "Payments"],
     tech: [
       { name: "React", icon: "react", color: "#61DAFB" },
       { name: "TypeScript", icon: "typescript", color: "#3178C6" },
@@ -68,6 +69,7 @@ export const projects: Project[] = [
       { name: "PostgreSQL", icon: "postgresql", color: "#4169E1" },
       { name: "Neon", icon: "neon", color: "#34D59A" },
       { name: "Prisma", icon: "prisma", color: "#5A67D8" },
+      { name: "Stripe", icon: "stripe", color: "#635BFF" },
       { name: "Vitest", icon: "vitest", color: "#FCC72B" },
     ],
     links: [
